@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center align-items-center flex-column">
         <div id="hero">
             <div id="burger">
                 <img class="w-75" src="/images/burger.png" alt="">
@@ -12,7 +12,14 @@
                 <div id="shadow"></div>
             </div>
         </div>
-
+        <div class="rounded-4 text-white" id="searchbar">
+            <h1 class="fw-bold text-center">Il cibo che vuoi quando vuoi</h1>
+            <h5 class="py-2 text-center">Ordina online dai tuoi ristoranti preferiti</h5>
+            <input id="search" type="text" placeholder="Cerca il tuo ristorante...">
+            <div id="search-button">
+                <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -28,14 +35,17 @@ export default {
 #hero {
     position: relative;
     width: 100%;
-    height: 1000px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     #burger {
         width: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -60%);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -67,10 +77,45 @@ export default {
             animation: shadow 1.7s infinite linear;
         }
     }
-
-
 }
 
+#searchbar {
+    background-color: $bg-secondary;
+    width: 50%;
+    padding: 20px 30px;
+    position: relative;
+
+    h1 {
+        color: $magenta;
+    }
+
+    #search {
+        padding: 0 20px;
+        width: 100%;
+        height: 50px;
+        border-radius: 3em;
+    }
+
+    #search-button {
+        position: absolute;
+        right: 4%;
+        top: 64%;
+        width: 51px;
+        height: 51px;
+        border-radius: 50%;
+        background-color: $magenta;
+        -webkit-box-shadow: -24px 0 32px -16px #000000;
+        -moz-box-shadow: -24px 0 32px -16px #000000;
+        box-shadow: -24px 0 32px -16px #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: darken($magenta, 5%);
+        }
+    }
+}
 
 
 @keyframes bounce {
