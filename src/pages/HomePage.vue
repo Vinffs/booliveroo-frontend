@@ -39,6 +39,5 @@ export default {
 
 .wrapper {
     background-color: $bg-primary;
-    height: 100vh;
 }
 </style>
