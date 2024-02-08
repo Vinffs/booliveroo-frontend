@@ -1,6 +1,23 @@
 <template>
-    <div>
-
+    <div class="blog">
+        <h2 class="text-center text-white fw-semibold m-0 pt-5">Read Our Blog</h2>
+        <div class="pt-5 pb-5 container d-flex justify-content-between">
+            <div class="rounded">
+                <img class="rounded" src="../../public/images/piatto-1.webp" alt="piatto-1">
+                <h5 class="fw-semibold text-white">Questa è una prova</h5>
+                <span>questa è un'altra prova</span>
+            </div>
+            <div class="rounded">
+                <img class="rounded" src="../../public/images/piatto-2.jpg" alt="piatto-2">
+                <h5 class="fw-semibold text-white">Questa è una prova</h5>
+                <span>questa è un'altra prova</span>
+            </div>
+            <div class="rounded">
+                <img class="rounded" src="../../public/images/piatto-3.webp" alt="piatto-3">
+                <h5 class="fw-semibold text-white">Questa è una prova</h5>
+                <span>questa è un'altra prova</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -10,4 +27,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use ".././assets/styles/partials/variables" as *;
+.blog{
+    background-color: $bg-secondary;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+</style>
