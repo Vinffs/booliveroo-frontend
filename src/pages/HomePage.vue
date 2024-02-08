@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <HeroHome />
-        <CategoriesHome />
-        <SaleHome />
-        <RestaurantsHome />
+    <div class="wrapper">
+        <div class="container">
+            <HeroHome />
+            <CategoriesHome />
+            <SaleHome />
+            <RestaurantsHome />
+        </div>
     </div>
 </template>
 
@@ -29,4 +31,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../assets/styles/partials/variables' as *;
+
+.wrapper {
+    background-color: $bg-primary;
+    height: 100vh;
+}
+</style>
