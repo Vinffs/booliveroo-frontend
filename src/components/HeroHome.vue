@@ -109,13 +109,14 @@ export default {
         justify-content: center;
         align-items: center;
         z-index: 10;
-        -webkit-box-shadow: -29px 0 30px -8px #000000;
-        -moz-box-shadow: -29px 0 30px -8px #000000;
-        box-shadow: -29px 0 30px -8px #000000;
+        -webkit-box-shadow: -18px 0 31px -8px #000000;
+        -moz-box-shadow: -18px 0 31px -8px #000000;
+        box-shadow: -18px 0 31px -8px #000000;
         cursor: pointer;
+        transition: all 0.3s ease;
 
         &:hover {
-            background-color: darken($primary, 5%);
+            background-color: darken($primary, 8%);
         }
     }
 }
