@@ -84,9 +84,10 @@ export default {
     width: 50%;
     padding: 20px 30px;
     position: relative;
+    margin-bottom: 100px;
 
     h1 {
-        color: $magenta;
+        color: $primary;
     }
 
     #search {
@@ -103,7 +104,7 @@ export default {
         width: 51px;
         height: 51px;
         border-radius: 50%;
-        background-color: $magenta;
+        background-color: $primary;
         -webkit-box-shadow: -24px 0 32px -16px #000000;
         -moz-box-shadow: -24px 0 32px -16px #000000;
         box-shadow: -24px 0 32px -16px #000000;
@@ -112,7 +113,7 @@ export default {
         align-items: center;
 
         &:hover {
-            background-color: darken($magenta, 5%);
+            background-color: darken($primary, 5%);
         }
     }
 }
