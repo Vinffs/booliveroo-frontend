@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="rounded-4 text-white" id="searchbar">
-            <h1 class="fw-bold text-center">Il cibo che vuoi quando vuoi</h1>
+            <h1 class="fw-bold text-center">Il cibo che vuoi, Quando vuoi</h1>
             <h5 class="py-2 text-center">Ordina online dai tuoi ristoranti preferiti</h5>
             <input id="search" type="text" placeholder="Cerca il tuo ristorante...">
             <div id="search-button">
@@ -58,7 +58,7 @@ export default {
         background-size: contain;
         background-position: center;
         background-clip: text;
-        animation: bounce 1.7s infinite linear;
+        animation: bounce 2s infinite linear;
     }
 
     .shadow {
@@ -74,15 +74,15 @@ export default {
             height: 25px;
             background-color: white;
             filter: blur(25px);
-            animation: shadow 1.7s infinite linear;
+            animation: shadow 2s infinite linear;
         }
     }
 }
 
 #searchbar {
     background-color: $bg-secondary;
-    width: 50%;
-    padding: 20px 30px;
+    width: 60%;
+    padding: 40px 30px;
     position: relative;
     margin-bottom: 100px;
 
@@ -99,18 +99,20 @@ export default {
 
     #search-button {
         position: absolute;
-        right: 4%;
-        top: 64%;
+        right: 3.5%;
+        top: 61.5%;
         width: 51px;
         height: 51px;
         border-radius: 50%;
         background-color: $primary;
-        -webkit-box-shadow: -24px 0 32px -16px #000000;
-        -moz-box-shadow: -24px 0 32px -16px #000000;
-        box-shadow: -24px 0 32px -16px #000000;
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 10;
+        -webkit-box-shadow: -29px 0 30px -8px #000000;
+        -moz-box-shadow: -29px 0 30px -8px #000000;
+        box-shadow: -29px 0 30px -8px #000000;
+        cursor: pointer;
 
         &:hover {
             background-color: darken($primary, 5%);
