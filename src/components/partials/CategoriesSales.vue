@@ -1,7 +1,7 @@
 <template>
   <div class="px-3">
     <RestaurantsTitle :title="'Sconti a tempo'" />
-    <div v-for="i in 2" class="my-card rounded-3 p-3 my-3">
+    <div v-for="i in 2" class="my-card rounded-3 p-3 py-4 my-4 my-3">
       <h4>Categoria</h4>
       <div class="text-center p-4 image-container">
         <div class="discount rounded-circle">50%</div>
@@ -15,7 +15,7 @@
         >Vai alla categoria</router-link
       >
     </div>
-    <div class="timer rounded-3 p-3">
+    <div class="timer rounded-3 p-3 py-5">
       <h4>Lo sconto scade tra:</h4>
       <div class="d-flex align-items-center justify-content-center p-4">
         <div class="time fs-1 py-1 px-3 fw-bold rounded-4">
@@ -85,8 +85,8 @@ export default {
       right: 0;
       font-weight: bold;
       background-color: $primary;
-      width: 4em;
-      height: 4em;
+      width: 3.5em;
+      height: 3.5em;
       display: flex;
       justify-content: center;
       align-items: center;

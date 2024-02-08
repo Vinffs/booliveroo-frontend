@@ -8,10 +8,22 @@
       </div>
       <img class="w-100" src="https://picsum.photos/400/200" alt="" />
     </div>
-    <div class="card-body">
+    <div class="card-body p-3">
       <h5 class="card-title">Ristorante</h5>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between pt-3">
         <p>Luogo in cui si trova</p>
+        <div style="width: 10%">
+          <img
+            v-if="restaurant <= 3 && restaurant !== null"
+            :src="
+              'https://www.onlygfx.com/wp-content/uploads/2023/07/medal-badge-gold-silver-bronze-place-' +
+              position +
+              '.png'
+            "
+            alt=" sad"
+            class="w-100"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -20,12 +32,25 @@
 <script>
 export default {
   name: "RestaurantCard",
+  props: ["restaurant"],
+  data() {
+    return {
+      position: this.restaurant,
+    };
+  },
+  methods: {},
+  mounted() {
+    if (this.position === 3) {
+      this.position = 6;
+    }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @use "../../assets/styles/partials/variables" as *;
 .my-card {
+  background-color: $bg-secondary;
   overflow: hidden;
   &:hover .image-cotainer {
     .overlay {
