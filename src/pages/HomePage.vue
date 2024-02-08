@@ -6,8 +6,8 @@
             <SaleHome />
             <RestaurantsHome />
         </div>
-        <BlogHome />
     </div>
+    <BlogHome />
 </template>
 
 <script>
