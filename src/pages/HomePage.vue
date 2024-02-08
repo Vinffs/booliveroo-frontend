@@ -6,6 +6,7 @@
             <SaleHome />
             <RestaurantsHome />
         </div>
+        <BlogHome />
     </div>
 </template>
 
@@ -15,6 +16,7 @@ import CategoriesHome from '@/components/CategoriesHome.vue';
 import { store } from '../data/store';
 import RestaurantsHome from '@/components/RestaurantsHome.vue';
 import SaleHome from '@/components/SaleHome.vue';
+import BlogHome from '@/components/BlogHome.vue';
 export default {
     name: 'HomePage',
     components: {
@@ -22,6 +24,7 @@ export default {
         CategoriesHome,
         RestaurantsHome,
         SaleHome,
+        BlogHome,
     },
     data() {
         return {
