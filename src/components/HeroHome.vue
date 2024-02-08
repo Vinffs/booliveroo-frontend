@@ -35,7 +35,7 @@ export default {
 #hero {
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +64,7 @@ export default {
     .shadow {
         width: 100px;
         position: absolute;
-        top: 70%;
+        top: 75%;
         left: 50%;
         transform: translateX(-35%);
 
