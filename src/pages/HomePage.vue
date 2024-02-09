@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper pb-5">
     <div class="container">
       <HeroHome />
-      <CategoriesHome />
       <SaleHome />
+      <CategoriesHome />
       <RestaurantsHome />
     </div>
   </div>

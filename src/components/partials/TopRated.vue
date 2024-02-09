@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4 px-3" v-for="i in 6">
         <!-- card riutilizzabile -->
-        <RestaurantCard :restaurant="i" />
+        <RestaurantCard :restaurant="i" class="shadowed" />
       </div>
     </div>
   </div>
