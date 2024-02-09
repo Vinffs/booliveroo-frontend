@@ -1,5 +1,5 @@
 <template>
-  <h5 class="wrapper rounded-pill p-3 ps-4 mb-4 shadowed">
+  <h5 class="wrapper rounded-pill p-3 ps-4 shadowed">
     {{ title }}
   </h5>
 </template>
@@ -18,5 +18,7 @@ export default {
 
 .wrapper {
   background-color: $bg-secondary;
+  margin-bottom: 17px;
+  margin-top: 15px;
 }
 </style>

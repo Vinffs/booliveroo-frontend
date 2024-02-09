@@ -1,21 +1,18 @@
 <template>
-  <div
-    class="d-flex justify-content-center align-items-center flex-column"
-    style="padding-top: 150px"
-  >
+  <div class="d-flex justify-content-center align-items-center flex-column">
     <div id="hero">
-      <svg viewBox="0 0 500 500">
+      <!-- <svg viewBox="0 0 500 500">
         <path id="curve" d="M35,226 c141,-76 289,-76 425,0" />
         <text width="500">
           <textPath xlink:href="#curve" class="text-uppercase fw-bold">
             Il cibo che vuoi, quando vuoi, dove vuoi
           </textPath>
         </text>
-      </svg>
+      </svg> -->
 
       <div id="burger">
         <!-- <h2 class="text-uppercase">quando vuoi</h2> -->
-        <img class="w-75" src="/images/burger.png" alt="" />
+        <img class="w-75 burger" src="/images/burger.png" alt="" />
         <img class="water left" src="/images/water.png" alt="water" />
         <img class="water right" src="/images/water.png" alt="water" />
         <!-- <h2 class="text-uppercase">dove vuoi</h2> -->
@@ -25,7 +22,7 @@
       </div>
     </div>
     <div class="rounded-4 text-white shadowed" id="searchbar">
-      <h1 class="fw-bold text-center">Il pasto che vuoi alla tua porta</h1>
+      <h1 class="fw-bold text-center">Il cibo che vuoi, quando vuoi</h1>
       <h5 class="py-2 text-center">
         Ordina online dai tuoi ristoranti preferiti
       </h5>
@@ -47,7 +44,7 @@ export default {
 @use "../assets/styles/partials/variables" as *;
 
 #hero {
-  margin-top: 50px;
+  margin-top: 70px;
   position: relative;
   width: 100%;
   height: 500px;
@@ -89,6 +86,14 @@ export default {
     justify-content: center;
     align-items: center;
     color: $primary;
+
+    .burger {
+      animation-name: bounce;
+      animation-iteration-count: infinite;
+      animation-duration: 4s;
+      animation-timing-function: ease-in-out;
+      transform: translateY(-20px);
+    }
 
     h2 {
       position: absolute;
@@ -173,15 +178,15 @@ export default {
 
 @keyframes bounce {
   from {
-    top: 50%;
+    transform: translateY(20px);
   }
 
   50% {
-    top: 55%;
+    transform: translateY(-20px);
   }
 
   to {
-    top: 50%;
+    transform: translateY(20px);
   }
 }
 
