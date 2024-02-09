@@ -2,11 +2,12 @@
     <div class="mb-5 wrapper">
         <h2 class="text-center text-white my-5">Categorie</h2>
 
-        <swiper :slidesPerView="6" :spaceBetween="30" :navigation="true" :autoplay="{
-            delay: 2000,
-            disableOnInteraction: false,
-        }" :modules="modules" class="mySwiper">
-            <swiper-slide style="width: 150px; height: 150px;" v-for="item in categorie">
+        <swiper :slidesPerView="6" :spaceBetween="60" :loop="true" :watchSlidesProgress="true" :pauseOnMouseEnter="true"
+            :centerInsufficientSlides="true" :autoplay="{
+                delay: 2000,
+                disableOnInteraction: false,
+            }" :modules="modules" class="mySwiper">
+            <swiper-slide style="width: 170px; height: 170px;" v-for="item in categorie">
                 <CategoriesCard :category="item" />
             </swiper-slide>
         </swiper>
@@ -18,7 +19,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import CategoriesCard from './partials/CategoriesCard.vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import './style.css';
+import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 export default {
     name: 'CategoriesHome',
@@ -92,20 +93,20 @@ export default {
                 vegano: {
                     name: 'Vegano',
                     image: '/images/iconscategories/vegan.png'
+                },
+                birreria: {
+                    name: 'Birreria',
+                    image: '/images/iconscategories/beer.png'
                 }
 
-            }
+            },
+            modules: [Autoplay, Pagination, Navigation],
         }
     },
     components: {
         CategoriesCard,
         Swiper,
         SwiperSlide,
-    },
-    setup() {
-        return {
-            modules: [Autoplay, Pagination, Navigation],
-        };
     },
 }
 </script>
