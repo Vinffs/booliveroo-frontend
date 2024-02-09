@@ -80,7 +80,7 @@ export default {
 
       .btn {
         transition: all 0.3s ease;
-        transform: translateY(-500px);
+        transform: translateY(-150px);
       }
     }
   }

@@ -1,6 +1,8 @@
 <template>
   <div class="px-3">
+    <!-- titolo riutilizzabile -->
     <RestaurantsTitle :title="'Sconti a tempo'" />
+    <!-- sezioni contenenti le categorie scontate -->
     <div v-for="i in 2" class="my-card rounded-3 p-3 py-4 my-4 my-3">
       <h4>Categoria</h4>
       <div class="text-center p-4 image-container">
@@ -15,6 +17,7 @@
         >Vai alla categoria</router-link
       >
     </div>
+    <!-- timer -->
     <div class="timer rounded-3 p-3 py-5">
       <h4>Lo sconto scade tra:</h4>
       <div class="d-flex align-items-center justify-content-center p-4">
@@ -45,6 +48,7 @@ export default {
     };
   },
   methods: {
+    // funzione per gestire il countdown
     countdown() {
       const interval = setInterval(() => {
         this.seconds--;
@@ -58,6 +62,7 @@ export default {
         }
       }, 1000);
     },
+    // funzione per cambiare lo sconto e riavviare il countdown
     changeOffer() {
       this.minutes = 10;
       this.seconds = 0;

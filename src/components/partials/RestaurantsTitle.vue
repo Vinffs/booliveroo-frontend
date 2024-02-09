@@ -1,5 +1,5 @@
 <template>
-  <h5 class="wrapper rounded-pill p-3 ps-4 mb-4">
+  <h5 class="wrapper rounded-pill p-3 ps-4 mb-4 shadowed">
     {{ title }}
   </h5>
 </template>
