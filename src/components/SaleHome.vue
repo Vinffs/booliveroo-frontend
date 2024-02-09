@@ -1,5 +1,5 @@
 <template>
-  <div id="stars-container" class="rounded-4 shadowed mb-5">
+  <div id="stars-container" class="rounded-4 shadowed">
     <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
@@ -51,7 +51,7 @@ $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
 
 #stars-container {
-  background: radial-gradient(ellipse at bottom, #db07de 0%, #161616 100%);
+  background: radial-gradient(ellipse at bottom, $primary 0%, $bg-primary 100%);
   overflow: hidden;
 
   .content {
