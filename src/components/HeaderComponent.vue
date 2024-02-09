@@ -13,9 +13,9 @@
                     </div>
                     <div class="d-flex">
                         <ul class="d-flex list-unstyled">
-                            <li class="nav-item text-white me-3"><i class="fa-solid fa-magnifying-glass"></i></li>
-                            <li class="nav-item text-white me-3"><i class="fa-solid fa-cart-shopping"></i></li>
-                            <li class="nav-item text-white me-3"><i class="fa-solid fa-user"></i></li>
+                            <li class="nav-item text-white me-3"><router-link class="nav-link text-white fs-5" to="/"><i class="fa-solid fa-magnifying-glass"></i></router-link></li>
+                            <li class="nav-item text-white me-3"><router-link class="nav-link text-white fs-5" to="/"><i class="fa-solid fa-cart-shopping"></i></router-link></li>
+                            <li class="nav-item text-white me-3"><router-link class="nav-link text-white" to="/"><i class="fa-solid fa-user"></i></router-link></li>
                         </ul>
                     </div>
                 </div>
