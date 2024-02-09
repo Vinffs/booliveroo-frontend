@@ -2,12 +2,10 @@
     <div class="mb-5 wrapper">
         <h2 class="text-center text-white my-5">Categorie</h2>
 
-        <swiper :slidesPerView="6" :spaceBetween="60" :loop="true" :watchSlidesProgress="true" :pauseOnMouseEnter="true"
-            :centerInsufficientSlides="true" :autoplay="{
-                delay: 2000,
-                disableOnInteraction: false,
-            }" :modules="modules" class="mySwiper">
-            <swiper-slide style="width: 170px; height: 170px;" v-for="item in categorie">
+        <swiper :slidesPerView="6" :spaceBetween="60" :loop="true" :centerInsufficientSlides="true" :autoplay="{
+            pauseOnMouseEnter: true, delay: 2000, disableOnInteraction: true,
+        }" :modules="modules" class="mySwiper">
+            <swiper-slide style="width: 170px; height: 170px;" v-for="  item   in   categorie  ">
                 <CategoriesCard :category="item" />
             </swiper-slide>
         </swiper>

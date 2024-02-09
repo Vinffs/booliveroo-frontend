@@ -33,9 +33,10 @@ export default {
 @use '../assets/styles/partials/variables' as *;
 
 #hero {
+    margin-top: 50px;
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +65,7 @@ export default {
     .shadow {
         width: 100px;
         position: absolute;
-        top: 75%;
+        top: 80%;
         left: 50%;
         transform: translateX(-35%);
 
@@ -72,6 +73,7 @@ export default {
 
             width: 80%;
             height: 25px;
+            border-radius: 40%;
             background-color: rgb(120, 120, 120);
             filter: blur(25px);
             animation: shadow 2s infinite linear;
@@ -128,7 +130,7 @@ export default {
     }
 
     50% {
-        top: 52%;
+        top: 55%;
     }
 
     to {
