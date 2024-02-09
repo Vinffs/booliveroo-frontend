@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -22,20 +23,22 @@
             </div>
         </nav>
     </div>
+
+  
 </template>
 
 <script>
 export default {
-    name: 'HeaderComponent',
-}
-
+  name: "HeaderComponent",
+};
 </script>
 
 <style lang="scss" scoped>
 @use ".././assets/styles/partials/variables" as *;
-nav{
-    background-color: $bg-primary;
+nav {
+  background-color: $bg-secondary;
 }
+
 i{
     min-width: 22.5px;
     min-height: 22.5px;
