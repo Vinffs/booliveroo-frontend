@@ -1,15 +1,17 @@
 <template>
     <div class="d-flex justify-content-center align-items-center flex-column">
         <div id="hero">
+            <h2 class="text-uppercase">Quello che vuoi</h2>
             <div id="burger">
+                <h2 class="text-uppercase">quando vuoi</h2>
                 <img class="w-75" src="/images/burger.png" alt="">
+                <img class="water left" src="/images/water.png" alt="water">
+                <img class="water right" src="/images/water.png" alt="water">
+                <h2 class="text-uppercase">dove vuoi</h2>
                 <!-- <div>Il Cibo</div>
             <div>Che vuoi</div>
             <div>Quando vuoi!</div> -->
 
-            </div>
-            <div class="d-flex justify-content-center align-items-center shadow">
-                <div id="shadow"></div>
             </div>
         </div>
         <div class="rounded-4 text-white shadowed" id="searchbar">
@@ -37,46 +39,64 @@ export default {
     position: relative;
     width: 100%;
     height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    color: $primary;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    h2 {
+        font-size: 3em;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'ABC Ginto Nord Unlicensed Trial', sans-serif;
+    }
 
     #burger {
         width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -60%);
+        margin: 0 auto;
+        color: transparent;
         display: flex;
+        position: relative;
+        z-index: 10;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        margin: 0;
-        font-size: 150px;
-        font-weight: bold;
-        color: transparent;
-        background-image: url(./images/food.avif);
-        background-size: contain;
-        background-position: center;
-        background-clip: text;
-        animation: bounce 2s infinite linear;
-    }
+        color: $primary;
 
-    .shadow {
-        width: 100px;
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translateX(-35%);
+        h2 {
+            position: absolute;
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            font-family: 'ABC Ginto Nord Unlicensed Trial', sans-serif;
+        }
 
-        #shadow {
+        h2:first-child {
+            rotate: -35deg;
+            left: -10%;
+            top: 10%;
+        }
 
-            width: 80%;
-            height: 25px;
-            border-radius: 40%;
-            background-color: rgb(120, 120, 120);
-            filter: blur(25px);
-            animation: shadow 2s infinite linear;
+        h2:last-child {
+            rotate: 35deg;
+            right: -10%;
+            top: 10%;
+        }
+
+        .water {
+            position: absolute;
+            z-index: 9;
+            top: 0;
+            filter: hue-rotate(-260deg);
+
+            &.left {
+                left: 0;
+            }
+
+            &.right {
+                right: 0;
+                transform: rotateY(180deg);
+            }
         }
     }
 }
