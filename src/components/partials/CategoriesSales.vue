@@ -3,7 +3,7 @@
     <!-- titolo riutilizzabile -->
     <RestaurantsTitle :title="'Sconti a tempo'" />
     <!-- sezioni contenenti le categorie scontate -->
-    <div v-for="i in 2" class="my-card rounded-3 p-3 py-4 my-4 my-3">
+    <div v-for="i in 2" class="my-card rounded-3 p-3 py-4 my-4 my-3 shadowed">
       <h4>Categoria</h4>
       <div class="text-center p-4 image-container">
         <div class="discount rounded-circle">50%</div>
@@ -18,7 +18,7 @@
       >
     </div>
     <!-- timer -->
-    <div class="timer rounded-3 p-3 py-5">
+    <div class="timer rounded-3 p-3 py-5 shadowed">
       <h4>Lo sconto scade tra:</h4>
       <div class="d-flex align-items-center justify-content-center p-4">
         <div class="time fs-1 py-1 px-3 fw-bold rounded-4">
