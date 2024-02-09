@@ -20,8 +20,8 @@
         </ul>
         <ul class="list-unstyled text-white me-3">
             <li class="fw-semibold mb-1">prova</li>
-            <li><i class="fa-brands fa-twitter"></i></li>
-            <li><i class="fa-brands fa-x-twitter"></i></li>
+            <li class="d-inline-block me-1"><i class="fa-brands fa-twitter"></i></li>
+            <li class="d-inline-block ms-1"><i class="fa-brands fa-x-twitter"></i></li>
         </ul>
     </div>
 </template>
