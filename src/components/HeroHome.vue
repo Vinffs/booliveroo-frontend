@@ -12,7 +12,7 @@
                 <div id="shadow"></div>
             </div>
         </div>
-        <div class="rounded-4 text-white" id="searchbar">
+        <div class="rounded-4 text-white shadowed" id="searchbar">
             <h1 class="fw-bold text-center">Il cibo che vuoi, Quando vuoi</h1>
             <h5 class="py-2 text-center">Ordina online dai tuoi ristoranti preferiti</h5>
             <input id="search" type="text" placeholder="Cerca il tuo ristorante...">
@@ -72,7 +72,7 @@ export default {
 
             width: 80%;
             height: 25px;
-            background-color: white;
+            background-color: rgb(120, 120, 120);
             filter: blur(25px);
             animation: shadow 2s infinite linear;
         }
