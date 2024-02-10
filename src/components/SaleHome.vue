@@ -10,11 +10,11 @@
         <h2 class="fw-bold fs-1 text-center">
           Vuoi ricevere un codice sconto?
         </h2>
-        <h3 class="py-4 fw-bold fs-2 text-center">
+        <h3 class="py-4 fw-bold fs-2 text-center d-none d-sm-block">
           Inserisci il tuo indirizzo email e lo ritroverai direttamente nella
           tua casella di posta!
         </h3>
-        <div id="searchbar" class="w-50 mx-auto">
+        <div id="searchbar" class="mx-auto">
           <input
             id="search"
             type="email"
@@ -149,6 +149,42 @@ $shadows-big: multiple-box-shadow(100);
   }
   to {
     transform: translateY(-2000px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #stars-container {
+    .content {
+      padding: 50px;
+      padding-bottom: 80px;
+    }
+    #search-button {
+      right: 50% !important;
+      transform: translateX(50%);
+      bottom: -120% !important;
+      width: 30% !important;
+      border-radius: 3em !important;
+    }
+  }
+}
+@media screen and (min-width: 576px) {
+  #searchbar {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  #searchbar {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #searchbar {
+    width: 70%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #searchbar {
+    width: 60%;
   }
 }
 </style>
