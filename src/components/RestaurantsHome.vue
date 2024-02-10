@@ -1,14 +1,14 @@
 <template>
   <div class="row justify-content-between text-light pb-5">
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-lg-3">
       <!-- sezione delle categorie scontate a tempo -->
       <CategoriesSales />
     </div>
-    <div class="col-12 col-md-9">
+    <div class="col-12 col-lg-9">
       <!-- sezione dei ristoranti con la valitazione più alta -->
       <TopRated />
       <!-- sezione dei ristoranti sponsorizzati -->
-      <SponsoredRestaurants />
+      <SponsoredRestaurants class="sponsored" />
     </div>
   </div>
 </template>
@@ -27,4 +27,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media screen and (max-width: 1200px) {
+  .sponsored {
+    margin-top: 65px;
+  }
+}
+</style>

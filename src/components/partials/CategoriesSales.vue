@@ -1,32 +1,44 @@
 <template>
-  <div class="px-3">
+  <div class="container-fluid">
     <!-- titolo riutilizzabile -->
-    <RestaurantsTitle :title="'Sconti a tempo'" />
+    <RestaurantsTitle
+      :title="'Sconti a tempo'"
+      style="margin-left: -12px; margin-right: -12px"
+    />
     <!-- sezioni contenenti le categorie scontate -->
-    <div v-for="i in 2" class="my-card rounded-3 p-3 py-4 my-4 my-3 shadowed">
-      <h4>Categoria</h4>
-      <div class="text-center p-4 image-container">
-        <div class="discount rounded-circle">50%</div>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png"
-          alt="nomecategoria"
-          class="w-100"
-        />
-      </div>
-      <router-link class="btn text-light fw-bold rounded-pill" to="/"
-        >Vai alla categoria</router-link
+    <div class="row justify-content-between">
+      <div
+        v-for="i in 2"
+        class="my-card rounded-3 p-3 py-4 my-4 shadowed col-4 col-md-3 col-lg-12"
       >
-    </div>
-    <!-- timer -->
-    <div class="timer rounded-3 p-3 py-5 shadowed">
-      <h4>Lo sconto scade tra:</h4>
-      <div class="d-flex align-items-center justify-content-center p-4">
-        <div class="time fs-1 py-1 px-3 fw-bold rounded-4">
-          <span v-if="minutes < 10">0</span>{{ minutes }}
+        <h4>Categoria</h4>
+        <div class="text-center p-4 image-container">
+          <div class="discount rounded-circle">50%</div>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png"
+            alt="nomecategoria"
+            class="w-75"
+          />
         </div>
-        <div class="fs-1 px-2 fw-bold">:</div>
-        <div class="time fs-1 py-1 px-3 fw-bold rounded-4">
-          <span v-if="seconds < 10">0</span>{{ seconds }}
+        <router-link
+          class="btn text-light fw-bold rounded-pill d-none d-sm-block"
+          to="/"
+          >Vai alla categoria</router-link
+        >
+      </div>
+      <!-- timer -->
+      <div
+        class="timer rounded-3 p-3 py-5 mt-2 shadowed col-6 col-md-4 col-lg-12"
+      >
+        <h4>Lo sconto scade tra:</h4>
+        <div class="d-flex align-items-center justify-content-center p-4">
+          <div class="time fs-1 py-1 px-3 fw-bold rounded-4">
+            <span v-if="minutes < 10">0</span>{{ minutes }}
+          </div>
+          <div class="fs-1 px-2 fw-bold">:</div>
+          <div class="time fs-1 py-1 px-3 fw-bold rounded-4">
+            <span v-if="seconds < 10">0</span>{{ seconds }}
+          </div>
         </div>
       </div>
     </div>
@@ -111,6 +123,27 @@ export default {
 
   .time {
     background-color: $bg-primary;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .my-card {
+    margin: 0 !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    justify-content: center !important;
+    gap: 1em;
+
+    .discount {
+      width: 2.5em !important;
+      height: 2.5em !important;
+    }
+
+    .timer {
+      padding: 1em !important;
+    }
   }
 }
 </style>
