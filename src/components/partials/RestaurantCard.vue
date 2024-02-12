@@ -22,7 +22,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ restaurant.name }}</h5>
       <div class="d-flex justify-content-between pt-3">
-        <p style="font-size: 0.9em">{{ restaurant.address }}</p>
+        <p class="pe-4" style="font-size: 0.9em">{{ restaurant.address }}</p>
         <div style="width: 10%">
           <img
             v-if="position <= 2 && position > 0"
