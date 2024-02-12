@@ -1,25 +1,42 @@
 <template>
-  <div class="my-card rounded-3 my-3">
+  <div class="my-card h-100 rounded-3">
     <div class="image-cotainer">
       <div class="overlay">
         <router-link to="/" class="btn btn-light rounded-pill"
           >Vai al ristorante</router-link
         >
       </div>
-      <img class="w-100" src="https://picsum.photos/400/200" alt="" />
+      <img
+        v-if="restaurant.image === null"
+        class="w-100 restaurant-image"
+        src="https://picsum.photos/400/200"
+        alt=""
+      />
+      <img
+        v-else
+        :src="store.imagePath + restaurant.image"
+        class="w-100 restaurant-image"
+        alt=""
+      />
     </div>
-    <div class="card-body p-3">
-      <h5 class="card-title">Ristorante</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{ restaurant.name }}</h5>
       <div class="d-flex justify-content-between pt-3">
-        <p>Luogo in cui si trova</p>
+        <p style="font-size: 0.9em">{{ restaurant.address }}</p>
         <div style="width: 10%">
           <img
-            v-if="restaurant <= 3 && restaurant !== null"
+            v-if="position <= 2 && position > 0"
             :src="
               'https://www.onlygfx.com/wp-content/uploads/2023/07/medal-badge-gold-silver-bronze-place-' +
               position +
               '.png'
             "
+            alt=" sad"
+            class="w-100"
+          />
+          <img
+            v-else-if="position === 3"
+            :src="'https://www.onlygfx.com/wp-content/uploads/2023/07/medal-badge-gold-silver-bronze-place-6.png'"
             alt=" sad"
             class="w-100"
           />
@@ -30,12 +47,17 @@
 </template>
 
 <script>
+import { store } from "../../data/store";
+
 export default {
   name: "RestaurantCard",
-  props: ["restaurant"],
+  props: {
+    restaurant: Object,
+    position: Number,
+  },
   data() {
     return {
-      position: this.restaurant,
+      store,
     };
   },
   methods: {},
@@ -64,6 +86,17 @@ export default {
   .image-cotainer {
     position: relative;
     overflow: hidden;
+    background: radial-gradient(
+      ellipse at bottom,
+      $primary 0%,
+      $bg-primary 100%
+    );
+
+    .restaurant-image {
+      height: 200px;
+      object-fit: contain;
+      object-position: center center;
+    }
 
     .overlay {
       position: absolute;
@@ -83,6 +116,10 @@ export default {
         transform: translateY(-150px);
       }
     }
+  }
+
+  .card-body {
+    padding: 0.7em 1em !important;
   }
 }
 </style>

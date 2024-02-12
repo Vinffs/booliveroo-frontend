@@ -17,12 +17,18 @@
 import TopRated from "./partials/TopRated.vue";
 import CategoriesSales from "./partials/CategoriesSales.vue";
 import SponsoredRestaurants from "./partials/SponsoredRestaurants.vue";
+import { store } from "../data/store";
 export default {
   name: "RestaurantsHome",
   components: {
     TopRated,
     CategoriesSales,
     SponsoredRestaurants,
+  },
+  data() {
+    return {
+      store,
+    };
   },
 };
 </script>
