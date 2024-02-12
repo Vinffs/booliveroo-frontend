@@ -9,7 +9,7 @@
     <div class="row justify-content-between">
       <div
         v-for="category in saleCategories"
-        class="my-card rounded-3 p-3 py-4 my-4 shadowed col-4 col-md-3 col-lg-12"
+        class="my-card rounded-3 p-3 py-4 mb-5 shadowed col-4 col-md-3 col-lg-12"
       >
         <h4>{{ category.name }}</h4>
         <div class="text-center p-4 image-container">
