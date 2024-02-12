@@ -4,7 +4,7 @@
     @mouseenter="animation = true"
     @mouseleave="animation = false"
     class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center text-white"
-    :class="{ 'background-magenta': magenta }"
+    :class="{ 'background-magenta': isActive() }"
   >
     <h5>{{ category.name }}</h5>
     <img
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     addFilter() {
-      this.magenta = !this.magenta;
+      //this.isActive();
       let alreadyExists = false;
       store.filterCategories.forEach((item, index) => {
         if (item.name === this.category.name) {
@@ -43,6 +43,15 @@ export default {
       if (!alreadyExists) {
         store.filterCategories.push(this.category);
       }
+    },
+    isActive() {
+      let ritorno;
+      store.filterCategories.forEach((item) => {
+        if (item.name === this.category.name) {
+          ritorno = true;
+        }
+      });
+      return ritorno ? true : false;
     },
   },
 };
