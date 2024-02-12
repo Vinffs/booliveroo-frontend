@@ -4,7 +4,9 @@
       <HeroHome />
       <SaleHome />
       <CategoriesHome />
-      <RestaurantsHome />
+      <RestaurantsHome
+        v-if="store.categories.length > 0 && store.restaurants.length > 0"
+      />
     </div>
   </div>
   <BlogHome />
