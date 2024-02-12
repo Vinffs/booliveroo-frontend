@@ -6,3 +6,9 @@ $fa-font-path: "../webfonts";
 @import "@fortawesome/fontawesome-free/scss/regular.scss";
 @import "@fortawesome/fontawesome-free/scss/brands.scss";
 @import "bootstrap/scss/bootstrap";
+
+@import url("https://fonts.cdnfonts.com/css/abc-ginto-nord-unlicensed-trial");
+
+.shadowed {
+  box-shadow: 0 0.125rem 0.25rem rgba(white, 0.075);
+}

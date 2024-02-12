@@ -1,44 +1,43 @@
 <template>
-    <div class="wrapper">
-        <div class="container">
-            <HeroHome />
-            <CategoriesHome />
-            <SaleHome />
-            <RestaurantsHome />
-        </div>
+  <div class="wrapper pb-5">
+    <div class="container">
+      <HeroHome />
+      <SaleHome />
+      <CategoriesHome />
+      <RestaurantsHome />
     </div>
-    <BlogHome />
+  </div>
+  <BlogHome />
 </template>
 
 <script>
-import HeroHome from '../components/HeroHome.vue';
-import CategoriesHome from '@/components/CategoriesHome.vue';
-import { store } from '../data/store';
-import RestaurantsHome from '@/components/RestaurantsHome.vue';
-import SaleHome from '@/components/SaleHome.vue';
-import BlogHome from '@/components/BlogHome.vue';
+import HeroHome from "../components/HeroHome.vue";
+import CategoriesHome from "@/components/CategoriesHome.vue";
+import { store } from "../data/store";
+import RestaurantsHome from "@/components/RestaurantsHome.vue";
+import SaleHome from "@/components/SaleHome.vue";
+import BlogHome from "@/components/BlogHome.vue";
 export default {
-    name: 'HomePage',
-    components: {
-        HeroHome,
-        CategoriesHome,
-        RestaurantsHome,
-        SaleHome,
-        BlogHome,
-    },
-    data() {
-        return {
-            store,
-        }
-    }
-}
+  name: "HomePage",
+  components: {
+    HeroHome,
+    CategoriesHome,
+    RestaurantsHome,
+    SaleHome,
+    BlogHome,
+  },
+  data() {
+    return {
+      store,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@use '../assets/styles/partials/variables' as *;
+@use "../assets/styles/partials/variables" as *;
 
 .wrapper {
-    background-color: $bg-primary;
-    height: 100vh;
+  background-color: $bg-primary;
 }
 </style>
