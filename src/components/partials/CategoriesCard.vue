@@ -2,15 +2,17 @@
     <div @mouseenter="animation = true" @mouseleave="animation = false"
         class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center text-white">
         <h5>{{ category.name }}</h5>
-        <img :class="{ 'bounce-7': animation }" class="w-50" :src="category.image" :alt="category.name">
+        <img :class="{ 'bounce-7': animation }" class="w-50" :src="store.imagePath + category.image" :alt="category.name">
     </div>
 </template>
 
 <script>
+import { store } from '../../data/store'
 export default {
     name: 'CategoriesCard',
     data() {
         return {
+            store,
             animation: false,
         }
     },
