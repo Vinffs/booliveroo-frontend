@@ -1,6 +1,7 @@
 <template>
-    <div @mouseenter="animation = true" @mouseleave="animation = false"
-        class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center text-white">
+    <div @click="magenta = !magenta" @mouseenter="animation = true" @mouseleave="animation = false"
+        class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center text-white"
+        :class="{ 'background-magenta': magenta }">
         <h5>{{ category.name }}</h5>
         <img :class="{ 'bounce-7': animation }" class="w-50" :src="store.imagePath + category.image" :alt="category.name">
     </div>
@@ -14,6 +15,7 @@ export default {
         return {
             store,
             animation: false,
+            magenta: false,
         }
     },
     props: {
@@ -26,10 +28,12 @@ export default {
 @use "../../assets/styles/partials/variables" as *;
 
 .wrapper {
-    background-color: $bg-secondary;
+    // background-color: $bg-secondary;
     width: 100%;
     height: 100%;
     cursor: pointer;
+    user-select: none;
+    transition: background-color 0.5s ease;
 
     h5 {
         position: relative;
@@ -40,6 +44,10 @@ export default {
         animation-duration: 1.8s;
         animation-iteration-count: infinite;
     }
+}
+
+.background-magenta {
+    background-color: $primary !important;
 }
 
 .bounce-7 {

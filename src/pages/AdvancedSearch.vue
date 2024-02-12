@@ -13,9 +13,9 @@
                 </div>
             </div>
             <h2 class="text-white text-center my-4">Risultati</h2>
-            <div class="d-flex justify-content-center align-items-center">
-                <div class="restaurant-container" v-for="item in store.restaurants">
-                    <RestaurantCard />
+            <div class="d-flex justify-content-center align-items-center flex-wrap">
+                <div class="restaurant-container col-6" v-for="item in store.restaurants">
+                    <RestaurantCard :restaurant="item" :position="0" />
                 </div>
             </div>
 
@@ -52,14 +52,16 @@ export default {
 }
 
 .card-container {
-    width: calc(100vw / 12);
-    height: calc(100vw / 12);
+    width: calc(100vw / 14);
+    height: calc(100vw / 14);
     margin: 10px 10px;
 }
 
 .restaurant-container {
-    width: calc(100vw / 12);
-    height: calc(100vw / 12);
-    margin: 10px 10px;
+    color: white;
+    padding: 20px 20px;
+    // margin: 0 20px;
+    // margin-bottom: 20px;
+
 }
 </style>
