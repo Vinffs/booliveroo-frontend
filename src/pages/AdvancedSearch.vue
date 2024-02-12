@@ -19,7 +19,7 @@
       <div class="d-flex justify-content-center align-items-center flex-wrap">
         <div
           class="restaurant-container col-6"
-          v-for="item in store.filteredRestaurants"
+          v-for="item in store.restaurants"
         >
           <RestaurantCard :restaurant="item" :position="0" />
         </div>
