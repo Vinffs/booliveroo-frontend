@@ -1,6 +1,6 @@
 <template>
 <div class="my-footer">
-    <div class="container d-flex justify-content-between">
+    <div class="container d-flex justify-content-between pt-5">
         <ul class="list-unstyled text-white ">
             <li class="fw-semibold fs-5 mb-2">Scopri Booliveroo</li>
             <li class="mb-1"><a href="#">Investitori</a></li>
