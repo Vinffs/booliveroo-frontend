@@ -8,14 +8,14 @@
     <!-- sezioni contenenti le categorie scontate -->
     <div class="row justify-content-between">
       <div
-        v-for="i in 2"
+        v-for="category in saleCategories"
         class="my-card rounded-3 p-3 py-4 my-4 shadowed col-4 col-md-3 col-lg-12"
       >
-        <h4>Categoria</h4>
+        <h4>{{ category.name }}</h4>
         <div class="text-center p-4 image-container">
           <div class="discount rounded-circle">50%</div>
           <img
-            src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png"
+            :src="store.imagePath + category.image"
             alt="nomecategoria"
             class="w-75"
           />
@@ -47,6 +47,7 @@
 
 <script>
 import RestaurantsTitle from "../partials/RestaurantsTitle.vue";
+import { store } from "../../data/store";
 
 export default {
   name: "CategoriesSales",
@@ -55,6 +56,8 @@ export default {
   },
   data() {
     return {
+      store,
+      saleCategories: [],
       minutes: 10,
       seconds: 0,
     };
@@ -78,11 +81,36 @@ export default {
     changeOffer() {
       this.minutes = 10;
       this.seconds = 0;
+      this.getRandomCategories();
       this.countdown();
+    },
+    getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    getRandomCategories() {
+      this.saleCategories = [];
+      let i = 0;
+      console.log(store.categories);
+      while (i < 2) {
+        const newEl =
+          store.categories[this.getRndInteger(0, store.categories.length - 1)];
+        if (this.saleCategories.length === 0) {
+          this.saleCategories.push(newEl);
+          i++;
+        } else {
+          for (let j = 0; j < this.saleCategories.length; j++) {
+            if (newEl.name !== this.saleCategories[j].name) {
+              this.saleCategories.push(newEl);
+              i++;
+            }
+          }
+        }
+      }
     },
   },
   mounted() {
     //this.countdown();
+    this.getRandomCategories();
   },
 };
 </script>
