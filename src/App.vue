@@ -14,12 +14,36 @@
 import FooterComponent from './components/FooterComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import { store } from './data/store';
+import axios from 'axios';
 export default {
   name: 'App',
   data() {
-    return {};
+    return {
+      store,
+    };
   },
-  components: { HeaderComponent, FooterComponent }
+  components: { HeaderComponent, FooterComponent },
+  methods: {
+    getApiData() {
+      axios.get(store.apiUrl + 'restaurants').then((res) => {
+        console.log(res.data.data)
+        store.restaurants = res.data.data
+      })
+
+      axios.get(store.apiUrl + 'dishes').then((res) => {
+        console.log(res.data.data)
+        store.dishes = res.data.data
+      })
+
+      axios.get(store.apiUrl + 'categories').then((res) => {
+        console.log(res.data.data)
+        store.categories = res.data.data
+      })
+    }
+  },
+  mounted() {
+    this.getApiData()
+  }
 }
 </script>
 
