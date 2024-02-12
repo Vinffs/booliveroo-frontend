@@ -18,7 +18,6 @@
                     <RestaurantCard :restaurant="item" :position="0" />
                 </div>
             </div>
-
         </div>
     </div>
 </template>

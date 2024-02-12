@@ -4,16 +4,36 @@
         <h5 class="py-2 text-center">
             Ordina online dai tuoi ristoranti preferiti
         </h5>
-        <input id="search" type="text" placeholder="Cerca un ristorante..." />
+        <input id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
+            @click.stop="search = !search" />
         <div id="search-button">
             <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
+        </div>
+        <div class="my-dropdown">
+            <div v-if="search">
+                <div class="item" v-for="item in store.restaurants"
+                    v-show="item.name.toLowerCase().includes(searchInput.toLowerCase())">
+                    <h5 class="ps-4">{{ item.name }}</h5>
+                    <div v-for="category in item.categories">
+                        <p>{{ category }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import { store } from '../data/store'
 export default {
-    name: 'SearchBar'
+    name: 'SearchBar',
+    data() {
+        return {
+            store,
+            search: false,
+            searchInput: "",
+        }
+    },
 }
 </script>
 
@@ -39,6 +59,30 @@ export default {
         border-radius: 3em;
     }
 
+    .my-dropdown {
+        position: absolute;
+        z-index: 11;
+        top: 80%;
+        left: 5%;
+        background-color: white;
+        color: black;
+        width: 90%;
+        border-radius: 0 0 1em 1em;
+        overflow: hidden;
+
+        .item {
+            height: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:hover {
+                background-color: $bg-secondary;
+                color: white;
+            }
+        }
+    }
+
     #search-button {
         position: absolute;
         right: 3.5%;
@@ -50,7 +94,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 10;
+        z-index: 12;
         -webkit-box-shadow: -18px 0 31px -8px #000000;
         -moz-box-shadow: -18px 0 31px -8px #000000;
         box-shadow: -18px 0 31px -8px #000000;
