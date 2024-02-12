@@ -4,7 +4,7 @@
         <h5 class="py-2 text-center">
             Ordina online dai tuoi ristoranti preferiti
         </h5>
-        <input id="search" type="text" placeholder="Cerca il tuo ristorante..." />
+        <input id="search" type="text" placeholder="Cerca un ristorante..." />
         <div id="search-button">
             <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
         </div>
