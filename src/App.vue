@@ -2,7 +2,7 @@
   <header>
     <HeaderComponent />
   </header>
-  <main>
+  <main @click="store.search = false">
     <router-view />
   </main>
   <footer>

@@ -4,13 +4,13 @@
         <h5 class="py-2 text-center">
             Ordina online dai tuoi ristoranti preferiti
         </h5>
-        <input id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
-            @click.stop="search = !search" />
+        <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
+            @click.stop="store.search = true" />
         <div id="search-button">
             <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
         </div>
         <div class="my-dropdown">
-            <div v-if="search">
+            <div v-if="store.search">
                 <div class="item" v-for="item in store.restaurants"
                     v-show="item.name.toLowerCase().includes(searchInput.toLowerCase())">
                     <h5 class="ps-4">{{ item.name }}</h5>
@@ -30,7 +30,6 @@ export default {
     data() {
         return {
             store,
-            search: false,
             searchInput: "",
         }
     },
@@ -62,12 +61,12 @@ export default {
     .my-dropdown {
         position: absolute;
         z-index: 11;
-        top: 80%;
+        top: 83%;
         left: 5%;
         background-color: white;
         color: black;
         width: 90%;
-        border-radius: 0 0 1em 1em;
+        border-radius: 1em;
         overflow: hidden;
 
         .item {

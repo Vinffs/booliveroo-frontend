@@ -8,4 +8,5 @@ export const store = reactive({
   restaurants: [],
   filteredRestaurants: [],
   filterCategories: [],
+  search: false,
 });
