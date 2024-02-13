@@ -18,6 +18,7 @@
 
 <script>
 import { store } from "../../data/store";
+import axios from "axios";
 export default {
   name: "CategoriesCard",
   data() {
@@ -35,19 +36,21 @@ export default {
       //this.isActive();
       let alreadyExists = false;
       store.filterCategories.forEach((item, index) => {
-        if (item.name === this.category.name) {
+        if (item === this.category.slug) {
           alreadyExists = true;
           store.filterCategories.splice(index, 1);
         }
       });
       if (!alreadyExists) {
-        store.filterCategories.push(this.category);
+        store.filterCategories.push(this.category.slug);
       }
+
+      //axios.get ...
     },
     isActive() {
       let ritorno;
       store.filterCategories.forEach((item) => {
-        if (item.name === this.category.name) {
+        if (item === this.category.slug) {
           ritorno = true;
         }
       });

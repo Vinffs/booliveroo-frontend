@@ -3,7 +3,7 @@
     <div class="container">
       <HeroHome />
       <SaleHome />
-      <CategoriesHome />
+      <CategoriesHome v-if="store.categories.length > 0" />
       <RestaurantsHome
         v-if="store.categories.length > 0 && store.restaurants.length > 0"
       />

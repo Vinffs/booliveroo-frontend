@@ -21,7 +21,7 @@
           class="restaurant-container col-6"
           v-for="item in store.restaurants"
         >
-          <RestaurantCard :restaurant="item" :position="0" />
+          <RestaurantCard class="shadowed" :restaurant="item" :position="0" />
         </div>
       </div>
     </div>
@@ -47,6 +47,7 @@ export default {
   },
   mounted() {
     store.filteredRestaurants = store.restaurants;
+    window.scrollTo(0, 0);
   },
 };
 </script>
