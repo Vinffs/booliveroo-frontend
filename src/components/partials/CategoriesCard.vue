@@ -4,7 +4,7 @@
     @mouseenter="animation = true"
     @mouseleave="animation = false"
     class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center text-white"
-    :class="{ 'background-magenta': magenta }"
+    :class="{ 'background-magenta': isActive() }"
   >
     <h5>{{ category.name }}</h5>
     <img
@@ -18,6 +18,7 @@
 
 <script>
 import { store } from "../../data/store";
+import axios from "axios";
 export default {
   name: "CategoriesCard",
   data() {
@@ -32,17 +33,28 @@ export default {
   },
   methods: {
     addFilter() {
-      this.magenta = !this.magenta;
+      //this.isActive();
       let alreadyExists = false;
       store.filterCategories.forEach((item, index) => {
-        if (item.name === this.category.name) {
+        if (item === this.category.slug) {
           alreadyExists = true;
           store.filterCategories.splice(index, 1);
         }
       });
       if (!alreadyExists) {
-        store.filterCategories.push(this.category);
+        store.filterCategories.push(this.category.slug);
       }
+
+      //axios.get ...
+    },
+    isActive() {
+      let ritorno;
+      store.filterCategories.forEach((item) => {
+        if (item === this.category.slug) {
+          ritorno = true;
+        }
+      });
+      return ritorno ? true : false;
     },
   },
 };
