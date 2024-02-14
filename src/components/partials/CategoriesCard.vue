@@ -34,23 +34,31 @@ export default {
   methods: {
     addFilter() {
       //this.isActive();
+      store.filteredRestaurants = [];
       let alreadyExists = false;
       store.filterCategories.forEach((item, index) => {
-        if (item === this.category.slug) {
+        if (item === this.category.id) {
           alreadyExists = true;
           store.filterCategories.splice(index, 1);
         }
       });
       if (!alreadyExists) {
-        store.filterCategories.push(this.category.slug);
+        store.filterCategories.push(this.category.id);
       }
 
-      //axios.get ...
+      axios
+        .get(store.apiUrl + "restaurants", {
+          params: { category: store.filterCategories },
+        })
+        .then((res) => {
+          console.log(res.data.data);
+          store.filteredRestaurants = res.data.data;
+        });
     },
     isActive() {
       let ritorno;
       store.filterCategories.forEach((item) => {
-        if (item === this.category.slug) {
+        if (item === this.category.id) {
           ritorno = true;
         }
       });

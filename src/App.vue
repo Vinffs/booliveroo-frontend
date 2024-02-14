@@ -25,11 +25,11 @@ export default {
   components: { HeaderComponent, FooterComponent },
   methods: {
     getApiData() {
-      axios.get(store.apiUrl + "restaurants").then((res) => {
-        console.log(res.data.data);
-        store.restaurants = res.data.data;
-        store.filteredRestaurants = store.restaurants;
-      });
+      // axios.get(store.apiUrl + "restaurants").then((res) => {
+      //   console.log(res.data.data);
+      //   store.restaurants = res.data.data;
+      //   store.filteredRestaurants = store.restaurants;
+      // });
 
       axios.get(store.apiUrl + "dishes").then((res) => {
         console.log(res.data.data);
