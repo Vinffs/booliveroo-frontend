@@ -5,14 +5,13 @@
             Ordina online dai tuoi ristoranti preferiti
         </h5>
         <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
-            @click.stop="store.search = true" />
+            @click.stop="store.search = true" @keypress="getRestaurants()" />
         <div id="search-button">
             <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
         </div>
         <div class="my-dropdown">
             <div v-if="store.search">
-                <div class="item" v-for="item in store.restaurants"
-                    v-show="item.name.toLowerCase().includes(searchInput.toLowerCase())">
+                <div class="item" v-for="item in store.searchedRestaurants">
                     <h5 class="ps-4">{{ item.name }}</h5>
                     <div v-for="category in item.categories">
                         <p>{{ category }}</p>
@@ -24,6 +23,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { store } from '../data/store'
 export default {
     name: 'SearchBar',
@@ -33,6 +33,13 @@ export default {
             searchInput: "",
         }
     },
+    methods: {
+        getRestaurants() {
+            axios.get(store.apiUrl + "restaurants", { params: { name: this.searchInput } }).then((res) => {
+                store.searchedRestaurants = res.data.data
+            })
+        }
+    }
 }
 </script>
 
