@@ -5,7 +5,7 @@
             Ordina online dai tuoi ristoranti preferiti
         </h5>
         <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
-            @click.stop="store.search = true" @keypress="getRestaurants()" />
+            @click.stop="store.search = true" @keydown="getRestaurants()" />
         <div id="search-button">
             <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
         </div>
@@ -35,9 +35,11 @@ export default {
     },
     methods: {
         getRestaurants() {
-            axios.get(store.apiUrl + "restaurants", { params: { name: this.searchInput } }).then((res) => {
-                store.searchedRestaurants = res.data.data
-            })
+            setTimeout(() => {
+                axios.get(store.apiUrl + "restaurants", { params: { name: this.searchInput.toLowerCase() } }).then((res) => {
+                    store.searchedRestaurants = res.data.data
+                })
+            }, 0)
         }
     }
 }
