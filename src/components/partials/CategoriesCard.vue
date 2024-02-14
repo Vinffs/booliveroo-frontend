@@ -34,6 +34,7 @@ export default {
   methods: {
     addFilter() {
       //this.isActive();
+      store.filteredRestaurants = [];
       let alreadyExists = false;
       store.filterCategories.forEach((item, index) => {
         if (item === this.category.id) {
@@ -49,7 +50,10 @@ export default {
         .get(store.apiUrl + "restaurants", {
           params: { category: store.filterCategories },
         })
-        .then((res) => {});
+        .then((res) => {
+          console.log(res.data.data);
+          store.filteredRestaurants = res.data.data;
+        });
     },
     isActive() {
       let ritorno;

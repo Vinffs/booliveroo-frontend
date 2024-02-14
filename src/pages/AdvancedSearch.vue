@@ -9,7 +9,7 @@
           <SearchBar />
         </div>
       </div>
-      <h2 class="text-white text-center mb-4">Seleziona una Categoria</h2>
+      <h2 class="text-white text-center mb-4">Seleziona le Categorie</h2>
       <div class="d-flex flex-wrap justify-content-center">
         <div class="card-container" v-for="item in store.categories">
           <CategoriesCard :category="item" />
@@ -19,7 +19,7 @@
       <div class="d-flex justify-content-center align-items-center flex-wrap">
         <div
           class="restaurant-container col-6"
-          v-for="item in store.restaurants"
+          v-for="item in store.filteredRestaurants"
         >
           <RestaurantCard class="shadowed" :restaurant="item" :position="0" />
         </div>
@@ -33,6 +33,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import CategoriesCard from "@/components/partials/CategoriesCard.vue";
 import RestaurantCard from "@/components/partials/RestaurantCard.vue";
 import { store } from "../data/store";
+import axios from "axios";
 export default {
   name: "AdvancedSearch",
   components: {
@@ -46,7 +47,13 @@ export default {
     };
   },
   mounted() {
-    store.filteredRestaurants = store.restaurants;
+    axios
+      .get(store.apiUrl + "restaurants", {
+        params: { category: store.filterCategories },
+      })
+      .then((res) => {
+        store.filteredRestaurants = res.data.data;
+      });
     window.scrollTo(0, 0);
   },
 };
