@@ -71,11 +71,27 @@ export default {
 a {
   text-decoration: none;
   color: white;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $primary;
+    display: inline-block;
+    scale: 1.03;
+    i {
+      scale: 1.1;
+    }
+  }
+  i {
+    transition: all 0.3s ease;
+  }
 }
 li {
   img {
     width: 135px;
     height: 45px;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
