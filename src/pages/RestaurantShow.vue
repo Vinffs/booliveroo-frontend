@@ -2,15 +2,30 @@
   <div class="wrapper">
     <div class="hero"></div>
     <div class="container">
-      <div class="row">
+      <div v-if="restaruant" class="row">
         <div class="col-7 main">
           <!-- componente informazioni ristorante -->
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
-
+          <div id="pulsante" class="rounded-5 p-1">
+            <div
+              id="menu"
+              :class="active ? 'my-bg-primary' : 'primary'"
+              @click="active = false"
+            >
+              Menu
+            </div>
+            <div
+              id="info"
+              :class="active ? 'primary' : 'my-bg-primary'"
+              @click="active = true"
+            >
+              Info
+            </div>
+          </div>
           <!-- componente menu/info -->
-          <RestaurantInfo />
-          <RestaurantMenu />
+          <RestaurantInfo v-show="active" />
+          <RestaurantMenu v-show="!active" />
         </div>
         <div class="col-5 cart">
           <RestaurantCart />
@@ -40,6 +55,7 @@ export default {
       store,
       restaurantSlug: this.$route.params.slug,
       restaruant: null,
+      active: false,
     };
   },
   methods: {
@@ -79,6 +95,47 @@ export default {
     z-index: 2;
     top: -70px;
     left: 0;
+
+    #pulsante {
+      margin: 20px 0;
+      height: 50px;
+      width: 100%;
+      background-color: $bg-secondary;
+      display: flex;
+      // justify-content: space-around;
+      align-items: center;
+      cursor: pointer;
+      color: white;
+      font-size: 2em;
+      text-align: center;
+
+      #info {
+        width: 50%;
+        height: 100%;
+        border-radius: 0 2em 2em 0;
+      }
+
+      #menu {
+        width: 50%;
+        height: 100%;
+        border-radius: 2em 0 0 2em;
+      }
+    }
   }
+}
+
+.primary {
+  background-color: $primary;
+  -webkit-box-shadow: 0 -0.5px 17.5px 5.5px $primary;
+  -moz-box-shadow: 0 -0.5px 17.5px 5.5px $primary;
+  box-shadow: 0 -0.5px 17.5px 5.5px $primary;
+}
+
+.my-bg-primary {
+  background-color: $bg-primary;
+  -webkit-box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
+  -moz-box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
+  box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
+  // filter: blur(2px);
 }
 </style>
