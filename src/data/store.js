@@ -10,4 +10,11 @@ export const store = reactive({
   filterCategories: [],
   searchedRestaurants: [],
   search: false,
+  cart: [
+    { name: "Pizza Margherita", price: 8.5 },
+    { name: "Hamburger", price: 9.99 },
+    { name: "Insalata Caesar", price: 6.95 },
+    { name: "Pizza Margherita", price: 8.5 },
+    { name: "Insalata Caesar", price: 6.95 },
+  ],
 });

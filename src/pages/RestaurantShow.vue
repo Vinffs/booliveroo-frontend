@@ -3,7 +3,7 @@
     <div class="hero"></div>
     <div class="container">
       <div class="row">
-        <div class="col-8 main">
+        <div class="col-7 main">
           <!-- componente informazioni ristorante -->
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
@@ -12,7 +12,7 @@
           <RestaurantInfo />
           <RestaurantMenu />
         </div>
-        <div class="col-4 cart">
+        <div class="col-5 cart">
           <RestaurantCart />
         </div>
       </div>
