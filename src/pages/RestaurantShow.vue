@@ -5,10 +5,12 @@
             <div class="row">
                 <div class="col-8 main">
                     <!-- componente informazioni ristorante -->
-
+                    <RestaurantBadge />
                     <!-- pulsante -->
 
                     <!-- componente menu/info -->
+                    <RestaurantInfo />
+                    <RestaurantMenu />
                 </div>
                 <div class="col-4 cart"></div>
             </div>
@@ -19,8 +21,18 @@
 <script>
 import { store } from "../data/store";
 import axios from "axios";
+import RestaurantBadge from "@/components/RestaurantBadge.vue";
+import RestaurantCartVue from "@/components/RestaurantCart.vue";
+import RestaurantInfoVue from "@/components/RestaurantInfo.vue";
+import RestaurantMenuVue from "@/components/RestaurantMenu.vue";
 export default {
     name: "RestaurantShow",
+    components: {
+        RestaurantBadge,
+        RestaurantCartVue,
+        RestaurantInfoVue,
+        RestaurantMenuVue,
+    },
     data() {
         return {
             store,
