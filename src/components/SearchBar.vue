@@ -6,15 +6,16 @@
         </h5>
         <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
             @click.stop="store.search = true" @keydown="getRestaurants()" />
-        <div id="search-button">
-            <i class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
+        <div id="search-button" @click.stop="searchInput = '', getRestaurants(), store.search = true">
+            <i v-if="searchInput === ''.trim()" class="fa-solid fs-5 fa-magnifying-glass text-white"></i>
+            <i v-else class="fa-solid fa-xmark text-white fs-5"></i>
         </div>
         <div class="my-dropdown">
             <div v-if="store.search">
                 <div class="item" v-for="item in store.searchedRestaurants">
                     <h5 class="ps-4">{{ item.name }}</h5>
                     <div v-for="category in item.categories">
-                        <p>{{ category }}</p>
+                        <p>{{ category.name }}</p>
                     </div>
                 </div>
             </div>
