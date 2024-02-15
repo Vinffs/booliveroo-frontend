@@ -14,8 +14,8 @@
                         </div>
                     </div>
                     <!-- componente menu/info -->
-                    <RestaurantInfo />
-                    <RestaurantMenu />
+                    <RestaurantInfo v-show="active" />
+                    <RestaurantMenu v-show="!active" />
                 </div>
                 <div class="col-5 cart">
                     <RestaurantCart />
