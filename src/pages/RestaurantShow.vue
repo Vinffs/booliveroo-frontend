@@ -1,56 +1,62 @@
 <template>
-    <div class="wrapper">
-        <div class="hero"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-8 main">
-                    <!-- componente informazioni ristorante -->
-                    <RestaurantBadge />
-                    <!-- pulsante -->
+  <div class="wrapper">
+    <div class="hero"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-8 main">
+          <!-- componente informazioni ristorante -->
+          <RestaurantBadge />
+          <!-- pulsante -->
 
-                    <!-- componente menu/info -->
-                    <RestaurantInfo />
-                    <RestaurantMenu />
-                </div>
-                <div class="col-4 cart"></div>
-            </div>
+          <!-- componente menu/info -->
+          <RestaurantInfo />
+          <RestaurantMenu />
         </div>
+        <div class="col-4 cart">
+          <RestaurantCart />
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 import { store } from "../data/store";
 import axios from "axios";
 import RestaurantBadge from "@/components/RestaurantBadge.vue";
-import RestaurantCartVue from "@/components/RestaurantCart.vue";
-import RestaurantInfoVue from "@/components/RestaurantInfo.vue";
-import RestaurantMenuVue from "@/components/RestaurantMenu.vue";
+import RestaurantCart from "@/components/RestaurantCart.vue";
+import RestaurantInfo from "@/components/RestaurantInfo.vue";
+import RestaurantMenu from "@/components/RestaurantMenu.vue";
 export default {
-    name: "RestaurantShow",
-    components: {
-        RestaurantBadge,
-        RestaurantCartVue,
-        RestaurantInfoVue,
-        RestaurantMenuVue,
+  name: "RestaurantShow",
+  components: {
+    RestaurantBadge,
+    RestaurantCart,
+    RestaurantInfo,
+    RestaurantMenu,
+  },
+  data() {
+    return {
+      store,
+      restaurantSlug: this.$route.params.slug,
+      restaruant: null,
+    };
+  },
+  methods: {
+    getRestaurant() {
+      axios
+        .get(store.apiUrl + "restaurants/", {
+          params: { slug: this.restaurantSlug },
+        })
+        .then((res) => {
+          this.restaruant = res.data.data;
+          console.log(this.restaruant);
+        });
     },
-    data() {
-        return {
-            store,
-            restaurantSlug: this.$route.params.slug,
-            restaruant: null,
-        };
-    },
-    methods: {
-        getRestaurant() {
-            axios.get(store.apiUrl + "restaurants/", { params: { slug: this.restaurantSlug } }).then((res) => {
-                this.restaruant = res.data.data;
-                console.log(this.restaruant);
-            })
-        }
-    },
-    mounted() {
-        this.getRestaurant();
-    }
+  },
+  mounted() {
+    this.getRestaurant();
+  },
 };
 </script>
 
@@ -58,21 +64,23 @@ export default {
 @use "../assets/styles/partials/variables" as *;
 
 .wrapper {
-    background-color: $bg-primary;
+  background-color: $bg-primary;
 
-    .hero {
-        height: 40vh;
-        width: 100%;
-        background: radial-gradient(circle at center,
-                $primary 0%,
-                $bg-primary 100%);
-    }
+  .hero {
+    height: 40vh;
+    width: 100%;
+    background: radial-gradient(
+      circle at center,
+      $primary 0%,
+      $bg-primary 100%
+    );
+  }
 
-    .container {
-        position: relative;
-        z-index: 2;
-        top: -70px;
-        left: 0;
-    }
+  .container {
+    position: relative;
+    z-index: 2;
+    top: -70px;
+    left: 0;
+  }
 }
 </style>
