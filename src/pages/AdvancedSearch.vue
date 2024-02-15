@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper pb-5">
     <div class="container">
       <div>
         <div
