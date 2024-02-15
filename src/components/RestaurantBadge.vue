@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper p-3 rounded-3 text-white">
         <div class="badge-image">
-            <!-- <img :src="store.imagePath + info.image" :alt="info.name"> -->
+            <img :src="store.imagePath + info.image" :alt="info.name">
         </div>
         <div class="badge-text"></div>
     </div>
@@ -14,6 +14,11 @@ export default {
     props: {
         info: Object,
     },
+    data() {
+        return {
+            store,
+        }
+    }
 }
 </script>
 
