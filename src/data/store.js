@@ -16,5 +16,13 @@ export const store = reactive({
     { name: "Insalata Caesar", price: 6.95 },
     { name: "Pizza Margherita", price: 8.5 },
     { name: "Insalata Caesar", price: 6.95 },
+    { name: "Hamburger", price: 9.99 },
+    { name: "Hamburger", price: 9.99 },
+    { name: "Hamburger", price: 9.99 },
+    { name: "Cotoletta", price: 19.99 },
+    { name: "Riso", price: 19.99 },
+    { name: "Pizza Margh", price: 8.5 },
+    { name: "Ham", price: 9.99 },
+    { name: "Insalata", price: 6.95 },
   ],
 });
