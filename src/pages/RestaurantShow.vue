@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-8 main">
                     <!-- componente informazioni ristorante -->
-                    <RestaurantBadge />
+                    <RestaurantBadge :info="restaruant" />
                     <!-- pulsante -->
 
                     <!-- componente menu/info -->
@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         getRestaurant() {
-            axios.get(store.apiUrl + "restaurants/", { params: { slug: this.restaurantSlug } }).then((res) => {
+            axios.get(store.apiUrl + "restaurants/" + this.restaurantSlug).then((res) => {
                 this.restaruant = res.data.data;
                 console.log(this.restaruant);
             })
