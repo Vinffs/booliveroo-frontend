@@ -9,6 +9,10 @@
 
     <div v-if="store.cart.length > 0" class="container-fluid elements">
       <div v-for="item in store.cart" class="py-2 element px-3">
+        <div class="buttons">
+          <div><i class="fa-solid fs-2 fa-square-minus"></i></div>
+          <div><i class="fa-solid fs-2 fa-square-plus"></i></div>
+        </div>
         <div class="row justify-content-between">
           <div class="col-3">
             <img src="https://picsum.photos/200" class="w-100" alt="" />
@@ -74,8 +78,35 @@ export default {
     .element {
       border-bottom: 3px solid $bg-primary;
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
       &:hover {
         background-color: lighten($color: $bg-secondary, $amount: 8);
+
+        .buttons {
+          top: 50%;
+        }
+      }
+      .buttons {
+        position: absolute;
+        top: -50%;
+        transform: translateY(-50%) translateX(50%);
+        right: calc(100% / 3);
+        transition: all 0.3s ease;
+        display: flex;
+        background-color: lighten($color: $bg-secondary, $amount: 8);
+        height: 100%;
+        align-items: center;
+        z-index: 100;
+        div {
+          cursor: pointer;
+          color: $primary;
+          transition: all 0.3s ease;
+          margin: 0 0.5em;
+          &:hover {
+            color: darken($color: $primary, $amount: 10);
+          }
+        }
       }
     }
   }
