@@ -14,17 +14,17 @@
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link text-white fs-5" to="/" :class="{ active: currentRoute === '/' }">
-                        Home
+                        <span>Home</span>
                     </router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link text-white fs-5" to="/search" :class="{ active: currentRoute === '/search' }">
-                      Cerca
+                      <span>Cerca</span>
                     </router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link text-white fs-5" to="/" :class="{ active: currentRoute === '/prova4' }">
-                      Prova 4
+                      <span>prova</span>
                     </router-link>
                 </li>
             </ul>
@@ -76,11 +76,22 @@ export default {
 <style lang="scss" scoped>
 @use ".././assets/styles/partials/variables" as *;
 
+.nav-item span {
+      transition: color 0.3s ease;
+ }
+.nav-item:hover span {
+   color: $primary; 
+}
+.nav-item i {
+  transition: color 0.3s ease; 
+}
+.nav-item:hover i {
+  color: $primary; 
+}
 .navbar-nav .nav-link.active {
   padding-bottom: 5px;
-  border-bottom: 2px solid $primary;
+  border-bottom: 2px solid $bg-primary;
 }
-
 nav {
   background-color: $bg-secondary;
 }
@@ -90,7 +101,6 @@ i {
   min-height: 22.5px;
   text-align: center;
 }
-
 li {
   img {
     max-width: 50px;
