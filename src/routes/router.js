@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
-import AdvancedSearch from "@/pages/AdvancedSearch.vue";
+// import AdvancedSearch from "@/pages/AdvancedSearch.vue";
 import RestaurantShow from "../pages/RestaurantShow.vue";
 
 const router = createRouter({
@@ -11,15 +11,19 @@ const router = createRouter({
       name: "home",
       component: HomePage,
     },
-    {
-      path: "/search",
-      name: "advancedSearch",
-      component: AdvancedSearch,
-    },
+    // {
+    //   path: "/search",
+    //   name: "advancedSearch",
+    //   component: AdvancedSearch,
+    // },
     {
       path: "/restaurants/:slug",
       name: "restaurantShow",
       component: RestaurantShow,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: { name: "home" },
     },
   ],
 });

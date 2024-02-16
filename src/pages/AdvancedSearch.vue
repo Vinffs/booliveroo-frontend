@@ -1,13 +1,13 @@
 <template>
-  <div class="wrapper pb-5">
+  <div class="wrapper py-5">
     <div class="container">
       <div>
-        <div
+        <!-- <div
           class="d-flex justify-content-center align-items-center"
           style="padding-top: 100px"
         >
           <SearchBar />
-        </div>
+        </div> -->
       </div>
       <h2 class="text-white text-center mb-4">Seleziona le Categorie</h2>
       <div class="d-flex flex-wrap justify-content-center">

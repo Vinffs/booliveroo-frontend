@@ -3,10 +3,11 @@
     <div class="container">
       <HeroHome />
       <SaleHome />
-      <CategoriesHome v-if="store.categories.length > 0" />
+      <!-- <CategoriesHome v-if="store.categories.length > 0" />
       <RestaurantsHome
         v-if="store.categories.length > 0 && store.restaurants.length > 0"
-      />
+      /> -->
+      <AdvancedSearch v-if="store.categories.length > 0" />
     </div>
   </div>
   <BlogHome />
@@ -19,6 +20,7 @@ import { store } from "../data/store";
 import RestaurantsHome from "@/components/RestaurantsHome.vue";
 import SaleHome from "@/components/SaleHome.vue";
 import BlogHome from "@/components/BlogHome.vue";
+import AdvancedSearch from "./AdvancedSearch.vue";
 export default {
   name: "HomePage",
   components: {
@@ -27,6 +29,7 @@ export default {
     RestaurantsHome,
     SaleHome,
     BlogHome,
+    AdvancedSearch,
   },
   data() {
     return {
