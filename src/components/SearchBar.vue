@@ -12,12 +12,13 @@
         </div>
         <div class="my-dropdown">
             <div v-if="store.search">
-                <div class="item" v-for="item in store.searchedRestaurants">
+                <router-link class="item" v-for="item in store.searchedRestaurants"
+                    :to="{ name: 'restaurantShow', params: { slug: item.slug } }">
                     <h5 class="ps-4">{{ item.name }}</h5>
-                    <div v-for="category in item.categories">
-                        <p>{{ category.name }}</p>
+                    <div class="d-flex justify-content-around align-items-center">
+                        <p class="px-2" v-for="category in item.categories">{{ category.name }}</p>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -84,6 +85,8 @@ export default {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            text-decoration: none;
+            color: black;
 
             &:hover {
                 background-color: $bg-secondary;
