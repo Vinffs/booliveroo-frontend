@@ -1,13 +1,13 @@
 <template>
-    <div>
-
-    </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-    name: "RestaurantInfo"
-}
+  name: "RestaurantInfo",
+  props: ["info"],
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped></style>

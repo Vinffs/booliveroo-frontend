@@ -1,34 +1,56 @@
 <template>
   <div class="cart rounded-3">
     <h2 class="p-3 d-flex justify-content-between align-items-center">
-      <span>Carrello</span> <i class="fa-solid fa-cart-shopping"></i>
+      <div><i class="fa-solid fa-cart-shopping"></i> <span>Carrello</span></div>
+      <div v-if="store.cart.length > 0">
+        <button class="btn checkout py-2 px-4 fs-5 rounded-pill">
+          Pagamento
+        </button>
+      </div>
     </h2>
-    <h3 class="p-3 py-4 d-flex justify-content-between align-items-center">
+    <h3
+      v-if="store.cart.length > 0"
+      class="p-3 py-4 d-flex justify-content-between align-items-center"
+    >
       <span>I tuoi prodotti</span><span>Totale: € {{ totalPrice() }}</span>
     </h3>
 
     <div v-if="store.cart.length > 0" class="container-fluid elements">
-      <div v-for="item in store.cart" class="py-2 element px-3">
-        <div class="buttons">
-          <div><i class="fa-solid fs-2 fa-square-minus"></i></div>
-          <div><i class="fa-solid fs-2 fa-square-plus"></i></div>
-        </div>
-        <div class="row justify-content-between">
-          <div class="col-3">
-            <img src="https://picsum.photos/200" class="w-100" alt="" />
+      <div v-for="item in cart" class="py-2 element px-3">
+        <div>
+          <div class="buttons rounded-4">
+            <div><i class="fa-solid fs-3 fa-trash"></i></div>
+            <div><i class="fa-solid fs-2 fa-square-minus"></i></div>
+            <div><i class="fa-solid fs-2 fa-square-plus"></i></div>
           </div>
-          <div
-            class="col-5 text-start d-flex flex-column justify-content-around"
-          >
-            <h4>{{ item.name }}</h4>
-            <h5>€ {{ item.price.toFixed(2) }}</h5>
-          </div>
-          <div class="col-4 text-end d-flex flex-column justify-content-around">
-            <h4>x {{ quantity(item) }}</h4>
-            <h5>€ {{ (item.price * quantity(item)).toFixed(2) }}</h5>
+          <div class="row justify-content-between">
+            <div class="col-3">
+              <img src="https://picsum.photos/200" class="w-100" alt="" />
+            </div>
+            <div
+              class="col-5 text-start d-flex flex-column justify-content-around"
+            >
+              <h4>{{ item.name }}</h4>
+              <h5>€ {{ item.price.toFixed(2) }}</h5>
+            </div>
+            <div
+              class="col-4 text-end d-flex flex-column justify-content-around"
+            >
+              <h4>x {{ quantity(item) }}</h4>
+              <h5>€ {{ (item.price * quantity(item)).toFixed(2) }}</h5>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div
+      v-else
+      class="d-flex justify-content-center align-items-center pb-5 pt-4"
+    >
+      <h3 class="text-center fw-bold">
+        Che aspetti? <br />
+        Scegli i tuoi piatti preferiti!
+      </h3>
     </div>
   </div>
 </template>
@@ -40,6 +62,7 @@ export default {
   data() {
     return {
       store,
+      cart: [],
     };
   },
   methods: {
@@ -59,6 +82,18 @@ export default {
       });
       return total.toFixed(2);
     },
+    cartNotRepeated() {
+      this.cart = this.removeDuplicates(store.cart, "name");
+    },
+    removeDuplicates(array, propertyName) {
+      return array.filter(
+        (obj, index, self) =>
+          index === self.findIndex((o) => o[propertyName] === obj[propertyName])
+      );
+    },
+  },
+  mounted() {
+    this.cartNotRepeated();
   },
 };
 </script>
@@ -66,36 +101,49 @@ export default {
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
 .cart {
-  width: 100%;
+  //width: 100%;
   background-color: $bg-secondary;
   color: white;
-  overflow-y: auto;
+  //overflow-y: auto;
   max-height: 90vh;
 
+  .checkout {
+    background-color: $primary;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: darken($color: $primary, $amount: 10);
+    }
+  }
+
   .elements {
-    max-height: 60vh;
+    max-height: 70vh;
     overflow-y: auto;
     .element {
       border-bottom: 3px solid $bg-primary;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      &:last-child {
+        border-bottom: none;
+      }
       &:hover {
         background-color: lighten($color: $bg-secondary, $amount: 8);
 
         .buttons {
-          top: 50%;
+          bottom: 0;
         }
       }
       .buttons {
         position: absolute;
-        top: -50%;
-        transform: translateY(-50%) translateX(50%);
-        right: calc(100% / 3);
+        bottom: -50%;
+
+        right: 0;
         transition: all 0.3s ease;
         display: flex;
         background-color: lighten($color: $bg-secondary, $amount: 8);
-        height: 100%;
+        height: 45%;
         align-items: center;
         z-index: 100;
         div {
