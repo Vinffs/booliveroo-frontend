@@ -9,7 +9,7 @@
       </div>
     </h2>
     <h3 v-if="store.cart.length > 0" class="p-3 py-4 d-flex justify-content-between align-items-center">
-      <!-- <span>I tuoi prodotti</span><span>Totale: € {{ totalPrice() }}</span> -->
+      <span>I tuoi prodotti</span><span>Totale: € {{ totalPrice().toFixed(2) }}</span>
     </h3>
 
     <div v-if="store.cart.length > 0" class="container-fluid elements">
@@ -22,10 +22,10 @@
           </div>
           <div class="row justify-content-between">
             <div class="col-3">
-              <img src="https://picsum.photos/200" class="w-100" alt="" />
+              <img :src="store.imagePath + item.image" class="w-100" :alt="item.name" />
             </div>
             <div class="col-5 text-start d-flex flex-column justify-content-around">
-              <h4>{{ item.name }}</h4>
+              <h5>{{ item.name }}</h5>
               <h5>€ {{ item.price }}</h5>
             </div>
             <div class="col-4 text-end d-flex flex-column justify-content-around">
@@ -70,9 +70,9 @@ export default {
     totalPrice() {
       let total = 0;
       store.cart.forEach((element) => {
-        total += element.price;
+        total += parseFloat(element.price);
       });
-      return total.toFixed(2);
+      return total;
     },
     cartNotRepeated() {
       return this.removeDuplicates(store.cart, "name");
