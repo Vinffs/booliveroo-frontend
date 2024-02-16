@@ -1,13 +1,11 @@
 <template>
   <div class="wrapper rounded-3 p-3">
-    <div
-      v-for="item in info.dishes"
-      class="dish p-3 d-flex align-items-center justify-content-evenly"
-    >
+    <div v-for="item in info.dishes" class="dish p-3 d-flex align-items-center justify-content-evenly">
       <div class="text-white d-flex flex-column align-items-center gap-3">
         <h4>{{ item.name }}</h4>
         <p>{{ item.ingredients }}</p>
         <p>€ {{ item.price }}</p>
+        <div class="btn btn-primary" @click="addToCart(item)">Aggiungi al Carrello</div>
       </div>
       <img class="w-50" :src="store.imagePath + item.image" alt="" />
     </div>
@@ -26,6 +24,12 @@ export default {
       store,
     };
   },
+  methods: {
+    addToCart(item) {
+      store.cart.push(item);
+      localStorage.setItem(this.info.slug, JSON.stringify(store.cart));
+    }
+  }
 };
 </script>
 
