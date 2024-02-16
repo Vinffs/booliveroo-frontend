@@ -18,11 +18,15 @@
       <h2 class="text-white text-center my-4">Risultati</h2>
       <div class="d-flex justify-content-center align-items-center flex-wrap">
         <div
+          v-if="store.filteredRestaurants.length > 0"
           class="restaurant-container col-6"
           v-for="item in store.filteredRestaurants"
         >
           <RestaurantCard class="shadowed" :restaurant="item" :position="0" />
         </div>
+        <h3 v-else class="text-white text-center col-12 py-5 display-4 fw-bold">
+          Non ci sono risultati con queste categorie
+        </h3>
       </div>
     </div>
   </div>
