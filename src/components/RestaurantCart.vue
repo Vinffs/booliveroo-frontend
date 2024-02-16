@@ -118,7 +118,7 @@ export default {
   }
 
   .elements {
-    max-height: 70vh;
+    max-height: 60vh;
     overflow-y: auto;
     .element {
       border-bottom: 3px solid $bg-primary;
