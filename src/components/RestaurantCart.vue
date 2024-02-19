@@ -3,7 +3,8 @@
     <h2 class="p-3 d-flex justify-content-between align-items-center">
       <div><i class="fa-solid fa-cart-shopping"></i> <span>Carrello</span></div>
       <div v-if="store.cart.length > 0">
-        <button class="btn checkout py-2 px-4 fs-5 rounded-pill">
+        <button class="btn checkout py-2 px-4 fs-5 rounded-pill"
+          @click="$router.push('/checkout/' + info.slug, { params: { restaurant: info } })">
           Pagamento
         </button>
       </div>
