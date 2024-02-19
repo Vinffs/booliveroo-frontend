@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg">
+  <!-- <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <div
           class="collapse navbar-collapse d-flex justify-content-between"
@@ -53,8 +52,47 @@
           </div>
         </div>
       </div>
-    </nav>
-  </div>
+    </nav> -->
+  <header>
+    <div class="container-fluid">
+      <nav class="row justify-content-between align-items-center">
+        <router-link
+          :to="{ name: 'home' }"
+          class="logo col-6 row justify-content-start align-items-center text-decoration-none"
+        >
+          <div style="width: 100px">
+            <img src="/images/logo-booliveroo.png" alt="logo" class="w-100" />
+          </div>
+          <h1 class="mb-0 col d-none d-sm-block" style="margin-left: -1em">
+            ooliveroo
+          </h1>
+        </router-link>
+        <div
+          class="col text-end text-white d-flex justify-content-end position-relative"
+        >
+          <div
+            class="d-block d-sm-none bars"
+            style="cursor: pointer"
+            @click="hamburger = !hamburger"
+            :class="{ change: hamburger }"
+          >
+            <i class="fa-bars fa-solid fa-2x"></i>
+          </div>
+          <div
+            class="text-center back-link py-2"
+            :class="{ appeard: hamburger }"
+          >
+            <h5>Vuoi aggiungere un ristorante a Booliveroo?</h5>
+            <a
+              href="http://localhost:8000"
+              class="btn my-button rounded-pill text-white"
+              >Clicca qui!</a
+            >
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -63,10 +101,11 @@ export default {
   data() {
     return {
       currentRoute: this.$route.path,
+      hamburger: false,
     };
   },
   watch: {
-    $route(to, from){
+    $route(to, from) {
       this.currentRoute = to.path;
     },
   },
@@ -76,35 +115,57 @@ export default {
 <style lang="scss" scoped>
 @use ".././assets/styles/partials/variables" as *;
 
-.nav-item span {
-      transition: color 0.3s ease;
- }
-.nav-item:hover span {
-   color: $primary; 
-}
-.nav-item i {
-  transition: color 0.3s ease; 
-}
-.nav-item:hover i {
-  color: $primary; 
-}
-.navbar-nav .nav-link.active {
-  padding-bottom: 5px;
-  border-bottom: 2px solid $bg-primary;
-}
-nav {
-  background-color: $bg-secondary;
+header {
+  background-color: $bg-primary;
+
+  .my-button {
+    background: radial-gradient(
+      ellipse at center,
+      $primary 0%,
+      $bg-primary 100%
+    );
+    transition: all 0.5s ease;
+
+    &:hover {
+      background: radial-gradient(
+        ellipse at center,
+        $primary 0%,
+        $bg-secondary 100%
+      );
+    }
+  }
 }
 
-i {
-  min-width: 22.5px;
-  min-height: 22.5px;
-  text-align: center;
-}
-li {
-  img {
-    max-width: 50px;
-    max-height: 50px;
+@media screen and (max-width: 576px) {
+  .back-link {
+    position: absolute;
+    right: -150%;
+    top: 130%;
+    z-index: 99;
+    font-size: 1.5em;
+    background-color: $bg-secondary;
+    padding: 1em;
+    border-radius: 5px;
+    width: 200px;
+    box-shadow: 0 0.125rem 0.25rem rgba(white, 0.075);
+    transition: all 0.5s ease;
+  }
+
+  .bars {
+    transition: all 0.5s ease;
+    cursor: pointer;
+    rotate: 0deg;
+  }
+
+  .appeard {
+    right: 0;
+  }
+
+  .change {
+    rotate: 180deg;
+    i::before {
+      content: "\f00d";
+    }
   }
 }
 </style>

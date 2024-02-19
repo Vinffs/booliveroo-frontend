@@ -1,13 +1,15 @@
 <template>
-  <header>
-    <HeaderComponent />
-  </header>
-  <main @click="store.search = false">
-    <router-view />
-  </main>
-  <footer>
-    <FooterComponent />
-  </footer>
+  <div id="app">
+    <header>
+      <HeaderComponent />
+    </header>
+    <main @click="store.search = false">
+      <router-view />
+    </main>
+    <footer>
+      <FooterComponent />
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -48,4 +50,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#app {
+  overflow: hidden;
+}
+</style>
