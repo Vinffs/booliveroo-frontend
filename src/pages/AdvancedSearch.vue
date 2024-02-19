@@ -28,7 +28,7 @@
       </div>
       <div
         class="d-flex flex-wrap justify-content-center categories-wrapper"
-        :class="{ opened: !collapsed }"
+        :class="{ closed: collapsed }"
       >
         <div class="card-container" v-for="item in store.categories">
           <CategoriesCard :category="item" />
@@ -37,7 +37,7 @@
 
       <div class="d-md-none col-12 col-sm-6 text-center py-2 mx-auto">
         <button
-          v-if="collapsed"
+          v-if="!collapsed"
           @click="collapsed = !collapsed"
           class="btn btn-light w-75 mx-auto"
         >
@@ -122,7 +122,7 @@ export default {
 .categories-wrapper {
   transition: all 0.3s ease;
   max-height: 300vh;
-  &.opened {
+  &.closed {
     max-height: 0vh;
     overflow: hidden;
   }
