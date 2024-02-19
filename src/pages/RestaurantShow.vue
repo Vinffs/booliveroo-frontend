@@ -86,7 +86,7 @@ export default {
   background-color: $bg-primary;
 
   .hero {
-    height: 40vh;
+    height: 30vh;
     width: 100%;
     background: radial-gradient(
       circle at center,
