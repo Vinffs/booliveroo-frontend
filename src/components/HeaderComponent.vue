@@ -139,7 +139,9 @@ header {
 @media screen and (max-width: 576px) {
   .back-link {
     position: absolute;
-    right: -150%;
+    right: 0;
+    scale: 0.5;
+    opacity: 0;
     top: 130%;
     z-index: 99;
     font-size: 1.5em;
@@ -158,7 +160,8 @@ header {
   }
 
   .appeard {
-    right: 0;
+    scale: 1;
+    opacity: 1;
   }
 
   .change {
