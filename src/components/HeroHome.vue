@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import SearchBar from '../components/SearchBar.vue';
+import SearchBar from "../components/SearchBar.vue";
 export default {
   name: "HeroHome",
   components: {
     SearchBar,
-  }
+  },
 };
 </script>
 
@@ -153,6 +153,18 @@ export default {
 
   to {
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #hero {
+    position: static;
+    margin-top: 20px;
+    height: auto;
+
+    #burger {
+      display: none;
+    }
   }
 }
 </style>

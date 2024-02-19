@@ -1,5 +1,8 @@
 <template>
-  <div class="my-card h-100 rounded-3">
+  <router-link
+    :to="{ name: 'restaurantShow', params: { slug: restaurant.slug } }"
+    class="my-card h-100 rounded-3 text-decoration-none d-block text-light"
+  >
     <div class="image-cotainer">
       <div class="overlay">
         <router-link
@@ -45,7 +48,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>

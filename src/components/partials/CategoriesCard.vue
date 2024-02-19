@@ -128,4 +128,10 @@ export default {
     transform: scale(1, 1) translateY(0);
   }
 }
+
+@media screen and (max-width: 1345px) {
+  h5 {
+    font-size: 1em;
+  }
+}
 </style>
