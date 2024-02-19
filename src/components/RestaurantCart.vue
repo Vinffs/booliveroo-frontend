@@ -1,43 +1,93 @@
 <template>
   <div class="cart rounded-3">
     <h2 class="p-3 d-flex justify-content-between align-items-center">
-      <div><i class="fa-solid fa-cart-shopping"></i> <span>Carrello</span></div>
+      <div v-if="!checkout">
+        <i v-if="!checkout" class="fa-solid fa-cart-shopping"></i>
+        <span v-if="!checkout">Carrello</span>
+        <span v-else>Conferma il tuo ordine</span>
+      </div>
       <div v-if="store.cart.length > 0">
-        <button class="btn checkout py-2 px-4 fs-5 rounded-pill"
-          @click="$router.push('/checkout/' + info.slug, { params: { restaurant: info } })">
+        <button
+          v-if="!checkout"
+          class="btn checkout py-2 px-4 fs-5 rounded-pill"
+          @click="
+            $router.push('/checkout/' + info.slug, {
+              params: { restaurant: info },
+            })
+          "
+        >
           Pagamento
         </button>
       </div>
     </h2>
-    <h3 v-if="store.cart.length > 0" class="p-3 py-4 d-flex justify-content-between align-items-center">
-      <span>I tuoi prodotti</span><span>Totale: € {{ totalPrice().toFixed(2) }}</span>
+    <h3
+      v-if="store.cart.length > 0"
+      class="p-3 py-4 d-flex justify-content-between align-items-center"
+    >
+      <span :class="{ 'fs-1': checkout }">I tuoi prodotti</span
+      ><span :class="{ 'fs-1': checkout }"
+        >Totale: € {{ totalPrice().toFixed(2) }}</span
+      >
     </h3>
 
     <div v-if="store.cart.length > 0" class="container-fluid elements">
       <div v-for="item in cartNotRepeated()" class="py-2 element px-3">
         <div>
           <div class="buttons rounded-4">
-            <div @click="updateCart(item, 'clear')"><i class="fa-solid fs-3 fa-trash"></i></div>
-            <div @click="updateCart(item, 'remove')"><i class="fa-solid fs-2 fa-square-minus"></i></div>
-            <div @click="updateCart(item, 'add')"><i class="fa-solid fs-2 fa-square-plus"></i></div>
+            <div @click="updateCart(item, 'clear')">
+              <i class="fa-solid fs-3 fa-trash"></i>
+            </div>
+            <div @click="updateCart(item, 'remove')">
+              <i class="fa-solid fs-2 fa-square-minus"></i>
+            </div>
+            <div @click="updateCart(item, 'add')">
+              <i class="fa-solid fs-2 fa-square-plus"></i>
+            </div>
           </div>
           <div class="row justify-content-between">
             <div class="col-3">
-              <img :src="store.imagePath + item.image" class="w-100" :alt="item.name" />
+              <img
+                :src="store.imagePath + item.image"
+                class="w-100"
+                :alt="item.name"
+              />
             </div>
-            <div class="col-5 text-start d-flex flex-column justify-content-around">
+            <div
+              v-if="!checkout"
+              class="col-5 text-start d-flex flex-column justify-content-around"
+            >
               <h5>{{ item.name }}</h5>
               <h5>€ {{ item.price }}</h5>
             </div>
-            <div class="col-4 text-end d-flex flex-column justify-content-around">
+            <div
+              v-else
+              class="col-5 text-start d-flex flex-column justify-content-around"
+            >
+              <h2>{{ item.name }}</h2>
+              <h2>€ {{ item.price }}</h2>
+            </div>
+            <div
+              v-if="!checkout"
+              class="col-4 text-end d-flex flex-column justify-content-around"
+            >
               <h4>x {{ quantity(item) }}</h4>
               <h5>€ {{ (item.price * quantity(item)).toFixed(2) }}</h5>
+            </div>
+            <div
+              v-else
+              class="col-4 text-end d-flex flex-column justify-content-around"
+            >
+              <h2>x {{ quantity(item) }}</h2>
+              <h2>€ {{ (item.price * quantity(item)).toFixed(2) }}</h2>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div v-else class="d-flex justify-content-center align-items-center pb-5 pt-4">
+    <div
+      v-else
+      class="d-flex justify-content-center align-items-center pb-5 pt-4"
+    >
       <h3 class="text-center fw-bold">
         Che aspetti? <br />
         Scegli i tuoi piatti preferiti!
@@ -57,6 +107,7 @@ export default {
   },
   props: {
     info: Object,
+    checkout: Boolean,
   },
   methods: {
     quantity(item) {
@@ -88,7 +139,6 @@ export default {
       if (method === "add") {
         store.cart.push(item);
         this.localStorageSetCart();
-
       } else if (method === "clear") {
         // store.cart.forEach((element, index) => {
         //   if (element.name === item.name) {
@@ -131,12 +181,12 @@ export default {
     },
     localStorageSetCart() {
       localStorage.setItem(this.info.slug, JSON.stringify(store.cart));
-    }
+    },
   },
   mounted() {
     // this.cartNotRepeated();
     if (localStorage.getItem(this.info.slug)) {
-      store.cart = JSON.parse(localStorage.getItem(this.info.slug))
+      store.cart = JSON.parse(localStorage.getItem(this.info.slug));
     }
   },
 };

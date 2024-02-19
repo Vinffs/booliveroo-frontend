@@ -32,7 +32,7 @@
           <RestaurantMenu :info="restaruant" v-show="!active" />
         </div>
         <div class="col-5">
-          <RestaurantCart :info="restaruant" class="cart" />
+          <RestaurantCart :info="restaruant" :checkout="false" class="cart" />
         </div>
       </div>
     </div>
