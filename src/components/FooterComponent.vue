@@ -3,7 +3,7 @@
     <div class="container pt-5">
       <div class="row justify-content-between">
         <ul
-          class="list-unstyled text-white col-12 col-sm-6 text-center text-sm-start col-md-3"
+          class="list-unstyled col-12 col-sm-6 text-center text-sm-start col-md-3"
         >
           <li class="fw-semibold fs-5 mb-2">Scopri Booliveroo</li>
           <li class="mb-1"><a href="#">Investitori</a></li>
@@ -12,7 +12,7 @@
           <li class="mb-1"><a href="#">Altro</a></li>
         </ul>
         <ul
-          class="list-unstyled text-white col-12 col-sm-6 text-center text-sm-start col-md-3"
+          class="list-unstyled col-12 col-sm-6 text-center text-sm-start col-md-3"
         >
           <li class="fw-semibold fs-5 mb-2">Note legali</li>
           <li class="mb-1"><a href="#">Termini & condizioni</a></li>
@@ -21,7 +21,7 @@
           <li class="mb-1"><a href="#">Richieste Autorità Pubbliche</a></li>
         </ul>
         <ul
-          class="list-unstyled text-white col-12 col-sm-6 text-center text-sm-start col-md-3"
+          class="list-unstyled col-12 col-sm-6 text-center text-sm-start col-md-3"
         >
           <li class="fw-semibold fs-5 mb-1">Aiuto</li>
           <li class="mb-1"><a href="#">Contatti</a></li>
@@ -29,7 +29,7 @@
           <li class="mb-1"><a href="#">Tipi di cucina</a></li>
         </ul>
         <ul
-          class="list-unstyled text-white col-12 col-sm-6 text-center text-sm-start col-md-3"
+          class="list-unstyled col-12 col-sm-6 text-center text-sm-start col-md-3"
         >
           <li class="fw-semibold fs-5 mb-1">Porta Booliveroo con te</li>
           <li>
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="container icons d-flex mt-2">
-      <ul class="list-unstyled text-white">
+      <ul class="list-unstyled">
         <li class="d-inline-block me-3">
           <a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
         </li>
@@ -75,6 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 @use ".././assets/styles/partials/variables" as *;
+
 .my-footer {
   background-color: $bg-secondary;
 }

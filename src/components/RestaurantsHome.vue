@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-between text-light pb-5">
+  <div class="row justify-content-between pb-5">
     <div class="col-12 col-lg-3">
       <!-- sezione delle categorie scontate a tempo -->
       <CategoriesSales />

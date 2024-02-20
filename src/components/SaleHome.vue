@@ -4,9 +4,9 @@
     <div id="stars2"></div>
     <div id="stars3"></div>
     <div
-      class="content text-light d-flex justify-content-center align-items-center w-100 h-100"
+      class="content d-flex justify-content-center align-items-center w-100 h-100"
     >
-      <div class="rounded-4 text-white">
+      <div class="rounded-4">
         <h2 class="fw-bold fs-1 text-center">
           Vuoi ricevere un codice sconto?
         </h2>
@@ -51,7 +51,7 @@ $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
 
 #stars-container {
-  background: radial-gradient(ellipse at bottom, $primary 0%, $bg-primary 100%);
+  background: radial-gradient(ellipse at bottom, $primary 0%, black 100%);
   overflow: hidden;
 
   .content {

@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-4 text-white shadowed" id="searchbar">
+  <div class="rounded-4 shadowed" id="searchbar">
     <h1 class="fw-bold text-center">Il cibo che vuoi, quando vuoi</h1>
     <h5 class="py-2 text-center">
       Ordina online dai tuoi ristoranti preferiti
@@ -19,9 +19,9 @@
     >
       <i
         v-if="searchInput === ''.trim()"
-        class="fa-solid fs-5 fa-magnifying-glass text-white"
+        class="fa-solid fs-5 fa-magnifying-glass"
       ></i>
-      <i v-else class="fa-solid fa-xmark text-white fs-5"></i>
+      <i v-else class="fa-solid fa-xmark fs-5"></i>
     </div>
     <div class="my-dropdown">
       <div v-if="store.search">

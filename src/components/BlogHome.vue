@@ -1,6 +1,6 @@
 <template>
   <div class="blog">
-    <h2 class="text-center text-white fw-semibold m-0 pt-5">Read Our Blog</h2>
+    <h2 class="text-center fw-semibold m-0 pt-5">Read Our Blog</h2>
     <div class="pt-5 pb-5 container">
       <div class="row justify-content-center align-items-center">
         <div class="card rounded my-card col-12 col-md-6 col-lg-4">
@@ -13,17 +13,15 @@
               />
             </div>
             <div class="card-body">
-              <h5 class="card-title fw-semibold text-white">
-                Questa è una prova
-              </h5>
-              <p class="card-text text-white">Questa è un'altra prova</p>
+              <h5 class="card-title fw-semibold">Questa è una prova</h5>
+              <p class="card-text">Questa è un'altra prova</p>
               <span class="user d-flex">
                 <img
                   class="me-1"
                   src="/images/among_us.jpg"
                   alt="user-profile"
                 />
-                <p class="text-white">salam piccant</p>
+                <p class="">salam piccant</p>
               </span>
             </div>
           </div>
@@ -38,17 +36,15 @@
               />
             </div>
             <div class="card-body">
-              <h5 class="card-title fw-semibold text-white">
-                Questa è una prova
-              </h5>
-              <p class="card-text text-white">Questa è un'altra prova</p>
+              <h5 class="card-title fw-semibold">Questa è una prova</h5>
+              <p class="card-text">Questa è un'altra prova</p>
               <span class="user d-flex">
                 <img
                   class="me-1"
                   src="/images/among_us.jpg"
                   alt="user-profile"
                 />
-                <p class="text-white">salam piccant</p>
+                <p class="">salam piccant</p>
               </span>
             </div>
           </div>
@@ -63,17 +59,15 @@
               />
             </div>
             <div class="card-body">
-              <h5 class="card-title fw-semibold text-white">
-                Questa è una prova
-              </h5>
-              <p class="card-text text-white">Questa è un'altra prova</p>
+              <h5 class="card-title fw-semibold">Questa è una prova</h5>
+              <p class="card-text">Questa è un'altra prova</p>
               <span class="user d-flex">
                 <img
                   class="me-1"
                   src="/images/among_us.jpg"
                   alt="user-profile"
                 />
-                <p class="text-white">salam piccant</p>
+                <p class="">salam piccant</p>
               </span>
             </div>
           </div>
@@ -84,17 +78,17 @@
     <!-- <div class="pt-5 pb-5 container d-flex justify-content-between align-items-center">
             <div class="rounded">
                 <img class="rounded mx-auto d-block" src="../../public/images/piatto-1.webp" alt="piatto-1">
-                <h5 class="fw-semibold text-white">Questa è una prova</h5>
+                <h5 class="fw-semibold ">Questa è una prova</h5>
                 <span>questa è un'altra prova</span>
             </div>
             <div class="rounded">
                 <img class="rounded mx-auto d-block" src="../../public/images/piatto-2.jpg" alt="piatto-2">
-                <h5 class="fw-semibold text-white">Questa è una prova</h5>
+                <h5 class="fw-semibold ">Questa è una prova</h5>
                 <span>questa è un'altra prova</span>
             </div>
             <div class="rounded">
                 <img class="rounded mx-auto d-block" src="../../public/images/piatto-3.webp" alt="piatto-3">
-                <h5 class="fw-semibold text-white">Questa è una prova</h5>
+                <h5 class="fw-semibold ">Questa è una prova</h5>
                 <span>questa è un'altra prova</span>
             </div>
         </div> -->
@@ -109,6 +103,7 @@ export default {
 
 <style lang="scss" scoped>
 @use ".././assets/styles/partials/variables" as *;
+
 .blog {
   background-color: $bg-secondary;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div class="hero"></div>
+  <div class="wrapper-tot">
+    <!-- <div class="hero"></div> -->
     <div class="container">
       <div v-if="restaruant" class="row">
         <div class="col-7 main">
@@ -82,8 +82,10 @@ export default {
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
 
-.wrapper {
-  background-color: $bg-primary;
+.wrapper-tot {
+  // background-color: $bg-primary;
+  padding: 50px 0;
+  padding-top: 150px;
 
   .hero {
     height: 30vh;
@@ -96,10 +98,10 @@ export default {
   }
 
   .container {
-    position: relative;
-    z-index: 2;
-    top: -70px;
-    left: 0;
+    // position: relative;
+    // z-index: 2;
+    // top: -70px;
+    // left: 0;
 
     #pulsante {
       margin: 20px 0;

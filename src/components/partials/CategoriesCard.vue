@@ -3,7 +3,7 @@
     @click="addFilter()"
     @mouseenter="animation = true"
     @mouseleave="animation = false"
-    class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center text-white"
+    class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center"
     :class="{ 'background-magenta': isActive() }"
   >
     <h5>{{ category.name }}</h5>

@@ -20,9 +20,7 @@
             class="w-75"
           />
         </div>
-        <router-link
-          class="btn text-light fw-bold rounded-pill d-none d-sm-block"
-          to="/"
+        <router-link class="btn fw-bold rounded-pill d-none d-sm-block" to="/"
           >Vai alla categoria</router-link
         >
       </div>

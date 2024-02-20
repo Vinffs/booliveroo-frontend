@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white">
+  <div class="">
     <h2 class="text-center pt-5 pb-4">Inserisci i tuoi dati</h2>
     <form action="" class="rounded-3 p-4">
       <div class="d-flex justify-content-between align-items-center">

@@ -10,5 +10,10 @@ $fa-font-path: "../webfonts";
 @import url("https://fonts.cdnfonts.com/css/abc-ginto-nord-unlicensed-trial");
 
 .shadowed {
-  box-shadow: 0 0.125rem 0.25rem rgba(white, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(black, 0.125);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(black, 0.25);
+  }
 }

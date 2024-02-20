@@ -37,7 +37,13 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
-
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  rotate: 180deg;
+}
 #hero {
   margin-top: 70px;
   position: relative;
@@ -48,23 +54,6 @@ export default {
   // display: flex;
   // justify-content: center;
   // align-items: center;
-
-  svg {
-    width: 110%;
-    position: absolute;
-    top: -123%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "ABC Ginto Nord Unlicensed Trial", sans-serif;
-
-    path {
-      fill: transparent;
-    }
-
-    text {
-      fill: $primary;
-    }
-  }
 
   h2 {
     font-size: 3em;
@@ -114,7 +103,7 @@ export default {
       position: absolute;
       z-index: 9;
       top: 0;
-      filter: hue-rotate(-260deg);
+      filter: hue-rotate(150deg);
 
       &.left {
         left: 0;

@@ -4,14 +4,11 @@
       v-for="item in info.dishes"
       class="dish p-4 d-flex align-items-center justify-content-evenly"
     >
-      <div class="text-white d-flex flex-column align-items-center gap-3">
+      <div class="d-flex flex-column align-items-center gap-3">
         <h4>{{ item.name }}</h4>
         <p>{{ item.ingredients }}</p>
         <p>€ {{ item.price }}</p>
-        <div
-          class="btn btn-primary rounded-pill text-white"
-          @click="addToCart(item)"
-        >
+        <div class="btn btn-primary rounded-pill" @click="addToCart(item)">
           Aggiungi al Carrello
         </div>
       </div>

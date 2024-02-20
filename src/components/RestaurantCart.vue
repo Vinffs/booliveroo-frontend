@@ -1,11 +1,15 @@
 <template>
   <div class="cart rounded-3">
-    <h2 class="p-3 d-flex justify-content-between align-items-center">
+    <h2
+      v-if="!checkout"
+      class="p-3 d-flex justify-content-between align-items-center"
+    >
       <div v-if="!checkout">
         <i v-if="!checkout" class="fa-solid fa-cart-shopping"></i>
         <span v-if="!checkout">Carrello</span>
         <span v-else>Conferma il tuo ordine</span>
       </div>
+
       <div v-if="store.cart.length > 0">
         <button
           v-if="!checkout"
@@ -20,6 +24,9 @@
         </button>
       </div>
     </h2>
+    <h1 v-if="checkout" class="p-3">
+      Ricontrolla il tuo ordine presso {{ info.name }}
+    </h1>
     <h3
       v-if="store.cart.length > 0"
       class="p-3 py-4 d-flex justify-content-between align-items-center"

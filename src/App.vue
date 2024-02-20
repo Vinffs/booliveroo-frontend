@@ -48,4 +48,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "./assets/styles/partials/variables" as *;
+main {
+  position: relative;
+  z-index: 5;
+}
+
+@media screen and (max-width: 576px) {
+  main {
+    position: static;
+  }
+}
+</style>

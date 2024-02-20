@@ -10,9 +10,7 @@
         </div> -->
       </div>
       <div class="row justify-content-around align-items-center mb-4">
-        <h2 class="text-white text-center col-12 col-sm-6">
-          Seleziona le Categorie
-        </h2>
+        <h2 class="text-center col-12 col-sm-6">Seleziona le Categorie</h2>
         <div class="d-md-none col-12 col-sm-6 text-center py-2">
           <button
             @click="collapsed = !collapsed"
@@ -49,7 +47,7 @@
         </button>
       </div>
 
-      <h2 class="text-white text-center my-4">Risultati</h2>
+      <h2 class="text-center my-4">Risultati</h2>
       <div class="d-flex justify-content-center align-items-center flex-wrap">
         <div
           v-if="store.filteredRestaurants.length > 0"
@@ -58,7 +56,7 @@
         >
           <RestaurantCard class="shadowed" :restaurant="item" :position="0" />
         </div>
-        <h3 v-else class="text-white text-center col-12 py-5 display-4 fw-bold">
+        <h3 v-else class="text-center col-12 py-5 display-4 fw-bold">
           Non ci sono risultati con queste categorie
         </h3>
       </div>

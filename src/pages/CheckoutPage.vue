@@ -1,9 +1,6 @@
 <template>
   <div class="wrapper py-5" v-if="restaurant !== null">
     <div class="container">
-      <h1 class="mb-4">
-        Ricontrolla il tuo ordine presso {{ restaurant.name }}
-      </h1>
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
         <CheckoutForm />
@@ -51,8 +48,8 @@ export default {
 @use "../assets/styles/partials/variables" as *;
 
 .wrapper {
-  background-color: $bg-primary;
   color: white;
   min-height: 70vh;
+  margin-top: 100px;
 }
 </style>

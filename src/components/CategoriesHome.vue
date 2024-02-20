@@ -1,6 +1,6 @@
 <template>
   <div class="mb-5 wrapper">
-    <h2 class="text-center text-white my-5">Categorie</h2>
+    <h2 class="text-center my-5">Categorie</h2>
 
     <swiper
       :slidesPerView="6"

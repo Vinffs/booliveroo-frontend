@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{ name: 'restaurantShow', params: { slug: restaurant.slug } }"
-    class="my-card h-100 rounded-3 text-decoration-none d-block text-light"
+    class="my-card h-100 rounded-3 text-decoration-none d-block"
   >
     <div class="image-cotainer">
       <div class="overlay">
@@ -80,6 +80,7 @@ export default {
 .my-card {
   background-color: $bg-secondary;
   overflow: hidden;
+  color: $text-color;
 
   &:hover .image-cotainer {
     .overlay {
@@ -94,11 +95,7 @@ export default {
   .image-cotainer {
     position: relative;
     overflow: hidden;
-    background: radial-gradient(
-      ellipse at bottom,
-      $primary 0%,
-      $bg-primary 100%
-    );
+    background: radial-gradient(ellipse at center, $primary 0%, #ccc 100%);
 
     .restaurant-image {
       height: 200px;
