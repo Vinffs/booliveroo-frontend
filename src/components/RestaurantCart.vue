@@ -205,13 +205,13 @@ export default {
 .cart {
   //width: 100%;
   background-color: $bg-secondary;
-  color: white;
+  color: $text-color;
   //overflow-y: auto;
   max-height: 90vh;
 
   .checkout {
     background-color: $primary;
-    color: white;
+    color: $text-color;
     border: none;
     transition: all 0.3s ease;
 

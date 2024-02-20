@@ -112,7 +112,7 @@ export default {
       // justify-content: space-around;
       align-items: center;
       cursor: pointer;
-      color: white;
+      color: $text-color;
       font-size: 2em;
       text-align: center;
 

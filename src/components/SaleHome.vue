@@ -4,7 +4,7 @@
     <div id="stars2"></div>
     <div id="stars3"></div>
     <div
-      class="content d-flex justify-content-center align-items-center w-100 h-100"
+      class="content text-white d-flex justify-content-center align-items-center w-100 h-100"
     >
       <div class="rounded-4">
         <h2 class="fw-bold fs-1 text-center">
@@ -74,7 +74,7 @@ $shadows-big: multiple-box-shadow(100);
         width: 51px;
         height: 51px;
         border-radius: 0 50%;
-        background-color: $bg-secondary;
+        background-color: $primary;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -86,7 +86,7 @@ $shadows-big: multiple-box-shadow(100);
         transition: all 0.3s ease;
 
         &:hover {
-          background-color: darken($bg-secondary, 8%);
+          background-color: darken($primary, 8%);
         }
       }
     }

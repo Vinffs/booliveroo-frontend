@@ -83,7 +83,7 @@
             <i class="fa-bars fa-solid fa-2x"></i>
           </div>
           <div
-            class="text-center back-link py-2"
+            class="text-center back-link py-2 shadowed"
             :class="{ appeard: hamburger }"
           >
             <h5>Vuoi aggiungere un ristorante a Booliveroo?</h5>
@@ -163,7 +163,7 @@ header {
     padding: 1em;
     border-radius: 5px;
     width: 200px;
-    box-shadow: 0 0.125rem 0.25rem rgba(white, 0.075);
+    //box-shadow: 0 0.125rem 0.25rem rgba(white, 0.075);
     transition: all 0.5s ease;
   }
 

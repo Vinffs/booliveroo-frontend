@@ -81,8 +81,8 @@ export default {
 }
 a {
   text-decoration: none;
-  color: white;
   transition: all 0.3s ease;
+  color: $text-color;
   &:hover {
     color: $primary;
     display: inline-block;

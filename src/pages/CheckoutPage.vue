@@ -48,7 +48,7 @@ export default {
 @use "../assets/styles/partials/variables" as *;
 
 .wrapper {
-  color: white;
+  color: $text-color;
   min-height: 70vh;
   margin-top: 100px;
 }

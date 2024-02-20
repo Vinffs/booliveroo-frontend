@@ -14,7 +14,7 @@
         <div class="d-md-none col-12 col-sm-6 text-center py-2">
           <button
             @click="collapsed = !collapsed"
-            class="btn btn-light w-75 mx-auto"
+            class="btn btn-light w-75 mx-auto shadowed"
           >
             <span v-if="collapsed"
               >Mostra Categorie <i class="fa-solid fa-chevron-up"></i></span
@@ -37,7 +37,7 @@
         <button
           v-if="!collapsed"
           @click="collapsed = !collapsed"
-          class="btn btn-light w-75 mx-auto"
+          class="btn btn-light w-75 mx-auto shadowed"
         >
           <span v-if="collapsed"
             >Mostra Categorie <i class="fa-solid fa-chevron-up"></i></span

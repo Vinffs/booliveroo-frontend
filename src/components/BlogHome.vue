@@ -108,7 +108,7 @@ export default {
   background-color: $bg-secondary;
 }
 .card-image {
-  background: radial-gradient(ellipse at bottom, $primary 0%, $bg-primary 100%);
+  background: radial-gradient(ellipse at bottom, $primary 0%, #ccc 100%);
   img {
     width: 100%;
     height: 300px;
