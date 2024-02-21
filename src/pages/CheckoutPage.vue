@@ -4,9 +4,12 @@
       <h1 class="mb-4">
         Ricontrolla il tuo ordine presso {{ restaurant.name }}
       </h1>
+
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
         <CheckoutForm />
+        <PaymentForm />
+        <v-braintree :client-token="token" @payment-method-received="handlePaymentMethodReceived" />
       </div>
     </div>
   </div>
@@ -15,8 +18,10 @@
 <script>
 import { store } from "../data/store";
 import axios from "axios";
+// import { VBraintree } from 'vue-braintree';
 import RestaurantCart from "../components/RestaurantCart.vue";
 import CheckoutForm from "../components/CheckoutForm.vue";
+import PaymentForm from "@/components/PaymentForm.vue";
 export default {
   name: "CheckoutPage",
   data() {
@@ -24,11 +29,14 @@ export default {
       store,
       restaurant: null,
       slug: this.$route.params.slug,
+      token: 'null'
     };
   },
   components: {
     RestaurantCart,
     CheckoutForm,
+    PaymentForm,
+    VBraintree,
   },
   methods: {
     getRestaurant() {
@@ -37,12 +45,25 @@ export default {
         console.log(this.restaurant);
       });
     },
+    onSuccess(payload) {
+      let nonce = payload.nonce;
+    },
+    onError(error) {
+      let message = error.message;
+    },
+    getToken() {
+      axios.get(store.apiUrl + "orders/generate").then((res) => {
+        this.token = res.data.token;
+        console.log(this.token);
+      })
+    }
   },
   mounted() {
     this.getRestaurant();
     if (localStorage.getItem(this.slug)) {
       store.cart = JSON.parse(localStorage.getItem(this.slug));
     }
+    this.getToken();
   },
 };
 </script>
