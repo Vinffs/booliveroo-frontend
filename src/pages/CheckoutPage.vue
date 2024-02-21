@@ -8,8 +8,8 @@
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
         <CheckoutForm />
-        <PaymentForm />
-        <v-braintree :client-token="token" @payment-method-received="handlePaymentMethodReceived" />
+        <!-- <PaymentForm /> -->
+        <!-- <v-braintree :client-token="token" @payment-method-received="handlePaymentMethodReceived" /> -->
       </div>
     </div>
   </div>
@@ -21,7 +21,6 @@ import axios from "axios";
 // import { VBraintree } from 'vue-braintree';
 import RestaurantCart from "../components/RestaurantCart.vue";
 import CheckoutForm from "../components/CheckoutForm.vue";
-import PaymentForm from "@/components/PaymentForm.vue";
 export default {
   name: "CheckoutPage",
   data() {
@@ -29,14 +28,12 @@ export default {
       store,
       restaurant: null,
       slug: this.$route.params.slug,
-      token: 'null'
+      token: "null",
     };
   },
   components: {
     RestaurantCart,
     CheckoutForm,
-    PaymentForm,
-    VBraintree,
   },
   methods: {
     getRestaurant() {
@@ -53,10 +50,10 @@ export default {
     },
     getToken() {
       axios.get(store.apiUrl + "orders/generate").then((res) => {
-        this.token = res.data.token;
+        store.token = res.data.token;
         console.log(this.token);
-      })
-    }
+      });
+    },
   },
   mounted() {
     this.getRestaurant();
