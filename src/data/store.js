@@ -12,4 +12,5 @@ export const store = reactive({
   searchedRestaurants: [],
   search: false,
   cart: [],
+  darkMode: false,
 });
