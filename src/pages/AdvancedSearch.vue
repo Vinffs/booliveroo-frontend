@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper py-5">
+  <div class="wrapper py-5" :class="(store.darkMode ? 'dark' : 'light')">
     <div class="container">
       <div>
         <!-- <div
@@ -9,54 +9,37 @@
           <SearchBar />
         </div> -->
       </div>
-      <div class="row justify-content-around align-items-center mb-4">
+      <div class="row justify-content-around align-items-center mb-4"
+        :class="(store.darkMode ? 'text-light' : 'text-dark')">
         <h2 class="text-center col-12 col-sm-6">Seleziona le Categorie</h2>
         <div class="d-md-none col-12 col-sm-6 text-center py-2">
-          <button
-            @click="collapsed = !collapsed"
-            class="btn btn-light w-75 mx-auto shadowed"
-          >
-            <span v-if="collapsed"
-              >Mostra Categorie <i class="fa-solid fa-chevron-up"></i></span
-            ><span v-else
-              >Nascondi Categorie <i class="fa-solid fa-chevron-down"></i
-            ></span>
+          <button @click="collapsed = !collapsed" class="btn btn-light w-75 mx-auto shadowed">
+            <span v-if="collapsed">Mostra Categorie <i class="fa-solid fa-chevron-up"></i></span><span v-else>Nascondi
+              Categorie <i class="fa-solid fa-chevron-down"></i></span>
           </button>
         </div>
       </div>
-      <div
-        class="d-flex flex-wrap justify-content-center categories-wrapper"
-        :class="{ closed: collapsed }"
-      >
+      <div class="d-flex flex-wrap justify-content-center categories-wrapper" :class="{ closed: collapsed }">
         <div class="card-container" v-for="item in store.categories">
-          <CategoriesCard :category="item" />
+          <CategoriesCard :class="(store.darkMode ? 'dark-secondary' : 'light-secondary')" :category="item" />
         </div>
       </div>
 
       <div class="d-md-none col-12 col-sm-6 text-center py-2 mx-auto">
-        <button
-          v-if="!collapsed"
-          @click="collapsed = !collapsed"
-          class="btn btn-light w-75 mx-auto shadowed"
-        >
-          <span v-if="collapsed"
-            >Mostra Categorie <i class="fa-solid fa-chevron-up"></i></span
-          ><span v-else
-            >Nascondi Categorie <i class="fa-solid fa-chevron-down"></i
-          ></span>
+        <button v-if="!collapsed" @click="collapsed = !collapsed" class="btn btn-light w-75 mx-auto shadowed">
+          <span v-if="collapsed">Mostra Categorie <i class="fa-solid fa-chevron-up"></i></span><span v-else>Nascondi
+            Categorie <i class="fa-solid fa-chevron-down"></i></span>
         </button>
       </div>
 
-      <h2 class="text-center my-4">Risultati</h2>
+      <h2 class="text-center my-4" :class="(store.darkMode ? 'text-light' : 'text-dark')">Risultati</h2>
       <div class="d-flex justify-content-center align-items-center flex-wrap">
-        <div
-          v-if="store.filteredRestaurants.length > 0"
-          class="restaurant-container col-12 col-md-6"
-          v-for="item in store.filteredRestaurants"
-        >
+        <div v-if="store.filteredRestaurants.length > 0" class="restaurant-container col-12 col-md-6"
+          v-for="item in store.filteredRestaurants">
           <RestaurantCard class="shadowed" :restaurant="item" :position="0" />
         </div>
-        <h3 v-else class="text-center col-12 py-5 display-4 fw-bold">
+        <h3 v-else class="text-center col-12 py-5 display-4 fw-bold"
+          :class="(store.darkMode ? 'text-light' : 'text-dark')">
           Non ci sono risultati con queste categorie
         </h3>
       </div>
@@ -120,6 +103,7 @@ export default {
 .categories-wrapper {
   transition: all 0.3s ease;
   max-height: 300vh;
+
   &.closed {
     max-height: 0vh;
     overflow: hidden;
@@ -140,6 +124,7 @@ export default {
     height: calc(100vw / 10);
   }
 }
+
 @media screen and (max-width: 768px) {
   .card-container {
     width: calc(100vw / 6);
@@ -147,6 +132,7 @@ export default {
     height: calc(100vw / 6);
   }
 }
+
 @media screen and (max-width: 576px) {
   .card-container {
     width: calc(100vw / 4);

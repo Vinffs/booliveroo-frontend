@@ -27,8 +27,14 @@
 
 <script>
 import SearchBar from "../components/SearchBar.vue";
+import { store } from "../data/store";
 export default {
   name: "HeroHome",
+  data() {
+    return {
+      store,
+    }
+  },
   components: {
     SearchBar,
   },
@@ -37,13 +43,15 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  rotate: 180deg;
-}
+
+// svg {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   rotate: 180deg;
+// }
+
 #hero {
   margin-top: 70px;
   position: relative;
@@ -51,6 +59,7 @@ svg {
   height: 500px;
   text-align: center;
   color: $primary;
+  z-index: 10;
   // display: flex;
   // justify-content: center;
   // align-items: center;

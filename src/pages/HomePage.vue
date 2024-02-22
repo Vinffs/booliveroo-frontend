@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper pb-5">
-    <div class="container">
+  <div class="wrapper pb-5" :class="(store.darkMode ? 'dark' : 'light')">
+    <div class="container position-relative my-z">
       <HeroHome />
       <SaleHome />
       <!-- <CategoriesHome v-if="store.categories.length > 0" />
@@ -10,7 +10,7 @@
       <AdvancedSearch v-if="store.categories.length > 0" />
     </div>
   </div>
-  <BlogHome />
+  <BlogHome :class="(store.darkMode ? 'dark-secondary' : 'light-secondary')" />
 </template>
 
 <script>
@@ -41,4 +41,8 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
+
+.my-z {
+  z-index: 10;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="rounded-4 shadowed" id="searchbar" :class="(store.darkMode ? 'dark' : 'light')">
+  <div class="rounded-4 shadowed" id="searchbar" :class="(store.darkMode ? 'dark-secondary' : 'light-secondary')">
     <h1 class="fw-bold text-center">Il cibo che vuoi, quando vuoi</h1>
-    <h5 class="py-2 text-center">
+    <h5 class="py-2 text-center" :class="(store.darkMode ? 'text-light' : 'text-dark')">
       Ordina online dai tuoi ristoranti preferiti
     </h5>
     <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
@@ -55,14 +55,6 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
-
-.light {
-  background-color: $bg-secondary;
-}
-
-.dark {
-  background-color: $bg-secondary-darkmode;
-}
 
 #searchbar {
   width: 60%;

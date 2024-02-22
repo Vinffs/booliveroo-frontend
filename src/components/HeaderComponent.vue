@@ -121,6 +121,7 @@ header {
   background-color: $bg-primary;
   position: relative;
   background-color: $primary;
+  z-index: 6;
 
   h1 {
     color: $text-color;
@@ -132,8 +133,8 @@ header {
     left: 0;
     right: 0;
     rotate: 180deg;
+    // z-index: 6;
   }
-
 
   .my-button {
     background: radial-gradient(ellipse at center, $primary 0%, black 100%);
