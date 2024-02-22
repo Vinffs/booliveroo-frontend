@@ -8,27 +8,15 @@
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
           <div id="pulsante" class="rounded-5 p-1">
-            <div
-              id="menu"
-              :class="active ? 'my-bg-primary' : 'primary'"
-              @click="active = false"
-            >
+            <div id="menu" :class="active ? 'my-bg-primary' : 'primary'" @click="active = false">
               Menu
             </div>
-            <div
-              id="info"
-              :class="active ? 'primary' : 'my-bg-primary'"
-              @click="active = true"
-            >
+            <div id="info" :class="(active ? 'primary' : 'my-bg-primary')" @click="active = true">
               Info
             </div>
           </div>
           <!-- componente menu/info -->
-          <RestaurantInfo
-            v-if="restaurant !== null"
-            v-show="active"
-            :info="restaruant"
-          />
+          <RestaurantInfo v-if="restaurant !== null" v-show="active" :info="restaruant" />
           <RestaurantMenu :info="restaruant" v-show="!active" />
         </div>
         <div class="col-5">
@@ -91,11 +79,9 @@ export default {
   .hero {
     height: 30vh;
     width: 100%;
-    background: radial-gradient(
-      circle at center,
-      $primary 0%,
-      $bg-primary 100%
-    );
+    background: radial-gradient(circle at center,
+        $primary 0%,
+        $bg-primary 100%);
   }
 
   .container {
