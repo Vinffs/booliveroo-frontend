@@ -1,3 +1,4 @@
+// import vue-braintree from "vue-braintree";
 import "./assets/styles/main.scss";
 import { createApp } from "vue";
 import App from "./App.vue";

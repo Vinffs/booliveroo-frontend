@@ -1,9 +1,15 @@
 <template>
   <div class="wrapper py-5" v-if="restaurant !== null">
     <div class="container">
+      <h1 class="mb-4">
+        Ricontrolla il tuo ordine presso {{ restaurant.name }}
+      </h1>
+
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
         <CheckoutForm />
+        <!-- <PaymentForm /> -->
+        <!-- <v-braintree :client-token="token" @payment-method-received="handlePaymentMethodReceived" /> -->
       </div>
     </div>
   </div>
@@ -12,6 +18,7 @@
 <script>
 import { store } from "../data/store";
 import axios from "axios";
+// import { VBraintree } from 'vue-braintree';
 import RestaurantCart from "../components/RestaurantCart.vue";
 import CheckoutForm from "../components/CheckoutForm.vue";
 export default {
@@ -21,6 +28,7 @@ export default {
       store,
       restaurant: null,
       slug: this.$route.params.slug,
+      token: "null",
     };
   },
   components: {
@@ -34,12 +42,25 @@ export default {
         console.log(this.restaurant);
       });
     },
+    onSuccess(payload) {
+      let nonce = payload.nonce;
+    },
+    onError(error) {
+      let message = error.message;
+    },
+    getToken() {
+      axios.get(store.apiUrl + "orders/generate").then((res) => {
+        store.token = res.data.token;
+        console.log(this.token);
+      });
+    },
   },
   mounted() {
     this.getRestaurant();
     if (localStorage.getItem(this.slug)) {
       store.cart = JSON.parse(localStorage.getItem(this.slug));
     }
+    this.getToken();
   },
 };
 </script>
