@@ -272,6 +272,11 @@ export default {
                       const paymentData = {
                         token: "fake-valid-nonce",
                         amount: this.cartId,
+                        customer_email: this.email,
+                        shipping_address: this.address,
+                        customer_name: this.name,
+                        customer_lastname: this.surname,
+                        customer_phone: this.phone,
                       };
 
                       axios
