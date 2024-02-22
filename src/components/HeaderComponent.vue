@@ -82,6 +82,7 @@
           >
             <i class="fa-bars fa-solid fa-2x"></i>
           </div>
+          <ThemeSwitch />
           <div
             class="d-flex align-items-center darkmode"
             @click="store.darkMode = !store.darkMode"
@@ -113,6 +114,7 @@
 </template>
 
 <script>
+import ThemeSwitch from "./partials/ThemeSwitch.vue";
 import { store } from "../data/store";
 export default {
   name: "HeaderComponent",
@@ -122,6 +124,9 @@ export default {
       currentRoute: this.$route.path,
       hamburger: false,
     };
+  },
+  components: {
+    ThemeSwitch,
   },
   watch: {
     $route(to, from) {
