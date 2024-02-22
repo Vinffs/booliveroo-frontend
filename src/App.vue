@@ -1,5 +1,5 @@
 <template>
-  <div :class="(store.darkMode ? 'dark' : 'light')">
+  <div :class="store.darkMode ? 'dark' : 'light'">
     <header>
       <HeaderComponent />
     </header>
@@ -59,11 +59,10 @@ export default {
 //   $text-color: #000);
 // }
 
-
-main {
-  position: relative;
-  z-index: 5;
-}
+// main {
+//   position: relative;
+//   z-index: 5;
+// }
 
 @media screen and (max-width: 576px) {
   main {

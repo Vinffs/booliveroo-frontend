@@ -86,6 +86,7 @@ export default {
   // background-color: $bg-primary;
   padding: 50px 0;
   padding-top: 150px;
+  position: relative;
 
   .hero {
     height: 30vh;

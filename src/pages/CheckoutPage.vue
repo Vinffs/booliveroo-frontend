@@ -51,5 +51,7 @@ export default {
   color: $text-color;
   min-height: 70vh;
   margin-top: 100px;
+  position: relative;
+  z-index: 10;
 }
 </style>
