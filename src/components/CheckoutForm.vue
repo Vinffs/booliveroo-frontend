@@ -1,7 +1,12 @@
 <template>
   <div class="text-white">
     <h2 class="text-center pt-5 pb-4">Inserisci i tuoi dati</h2>
-    <form action="" class="rounded-3 p-4 shipping-data">
+    <form
+      action=""
+      class="rounded-3 p-4 shipping-data"
+      ref="form"
+      @submit.prevent="sendData()"
+    >
       <div class="d-flex justify-content-between align-items-center">
         <h2>Dati di consegna</h2>
         <span><span class="text-danger">*</span> campi obbligatori</span>
@@ -12,6 +17,7 @@
             >Nome <span class="text-danger">*</span></label
           >
           <input
+            required
             placeholder="Mario"
             type="text"
             v-model="name"
@@ -24,6 +30,7 @@
             >Cognome <span class="text-danger">*</span></label
           >
           <input
+            required
             placeholder="Rossi"
             v-model="surname"
             type="text"
@@ -37,6 +44,7 @@
           >Indirizzo di consegna <span class="text-danger">*</span></label
         >
         <input
+          required
           placeholder="Via Roma 25, 00100 Roma"
           v-model="address"
           type="text"
@@ -49,6 +57,7 @@
           >Indirizzo email <span class="text-danger">*</span></label
         >
         <input
+          required
           placeholder="indirizzo@email.it"
           v-model="email"
           type="email"
@@ -61,18 +70,20 @@
           >Numero di telefono <span class="text-danger">*</span></label
         >
         <input
+          required
           placeholder="111 111 1111"
           v-model="phone"
           type="tel"
           class="form-control"
           id="phone"
+          maxlength="10"
         />
       </div>
 
       <header>
         <h2 class="payment-title">Metodo di pagamento</h2>
       </header>
-      <form id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
+      <div id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
         <div class="cardinfo-card-number">
           <label class="cardinfo-label" for="card-number"
             >Numero Carta <span class="text-danger">*</span></label
@@ -100,7 +111,7 @@
             <div class="input-wrapper" id="cvv"></div>
           </div>
         </div>
-      </form>
+      </div>
 
       <input
         id="button-pay"
@@ -248,55 +259,66 @@ export default {
                 }
               });
 
-              const submit = document.querySelector('input[type="submit"]');
-              submit.addEventListener(
-                "click",
-                (event) => {
-                  event.preventDefault();
-                  hostedFieldsInstance.tokenize((err, payload) => {
-                    if (err) {
-                      console.error(err);
-                      return;
-                    }
-                    if (
-                      this.name !== "" &&
-                      this.surname !== "" &&
-                      this.address !== "" &&
-                      this.email !== "" &&
-                      this.phone !== ""
-                    ) {
-                      store.cart.forEach((value) => {
-                        this.cartId.push(value.id);
-                      });
-                      console.log(store.token);
-                      const paymentData = {
-                        token: "fake-valid-nonce",
-                        amount: this.cartId,
-                        customer_email: this.email,
-                        shipping_address: this.address,
-                        customer_name: this.name,
-                        customer_lastname: this.surname,
-                        customer_phone: this.phone,
-                      };
-
-                      axios
-                        .post(store.apiUrl + "orders/make-payment", paymentData)
-                        .then((res) => {
-                          console.log(res.data);
-                        });
-                    } else {
-                      alert(
-                        "Alcuni campi obbligatori non sono stati compilati"
-                      );
-                    }
-                  });
-                },
-                false
-              );
+              // const submit = document.querySelector('input[type="submit"]');
+              // submit.addEventListener(
+              //   "click",
+              //   (event) => {
+              //     event.preventDefault();
+              //     hostedFieldsInstance.tokenize((err, payload) => {
+              //       if (err) {
+              //         console.error(err);
+              //         return;
+              //       }
+              //       this.$refs.form.submit();
+              //     });
+              //   },
+              //   false
+              // );
             }
           );
         }
       );
+    },
+    sendData() {
+      let notNum = true;
+      const allNumns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+      for (let i = 0; i < this.phone.length; i++) {
+        if (!allNumns.includes(parseInt(this.phone[i]))) {
+          notNum = false;
+        }
+      }
+      if (
+        this.name !== "" &&
+        this.surname !== "" &&
+        this.address !== "" &&
+        this.email !== "" &&
+        this.phone !== "" &&
+        notNum
+      ) {
+        store.cart.forEach((value) => {
+          this.cartId.push(value.id);
+        });
+        console.log(store.token);
+        const paymentData = {
+          token: "fake-valid-nonce",
+          amount: this.cartId,
+          customer_email: this.email,
+          shipping_address: this.address,
+          customer_name: this.name,
+          customer_lastname: this.surname,
+          customer_phone: this.phone,
+        };
+
+        axios
+          .post(store.apiUrl + "orders/make-payment", paymentData)
+          .then((res) => {
+            console.log(res.data);
+          });
+      } else if (!notNum) {
+        alert("Il numero di telefono contiene dei caratteri non numerici");
+      } else {
+        alert("Alcuni campi obbligatori non sono stati compilati");
+      }
     },
   },
 };
