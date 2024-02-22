@@ -1,10 +1,6 @@
 <template>
   <div class="wrapper py-5" v-if="restaurant !== null">
     <div class="container">
-      <h1 class="mb-4">
-        Ricontrolla il tuo ordine presso {{ restaurant.name }}
-      </h1>
-
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
         <CheckoutForm />
