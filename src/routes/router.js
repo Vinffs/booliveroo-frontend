@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage.vue";
 // import AdvancedSearch from "@/pages/AdvancedSearch.vue";
 import RestaurantShow from "../pages/RestaurantShow.vue";
 import CheckoutPage from "../pages/CheckoutPage.vue";
+import OrderCompleted from "../pages/OrderCompleted.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/checkout/:slug",
       name: "checkout",
       component: CheckoutPage,
+    },
+    {
+      path: "/order-status",
+      name: "order",
+      component: OrderCompleted,
     },
     {
       path: "/:pathMatch(.*)*",
