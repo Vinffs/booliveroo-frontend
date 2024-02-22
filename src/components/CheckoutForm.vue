@@ -6,37 +6,86 @@
         <h2>Dati di consegna</h2>
         <span><span class="text-danger">*</span> campi obbligatori</span>
       </div>
+      <div class="d-flex align-items-center justify-content-between gx-2">
+        <div class="mb-3" style="width: 49.5%">
+          <label for="name" class="form-label"
+            >Nome <span class="text-danger">*</span></label
+          >
+          <input
+            placeholder="Mario"
+            type="text"
+            v-model="name"
+            class="form-control"
+            id="name"
+          />
+        </div>
+        <div class="mb-3" style="width: 49.5%">
+          <label for="surname" class="form-label"
+            >Cognome <span class="text-danger">*</span></label
+          >
+          <input
+            placeholder="Rossi"
+            v-model="surname"
+            type="text"
+            class="form-control"
+            id="surname"
+          />
+        </div>
+      </div>
       <div class="mb-3 w-100">
         <label for="address" class="form-label"
           >Indirizzo di consegna <span class="text-danger">*</span></label
         >
-        <input type="text" class="form-control w-75" id="address" />
+        <input
+          placeholder="Via Roma 25, 00100 Roma"
+          v-model="address"
+          type="text"
+          class="form-control"
+          id="address"
+        />
       </div>
       <div class="mb-3 w-100">
         <label for="email" class="form-label"
           >Indirizzo email <span class="text-danger">*</span></label
         >
-        <input type="email" class="form-control w-75" id="email" />
+        <input
+          placeholder="indirizzo@email.it"
+          v-model="email"
+          type="email"
+          class="form-control"
+          id="email"
+        />
       </div>
       <div class="mb-3 w-100">
-        <label for="name" class="form-label"
-          >Nome sul citofono <span class="text-danger">*</span></label
+        <label for="phone" class="form-label"
+          >Numero di telefono <span class="text-danger">*</span></label
         >
-        <input type="text" class="form-control w-75" id="name" />
+        <input
+          placeholder="111 111 1111"
+          v-model="phone"
+          type="tel"
+          class="form-control"
+          id="phone"
+        />
       </div>
+
       <header>
         <h2 class="payment-title">Metodo di pagamento</h2>
       </header>
       <form id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
         <div class="cardinfo-card-number">
-          <label class="cardinfo-label" for="card-number">Numero Carta</label>
+          <label class="cardinfo-label" for="card-number"
+            >Numero Carta <span class="text-danger">*</span></label
+          >
           <div class="input-wrapper" id="card-number"></div>
           <div id="card-image" ref="cardImage"></div>
         </div>
 
         <div class="cardinfo-wrapper">
           <div class="cardinfo-exp-date">
-            <label class="cardinfo-label" for="expiration-date">Scadenza</label>
+            <label class="cardinfo-label" for="expiration-date"
+              >Scadenza <span class="text-danger">*</span></label
+            >
             <div
               class="input-wrapper"
               placeholder="mm/yyyy"
@@ -45,7 +94,9 @@
           </div>
 
           <div class="cardinfo-cvv">
-            <label class="cardinfo-label" for="cvv">CVV</label>
+            <label class="cardinfo-label" for="cvv"
+              >CVV <span class="text-danger">*</span></label
+            >
             <div class="input-wrapper" id="cvv"></div>
           </div>
         </div>
@@ -75,6 +126,11 @@ export default {
       cardNumber: "",
       expirationDate: "",
       cvv: "",
+      name: "",
+      surname: "",
+      address: "",
+      email: "",
+      phone: "",
       store,
       cartId: [],
     };
@@ -134,7 +190,7 @@ export default {
               hostedFieldsInstance.on("empty", function (event) {
                 $("header").removeClass("header-slide");
                 $("#card-image").removeClass();
-                $(form).removeClass();
+                //$(form).removeClass();
               });
 
               hostedFieldsInstance.on("cardTypeChange", (event) => {
@@ -202,21 +258,32 @@ export default {
                       console.error(err);
                       return;
                     }
-                    // Invia payload.nonce al tuo server
-                    store.cart.forEach((value) => {
-                      this.cartId.push(value.id);
-                    });
-                    console.log(store.token);
-                    const paymentData = {
-                      token: "fake-valid-nonce",
-                      amount: this.cartId,
-                    };
-
-                    axios
-                      .post(store.apiUrl + "orders/make-payment", paymentData)
-                      .then((res) => {
-                        console.log(res.data);
+                    if (
+                      this.name !== "" &&
+                      this.surname !== "" &&
+                      this.address !== "" &&
+                      this.email !== "" &&
+                      this.phone !== ""
+                    ) {
+                      store.cart.forEach((value) => {
+                        this.cartId.push(value.id);
                       });
+                      console.log(store.token);
+                      const paymentData = {
+                        token: "fake-valid-nonce",
+                        amount: this.cartId,
+                      };
+
+                      axios
+                        .post(store.apiUrl + "orders/make-payment", paymentData)
+                        .then((res) => {
+                          console.log(res.data);
+                        });
+                    } else {
+                      alert(
+                        "Alcuni campi obbligatori non sono stati compilati"
+                      );
+                    }
                   });
                 },
                 false
@@ -366,7 +433,7 @@ label {
   position: relative;
   transition: all 500ms $bouncy;
   opacity: 0;
-  -webkit-appearance: none;
+  //-webkit-appearance: none;
 
   &:hover {
     background: lighten(#282c37, 20%);
