@@ -30,7 +30,7 @@ const router = createRouter({
     },
     {
       path: "/order-status",
-      name: "order",
+      name: "order-status",
       component: OrderCompleted,
     },
     {
