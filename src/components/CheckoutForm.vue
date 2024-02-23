@@ -1,39 +1,45 @@
 <template>
-  <div class="">
-    <h2 class="text-center pt-5 pb-4">Inserisci i tuoi dati</h2>
-    <form action="" class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent="sendData()">
+  <div>
+    <h2 class="text-center pt-5 pb-4" :class="store.darkMode ? 'text-light' : 'text-dark'">Inserisci i tuoi dati</h2>
+    <form :class="store.darkMode ? 'dark-secondary text-light' : 'light-secondary'" action=""
+      class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent="sendData()">
       <div class="d-flex justify-content-between align-items-center">
-        <h2>Dati di consegna</h2>
+        <h2 :class="store.darkMode ? 'text-light' : 'text-dark'">Dati di consegna</h2>
         <span><span class="text-danger">*</span> campi obbligatori</span>
       </div>
       <div class="d-flex align-items-center justify-content-between gx-2">
         <div class="mb-3" style="width: 49.5%">
-          <label for="name" class="form-label">Nome <span class="text-danger">*</span></label>
+          <label :class="store.darkMode ? 'text-light' : 'text-dark'" for="name" class="form-label">Nome <span
+              class="text-danger">*</span></label>
           <input required placeholder="Mario" type="text" v-model="name" class="form-control" id="name" />
         </div>
         <div class="mb-3" style="width: 49.5%">
-          <label for="surname" class="form-label">Cognome <span class="text-danger">*</span></label>
+          <label :class="store.darkMode ? 'text-light' : 'text-dark'" for="surname" class="form-label">Cognome <span
+              class="text-danger">*</span></label>
           <input required placeholder="Rossi" v-model="surname" type="text" class="form-control" id="surname" />
         </div>
       </div>
       <div class="mb-3 w-100">
-        <label for="address" class="form-label">Indirizzo di consegna <span class="text-danger">*</span></label>
+        <label :class="store.darkMode ? 'text-light' : 'text-dark'" for="address" class="form-label">Indirizzo di consegna
+          <span class="text-danger">*</span></label>
         <input required placeholder="Via Roma 25, 00100 Roma" v-model="address" type="text" class="form-control"
           id="address" />
       </div>
       <div class="mb-3 w-100">
-        <label for="email" class="form-label">Indirizzo email <span class="text-danger">*</span></label>
+        <label :class="store.darkMode ? 'text-light' : 'text-dark'" for="email" class="form-label">Indirizzo email <span
+            class="text-danger">*</span></label>
         <input required placeholder="indirizzo@email.it" v-model="email" type="email" class="form-control" id="email" />
       </div>
       <div class="mb-3 w-100">
-        <label for="phone" class="form-label">Numero di telefono <span class="text-danger">*</span></label>
+        <label :class="store.darkMode ? 'text-light' : 'text-dark'" for="phone" class="form-label">Numero di telefono
+          <span class="text-danger">*</span></label>
         <input required placeholder="111 111 1111" v-model="phone" type="tel" class="form-control" id="phone"
           maxlength="10" />
       </div>
 
       <div v-if="loading">
         <header>
-          <h2 class="payment-title">Metodo di pagamento</h2>
+          <h2 class="payment-title" :class="store.darkMode ? 'text-light' : 'text-dark'">Metodo di pagamento</h2>
         </header>
         <div id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
           <div class="cardinfo-card-number">
@@ -535,5 +541,4 @@ Animations
   60% {
     transform: translate3d(3px, 0, 0);
   }
-}
-</style>
+}</style>
