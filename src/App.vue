@@ -37,10 +37,11 @@ export default {
         console.log(res.data.data);
         store.dishes = res.data.data;
       });
-
+      store.categorysLoading = true;
       axios.get(store.apiUrl + "categories").then((res) => {
         console.log(res.data.data);
         store.categories = res.data.data;
+        store.categorysLoading = false;
       });
     },
   },

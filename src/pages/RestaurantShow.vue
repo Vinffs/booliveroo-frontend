@@ -1,22 +1,34 @@
 <template>
   <div class="wrapper-tot">
     <!-- <div class="hero"></div> -->
-    <div class="container">
+    <div v-if="!loading" class="container">
       <div v-if="restaruant" class="row">
         <div class="col-7 main">
           <!-- componente informazioni ristorante -->
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
           <div id="pulsante" class="rounded-5 p-1">
-            <div id="menu" :class="active ? 'my-bg-primary' : 'primary'" @click="active = false">
+            <div
+              id="menu"
+              :class="active ? 'my-bg-primary' : 'primary'"
+              @click="active = false"
+            >
               Menu
             </div>
-            <div id="info" :class="(active ? 'primary' : 'my-bg-primary')" @click="active = true">
+            <div
+              id="info"
+              :class="active ? 'primary' : 'my-bg-primary'"
+              @click="active = true"
+            >
               Info
             </div>
           </div>
           <!-- componente menu/info -->
-          <RestaurantInfo v-if="restaurant !== null" v-show="active" :info="restaruant" />
+          <RestaurantInfo
+            v-if="restaurant !== null"
+            v-show="active"
+            :info="restaruant"
+          />
           <RestaurantMenu :info="restaruant" v-show="!active" />
         </div>
         <div class="col-5">
@@ -24,6 +36,7 @@
         </div>
       </div>
     </div>
+    <LoadingComponent v-else />
   </div>
 </template>
 
@@ -34,6 +47,7 @@ import RestaurantBadge from "@/components/RestaurantBadge.vue";
 import RestaurantCart from "@/components/RestaurantCart.vue";
 import RestaurantInfo from "@/components/RestaurantInfo.vue";
 import RestaurantMenu from "@/components/RestaurantMenu.vue";
+import LoadingComponent from "@/components/LoadingComponent.vue";
 export default {
   name: "RestaurantShow",
   components: {
@@ -41,6 +55,7 @@ export default {
     RestaurantCart,
     RestaurantInfo,
     RestaurantMenu,
+    LoadingComponent,
   },
   data() {
     return {
@@ -48,15 +63,18 @@ export default {
       restaurantSlug: this.$route.params.slug,
       restaruant: null,
       active: false,
+      loading: false,
     };
   },
   methods: {
     getRestaurant() {
+      this.loading = true;
       axios
         .get(store.apiUrl + "restaurants/" + this.restaurantSlug)
         .then((res) => {
           this.restaruant = res.data.data;
           console.log(this.restaruant);
+          this.loading = false;
         });
     },
   },
@@ -75,13 +93,17 @@ export default {
   padding: 50px 0;
   padding-top: 150px;
   position: relative;
+  min-height: 70vh;
+  z-index: 10;
 
   .hero {
     height: 30vh;
     width: 100%;
-    background: radial-gradient(circle at center,
-        $primary 0%,
-        $bg-primary 100%);
+    background: radial-gradient(
+      circle at center,
+      $primary 0%,
+      $bg-primary 100%
+    );
   }
 
   .container {

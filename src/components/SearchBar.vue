@@ -1,19 +1,43 @@
 <template>
-  <div class="rounded-4 shadowed" id="searchbar" :class="(store.darkMode ? 'dark-secondary' : 'light-secondary')">
+  <div
+    class="rounded-4 shadowed"
+    id="searchbar"
+    :class="store.darkMode ? 'dark-secondary' : 'light-secondary'"
+  >
     <h1 class="fw-bold text-center">Il cibo che vuoi, quando vuoi</h1>
-    <h5 class="py-2 text-center" :class="(store.darkMode ? 'text-light' : 'text-dark')">
+    <h5
+      class="py-2 text-center"
+      :class="store.darkMode ? 'text-light' : 'text-dark'"
+    >
       Ordina online dai tuoi ristoranti preferiti
     </h5>
-    <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
-      @click.stop="store.search = true" @keydown="getRestaurants()" />
-    <div id="search-button" @click.stop="(searchInput = ''), getRestaurants(), (store.search = true)">
-      <i v-if="searchInput === ''.trim()" class="fa-solid fs-5 fa-magnifying-glass"></i>
+    <input
+      autocomplete="off"
+      id="search"
+      v-model="searchInput"
+      type="text"
+      placeholder="Cerca un ristorante..."
+      @click.stop="store.search = true"
+      @keydown="getRestaurants()"
+    />
+    <div
+      id="search-button"
+      @click.stop="(searchInput = ''), getRestaurants(), (store.search = true)"
+    >
+      <i
+        v-if="searchInput === ''.trim()"
+        class="fa-solid fs-5 fa-magnifying-glass"
+      ></i>
       <i v-else class="fa-solid fa-xmark fs-5"></i>
     </div>
     <div class="my-dropdown">
       <div v-if="store.search">
-        <router-link class="item" v-for="item in store.searchedRestaurants"
-          :to="{ name: 'restaurantShow', params: { slug: item.slug } }">
+        <router-link
+          v-if="!loading"
+          class="item"
+          v-for="item in store.searchedRestaurants"
+          :to="{ name: 'restaurantShow', params: { slug: item.slug } }"
+        >
           <h5 class="ps-4">{{ item.name }}</h5>
           <div class="d-flex justify-content-around align-items-center">
             <p class="px-2">
@@ -21,6 +45,7 @@
             </p>
           </div>
         </router-link>
+        <LoadingComponent class="my-5" v-else />
       </div>
     </div>
   </div>
@@ -29,16 +54,19 @@
 <script>
 import axios from "axios";
 import { store } from "../data/store";
+import LoadingComponent from "./LoadingComponent.vue";
 export default {
   name: "SearchBar",
   data() {
     return {
       store,
       searchInput: "",
+      loading: false,
     };
   },
   methods: {
     getRestaurants() {
+      this.loading = true;
       setTimeout(() => {
         axios
           .get(store.apiUrl + "restaurants", {
@@ -46,10 +74,12 @@ export default {
           })
           .then((res) => {
             store.searchedRestaurants = res.data.data;
+            this.loading = false;
           });
       }, 0);
     },
   },
+  components: { LoadingComponent },
 };
 </script>
 

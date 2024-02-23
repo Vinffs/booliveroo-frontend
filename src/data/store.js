@@ -14,4 +14,6 @@ export const store = reactive({
   cart: [],
   darkMode: false,
   token: null,
+  categoryLoading: false,
+  restaurantsLoading: false,
 });

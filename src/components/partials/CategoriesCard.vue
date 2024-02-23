@@ -1,9 +1,20 @@
 <template>
-  <div @click="addFilter()" @mouseenter="animation = true" @mouseleave="animation = false"
+  <div
+    @click="addFilter()"
+    @mouseenter="animation = true"
+    @mouseleave="animation = false"
     class="wrapper rounded-2 shadowed d-flex flex-column justify-content-center align-items-center"
-    :class="{ 'background-magenta': isActive() }">
-    <h5 :class="(store.darkMode ? 'text-light' : 'text-dark')">{{ category.name }}</h5>
-    <img :class="{ 'bounce-7': animation }" class="w-50" :src="store.imagePath + category.image" :alt="category.name" />
+    :class="{ 'background-magenta': isActive() }"
+  >
+    <h5 :class="store.darkMode ? 'text-light' : 'text-dark'">
+      {{ category.name }}
+    </h5>
+    <img
+      :class="{ 'bounce-7': animation }"
+      class="w-50"
+      :src="store.imagePath + category.image"
+      :alt="category.name"
+    />
   </div>
 </template>
 
@@ -36,6 +47,7 @@ export default {
       if (!alreadyExists) {
         store.filterCategories.push(this.category.id);
       }
+      store.restaurantsLoading = true;
 
       axios
         .get(store.apiUrl + "restaurants", {
@@ -44,6 +56,7 @@ export default {
         .then((res) => {
           console.log(res.data.data);
           store.filteredRestaurants = res.data.data;
+          store.restaurantsLoading = false;
         });
     },
     isActive() {

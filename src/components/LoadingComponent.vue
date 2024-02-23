@@ -19,6 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "../assets/styles/partials/variables" as *;
 .atom-spinner,
 .atom-spinner * {
   box-sizing: border-box;
@@ -40,7 +41,7 @@ export default {
 .atom-spinner .spinner-circle {
   display: block;
   position: absolute;
-  color: #ff1d5e;
+  color: $primary;
   font-size: calc(60px * 0.24);
   top: 50%;
   left: 50%;
@@ -55,7 +56,7 @@ export default {
   animation-duration: 1s;
   border-left-width: calc(60px / 25);
   border-top-width: calc(60px / 25);
-  border-left-color: #ff1d5e;
+  border-left-color: $primary;
   border-left-style: solid;
   border-top-style: solid;
   border-top-color: transparent;

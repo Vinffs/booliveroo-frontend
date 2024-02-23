@@ -8,6 +8,7 @@
         v-if="store.categories.length > 0 && store.restaurants.length > 0"
       /> -->
       <AdvancedSearch v-if="store.categories.length > 0" />
+      <LoadingComponent class="my-5" v-else />
     </div>
   </div>
   <BlogHome :class="store.darkMode ? 'dark-secondary' : 'light-secondary'" />
@@ -21,6 +22,7 @@ import RestaurantsHome from "@/components/RestaurantsHome.vue";
 import SaleHome from "@/components/SaleHome.vue";
 import BlogHome from "@/components/BlogHome.vue";
 import AdvancedSearch from "./AdvancedSearch.vue";
+import LoadingComponent from "../components/LoadingComponent.vue";
 export default {
   name: "HomePage",
   components: {
@@ -30,6 +32,7 @@ export default {
     SaleHome,
     BlogHome,
     AdvancedSearch,
+    LoadingComponent,
   },
   data() {
     return {
