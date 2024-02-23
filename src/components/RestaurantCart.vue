@@ -10,7 +10,17 @@
       class="p-3 d-flex justify-content-between align-items-center"
     >
       <div v-if="!checkout">
-        <i v-if="!checkout" class="fa-solid fa-cart-shopping"></i>
+        <span
+          class="me-3 d-inline-block d-lg-none"
+          @click="$emit('toggleCart')"
+        >
+          <i class="fa-solid fa-arrow-left"></i
+        ></span>
+        <i
+          v-if="!checkout"
+          class="fa-solid fa-cart-shopping d-none d-lg-inline"
+        ></i>
+
         <span v-if="!checkout">Carrello</span>
         <span v-else>Conferma il tuo ordine</span>
       </div>
@@ -281,6 +291,7 @@ export default {
 @media screen and (max-width: 992px) {
   .cart {
     .elements {
+      max-height: 65vh;
       .element {
         .buttons {
           position: static;

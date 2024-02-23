@@ -33,6 +33,7 @@
         </div>
         <div class="col-5">
           <RestaurantCart
+            @toggle-cart="cartToggle = !cartToggle"
             :info="restaruant"
             :checkout="false"
             class="cart"
