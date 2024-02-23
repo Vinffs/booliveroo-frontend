@@ -56,42 +56,63 @@
   <header>
     <div class="container-fluid">
       <nav class="row justify-content-between align-items-center">
-        <div class="logo col-6">
-          <router-link :to="{ name: 'home' }" class="row justify-content-start align-items-center text-decoration-none">
+        <div class="logo col-5">
+          <router-link
+            :to="{ name: 'home' }"
+            class="row justify-content-start align-items-center text-decoration-none"
+          >
             <div style="width: 100px">
-              <img src="/images/logo-booliveroo-2.png" alt="logo" class="w-100 logo" />
+              <img
+                src="/images/logo-booliveroo-2.png"
+                alt="logo"
+                class="w-100 logo"
+              />
             </div>
             <h1 class="mb-0 col d-none d-sm-block" style="margin-left: -1em">
               ooliveroo
             </h1>
           </router-link>
         </div>
-        <div class="col text-end d-flex justify-content-end position-relative">
-          <div class="d-block d-sm-none bars" style="cursor: pointer" @click="hamburger = !hamburger"
-            :class="{ change: hamburger }">
+        <div
+          class="col-7 text-end d-flex justify-content-end position-relative"
+        >
+          <div
+            class="d-block d-sm-none bars"
+            style="cursor: pointer"
+            @click="hamburger = !hamburger"
+            :class="{ change: hamburger }"
+          >
             <i class="fa-bars fa-solid fa-2x"></i>
           </div>
           <!-- <ThemeSwitch /> -->
-          <DarkModeToggle />
+
           <!-- <div
             class="d-flex align-items-center darkmode"
             @click="store.darkMode = !store.darkMode"
           >
             <i class="fa-solid fa-moon fs-3"></i>
           </div> -->
-          <div class="text-center back-link py-2 shadowed" :class="{ appeard: hamburger }">
+          <div
+            class="text-center back-link py-2 shadowed d-block d-sm-flex"
+            :class="{ appeard: hamburger }"
+          >
+            <DarkModeToggle />
             <div>
               <h5>Sei un Ristoratore?</h5>
-              <a href="http://localhost:8000" class="btn btn-dark rounded-pill">Clicca qui!</a>
+              <a href="http://localhost:8000" class="btn btn-dark rounded-pill"
+                >Clicca qui!</a
+              >
             </div>
           </div>
         </div>
       </nav>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#fe4a49" fill-opacity="1"
-        d="M0,96L30,90.7C60,85,120,75,180,85.3C240,96,300,128,360,122.7C420,117,480,75,540,74.7C600,75,660,117,720,133.3C780,149,840,139,900,144C960,149,1020,171,1080,197.3C1140,224,1200,256,1260,245.3C1320,235,1380,181,1410,154.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-      </path>
+      <path
+        fill="#fe4a49"
+        fill-opacity="1"
+        d="M0,96L30,90.7C60,85,120,75,180,85.3C240,96,300,128,360,122.7C420,117,480,75,540,74.7C600,75,660,117,720,133.3C780,149,840,139,900,144C960,149,1020,171,1080,197.3C1140,224,1200,256,1260,245.3C1320,235,1380,181,1410,154.7L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+      ></path>
     </svg>
   </header>
 </template>
@@ -111,7 +132,7 @@ export default {
   },
   components: {
     ThemeSwitch,
-    DarkModeToggle
+    DarkModeToggle,
   },
   watch: {
     $route(to, from) {
@@ -191,6 +212,18 @@ header {
     i::before {
       content: "\f00d";
     }
+  }
+}
+
+@media screen and (max-width: 976px) {
+  .back-link {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 976px) {
+  .back-link {
+    width: 50%;
   }
 }
 </style>
