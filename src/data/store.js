@@ -16,4 +16,5 @@ export const store = reactive({
   token: null,
   categoryLoading: false,
   restaurantsLoading: false,
+  status: false,
 });

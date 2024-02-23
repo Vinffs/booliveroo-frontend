@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-tot d-flex justify-content-center align-items-center">
-    <OrderSuccess v-if="$route.params.success" />
+    <OrderSuccess v-if="store.status" />
     <OrderFailed v-else />
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/styles/partials/variables" as *;
+
 .wrapper-tot {
   position: relative;
   z-index: 10;

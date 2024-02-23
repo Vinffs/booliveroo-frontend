@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <h2 class="text-center pt-5 pb-4">Inserisci i tuoi dati</h2>
-    <form action="" class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent="sendData()">
+    <form action="" class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent>
       <div class="d-flex justify-content-between align-items-center">
         <h2>Dati di consegna</h2>
         <span><span class="text-danger">*</span> campi obbligatori</span>
@@ -57,7 +57,9 @@
       </div>
       <LoadingComponent class="my-5" v-else />
 
-      <input id="button-pay" type="submit" value="Continue" :class="{ 'show-button': isShowButton }" />
+      <input id="button-pay" type="submit" value="Continue" :class="{ 'show-button': isShowButton }"
+        @click="sendData()" />
+      <input type="hidden" id="nonce" name="payment_method_nonce" ref="nonce" />
     </form>
   </div>
 </template>
@@ -82,9 +84,11 @@ export default {
       address: "",
       email: "",
       phone: "",
+      serverToken: "",
       store,
       cartId: [],
       loading: false,
+      hostedFieldsInstance: null,
     };
   },
   props: {
@@ -96,6 +100,7 @@ export default {
   },
   mounted() {
     this.loading = false;
+    this.serverToken = "";
     setTimeout(() => {
       braintree.client.create(
         {
@@ -161,6 +166,14 @@ export default {
                     value: "123",
                   });
                 }
+                // hostedFieldsInstance.tokenize((err, payload) => {
+                //   if (err) {
+                //     console.error(err);
+                //     return;
+                //   }
+                //   console.log(payload);
+                //   this.serverToken = payload.nonce;
+                // });
 
                 // Change card bg depending on card type
                 if (event.cards.length === 1) {
@@ -201,22 +214,6 @@ export default {
                   );
                 }
               });
-
-              // const submit = document.querySelector('input[type="submit"]');
-              // submit.addEventListener(
-              //   "click",
-              //   (event) => {
-              //     event.preventDefault();
-              //     hostedFieldsInstance.tokenize((err, payload) => {
-              //       if (err) {
-              //         console.error(err);
-              //         return;
-              //       }
-              //       this.$refs.form.submit();
-              //     });
-              //   },
-              //   false
-              // );
             }
           );
         }
@@ -225,7 +222,9 @@ export default {
     }, 1000); // Adjust the delay as needed
   },
   methods: {
+
     sendData() {
+      // this control that phone is all numbers
       let notNum = true;
       const allNumns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
       for (let i = 0; i < this.phone.length; i++) {
@@ -244,7 +243,6 @@ export default {
         store.cart.forEach((value) => {
           this.cartId.push(value.id);
         });
-        console.log(store.token);
         const paymentData = {
           token: "fake-valid-nonce",
           amount: this.cartId,
@@ -258,10 +256,11 @@ export default {
         axios
           .post(store.apiUrl + "orders/make-payment", paymentData)
           .then((res) => {
-            console.log(res.data);
-            this.$router.push('/order-status', { params: { success: true } });
+            store.status = res.data.success;
+            this.$router.push('/order-status');
           }).catch((err) => {
-            this.$router.push('/order-status', { params: { success: false } });
+            //   this.$router.push('/order-status', { params: { success: false } });
+            // });
           });
       } else if (!notNum) {
         alert("Il numero di telefono contiene dei caratteri non numerici");
@@ -269,7 +268,9 @@ export default {
         alert("Alcuni campi obbligatori non sono stati compilati");
       }
     },
+
   },
+
 };
 </script>
 
