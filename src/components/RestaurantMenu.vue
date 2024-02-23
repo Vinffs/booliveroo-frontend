@@ -15,12 +15,25 @@
         <div
           class="d-flex text-sm-center d-sm-block align-items-center justify-content-around w-100"
         >
-          <p class="text-sm-center text-start mb-sm-3">€ {{ item.price }}</p>
+          <p
+            class="text-sm-center text-start mb-sm-3"
+            :class="{ 'text-decoration-line-through': !item.visible }"
+          >
+            € {{ item.price }}
+          </p>
           <div class="btn btn-primary rounded-pill" @click="addToCart(item)">
-            <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
-            <span class="d-inline d-sm-none"
-              ><i class="fa-solid fa-cart-plus"></i
-            ></span>
+            <span v-if="item.visible">
+              <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
+              <span class="d-inline d-sm-none"
+                ><i class="fa-solid fa-cart-plus"></i
+              ></span>
+            </span>
+            <span v-else>
+              <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
+              <span class="d-inline d-sm-none"
+                ><i class="fa-solid fa-ban"></i
+              ></span>
+            </span>
           </div>
         </div>
       </div>
