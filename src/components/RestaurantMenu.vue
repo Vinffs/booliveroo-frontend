@@ -1,16 +1,52 @@
 <template>
-  <div class="wrapper rounded-3" :class="(store.darkMode ? 'text-light dark-secondary' : 'text-dark light-secondary')">
-    <div v-for="item in info.dishes" class="dish p-4 d-flex align-items-center justify-content-evenly">
-      <div class="d-flex flex-column align-items-center gap-3">
+  <div
+    class="wrapper rounded-3"
+    :class="
+      store.darkMode ? 'text-light dark-secondary' : 'text-dark light-secondary'
+    "
+  >
+    <div
+      v-for="item in info.dishes"
+      class="dish p-4 d-flex align-items-center justify-content-evenly"
+    >
+      <div class="d-flex flex-column align-items-center gap-3 mt-3 mt-sm-0">
         <h4>{{ item.name }}</h4>
         <p>{{ item.ingredients }}</p>
-        <p>€ {{ item.price }}</p>
-        <div class="btn btn-primary rounded-pill" @click="addToCart(item)">
-          Aggiungi al Carrello
+        <div
+          class="d-flex text-sm-center d-sm-block align-items-center justify-content-around w-100"
+        >
+          <p
+            class="text-sm-center text-start mb-sm-3"
+            :class="{ 'text-decoration-line-through': !item.visible }"
+          >
+            € {{ item.price }}
+          </p>
+          <div
+            :class="{ disabled: !aitem.visible }"
+            class="btn btn-primary rounded-pill"
+            @click="addToCart(item)"
+          >
+            <span v-if="item.visible">
+              <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
+              <span class="d-inline d-sm-none"
+                ><i class="fa-solid fa-cart-plus"></i
+              ></span>
+            </span>
+            <span v-else>
+              <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
+              <span class="d-inline d-sm-none"
+                ><i class="fa-solid fa-ban"></i
+              ></span>
+            </span>
+          </div>
         </div>
       </div>
       <div class="w-50 image-container rounded-2">
-        <img class="dish-image" :src="store.imagePath + item.image" :alt="item.name" />
+        <img
+          class="dish-image"
+          :src="store.imagePath + item.image"
+          :alt="item.name"
+        />
       </div>
     </div>
   </div>
@@ -67,6 +103,19 @@ export default {
     h4,
     p {
       margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dish {
+    flex-direction: column-reverse;
+
+    max-height: fit-content !important;
+    .image-container {
+      img {
+        object-fit: contain;
+      }
     }
   }
 }

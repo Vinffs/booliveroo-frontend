@@ -10,7 +10,17 @@
       class="p-3 d-flex justify-content-between align-items-center"
     >
       <div v-if="!checkout">
-        <i v-if="!checkout" class="fa-solid fa-cart-shopping"></i>
+        <span
+          class="me-3 d-inline-block d-lg-none"
+          @click="$emit('toggleCart')"
+        >
+          <i class="fa-solid fa-arrow-left"></i
+        ></span>
+        <i
+          v-if="!checkout"
+          class="fa-solid fa-cart-shopping d-none d-lg-inline"
+        ></i>
+
         <span v-if="!checkout">Carrello</span>
         <span v-else>Conferma il tuo ordine</span>
       </div>
@@ -45,28 +55,28 @@
     <div v-if="store.cart.length > 0" class="container-fluid elements">
       <div v-for="item in cartNotRepeated()" class="py-2 element px-3">
         <div>
-          <div class="buttons rounded-4">
-            <div @click="updateCart(item, 'clear')">
-              <i class="fa-solid fs-3 fa-trash"></i>
-            </div>
-            <div @click="updateCart(item, 'remove')">
-              <i class="fa-solid fs-2 fa-square-minus"></i>
-            </div>
-            <div @click="updateCart(item, 'add')">
-              <i class="fa-solid fs-2 fa-square-plus"></i>
-            </div>
-          </div>
           <div class="row justify-content-between">
-            <div class="col-3">
+            <div class="col-sm-4 col-lg-3 col-10">
               <img
                 :src="store.imagePath + item.image"
                 class="w-100"
                 :alt="item.name"
               />
             </div>
+            <div class="buttons col-2 rounded-4">
+              <div @click="updateCart(item, 'clear')">
+                <i class="fa-solid fs-3 fa-trash"></i>
+              </div>
+              <div @click="updateCart(item, 'remove')">
+                <i class="fa-solid fs-2 fa-square-minus"></i>
+              </div>
+              <div @click="updateCart(item, 'add')">
+                <i class="fa-solid fs-2 fa-square-plus"></i>
+              </div>
+            </div>
             <div
               v-if="!checkout"
-              class="col-5 text-start d-flex flex-column justify-content-around"
+              class="col-6 col-sm-3 col-lg-5 text-start d-flex flex-column justify-content-around mt-3 mt-sm-0"
             >
               <h5>{{ item.name }}</h5>
               <h5>€ {{ item.price }}</h5>
@@ -80,7 +90,7 @@
             </div>
             <div
               v-if="!checkout"
-              class="col-4 text-end d-flex flex-column justify-content-around"
+              class="col-6 col-sm-3 col-lg-4 text-end d-flex flex-column justify-content-around mt-3 mt-sm-0"
             >
               <h4>x {{ quantity(item) }}</h4>
               <h5>€ {{ (item.price * quantity(item)).toFixed(2) }}</h5>
@@ -276,6 +286,33 @@ export default {
 @media screen and (min-width: 992px) {
   .cart {
     max-height: 90vh;
+    .elements {
+      max-height: 65vh;
+      .element {
+        .buttons {
+          width: auto !important;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  .cart {
+    .elements {
+      max-height: 65vh;
+      .element {
+        .buttons {
+          position: static;
+          flex-direction: column;
+          background-color: transparent;
+          justify-content: space-evenly;
+          height: auto;
+          i {
+            font-size: 2em !important;
+          }
+        }
+      }
+    }
   }
 }
 </style>

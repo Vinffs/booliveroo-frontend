@@ -33,6 +33,7 @@
         </div>
         <div class="col-5">
           <RestaurantCart
+            @toggle-cart="cartToggle = !cartToggle"
             :info="restaruant"
             :checkout="false"
             class="cart"
@@ -42,6 +43,7 @@
             @click="cartToggle = !cartToggle"
             class="shadowed d-block d-lg-none rounded-circle d-flex justify-content-center align-items-center cart-button"
           >
+            <div class="num">{{ store.cart.length }}</div>
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
         </div>
@@ -190,6 +192,23 @@ export default {
     &:hover {
       background-color: lighten($primary, 10%);
     }
+    .num {
+      position: absolute;
+      z-index: 100;
+      font-size: 0.7em;
+      top: 2px;
+      right: 2px;
+      background-color: $text-color;
+      color: $primary;
+      border-radius: 50%;
+      width: 1.5em;
+      height: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translate(28%, -28%);
+      font-weight: bold;
+    }
   }
 
   .cart {
@@ -200,6 +219,7 @@ export default {
     left: 0;
     scale: 0;
     opacity: 0;
+    z-index: 101;
     transition: all 0.3s ease;
 
     &.active {
