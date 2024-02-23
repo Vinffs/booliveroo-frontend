@@ -21,7 +21,11 @@
           >
             € {{ item.price }}
           </p>
-          <div class="btn btn-primary rounded-pill" @click="addToCart(item)">
+          <div
+            :class="{ disabled: !aitem.visible }"
+            class="btn btn-primary rounded-pill"
+            @click="addToCart(item)"
+          >
             <span v-if="item.visible">
               <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
               <span class="d-inline d-sm-none"
