@@ -1,43 +1,19 @@
 <template>
-  <div
-    class="rounded-4 shadowed"
-    id="searchbar"
-    :class="store.darkMode ? 'dark-secondary' : 'light-secondary'"
-  >
+  <div class="rounded-4 shadowed" id="searchbar" :class="store.darkMode ? 'dark-secondary' : 'light-secondary'">
     <h1 class="fw-bold text-center">Il cibo che vuoi, quando vuoi</h1>
-    <h5
-      class="py-2 text-center"
-      :class="store.darkMode ? 'text-light' : 'text-dark'"
-    >
+    <h5 class="py-2 text-center" :class="store.darkMode ? 'text-light' : 'text-dark'">
       Ordina online dai tuoi ristoranti preferiti
     </h5>
-    <input
-      autocomplete="off"
-      id="search"
-      v-model="searchInput"
-      type="text"
-      placeholder="Cerca un ristorante..."
-      @click.stop="store.search = true"
-      @keydown="getRestaurants()"
-    />
-    <div
-      id="search-button"
-      @click.stop="(searchInput = ''), getRestaurants(), (store.search = true)"
-    >
-      <i
-        v-if="searchInput === ''.trim()"
-        class="fa-solid fs-5 fa-magnifying-glass"
-      ></i>
+    <input autocomplete="off" id="search" v-model="searchInput" type="text" placeholder="Cerca un ristorante..."
+      @click.stop="store.search = true" @keydown="getRestaurants()" />
+    <div id="search-button" @click.stop="(searchInput = ''), getRestaurants(), (store.search = true)">
+      <i v-if="searchInput === ''.trim()" class="fa-solid fs-5 fa-magnifying-glass"></i>
       <i v-else class="fa-solid fa-xmark fs-5"></i>
     </div>
     <div class="my-dropdown">
       <div v-if="store.search">
-        <router-link
-          v-if="!loading"
-          class="item"
-          v-for="item in store.searchedRestaurants"
-          :to="{ name: 'restaurantShow', params: { slug: item.slug } }"
-        >
+        <router-link v-if="!loading" class="item" :class="store.darkMode ? 'hover-dark' : 'hover-light'"
+          v-for="item in store.searchedRestaurants" :to="{ name: 'restaurantShow', params: { slug: item.slug } }">
           <h5 class="ps-4">{{ item.name }}</h5>
           <div class="d-flex justify-content-around align-items-center">
             <p class="px-2">
@@ -104,6 +80,16 @@ export default {
     border-radius: 3em;
   }
 
+  .hover-dark {
+    background-color: $bg-secondary-darkmode;
+    color: $text-color-darkmode;
+  }
+
+  .hover-light {
+    background-color: $bg-secondary;
+    color: $text-color;
+  }
+
   .my-dropdown {
     position: absolute;
     z-index: 11;
@@ -123,10 +109,6 @@ export default {
       text-decoration: none;
       color: black;
 
-      &:hover {
-        background-color: $bg-secondary;
-        color: white;
-      }
     }
   }
 
