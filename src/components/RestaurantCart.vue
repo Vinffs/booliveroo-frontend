@@ -231,7 +231,8 @@ export default {
           margin: 0 0.5em;
 
           &:hover {
-            color: darken($color: $primary, $amount: 10);
+            // color: darken($color: $primary, $amount: 10);
+            scale: 1.1;
           }
         }
       }
