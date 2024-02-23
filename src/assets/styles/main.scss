@@ -41,3 +41,11 @@ $fa-font-path: "../webfonts";
 .image-dark {
   background: radial-gradient(ellipse at center, $primary 0%, #3d3c3c 100%);
 }
+
+.primary-light {
+  background-color: $primary;
+}
+
+.primary-dark {
+  background-color: $primary-darkmode;
+}

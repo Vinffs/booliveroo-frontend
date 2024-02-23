@@ -1,14 +1,7 @@
 <template>
-  <div
-    class="cart rounded-3"
-    :class="
-      store.darkMode ? 'text-light dark-secondary' : 'text-dark light-secondary'
-    "
-  >
-    <h2
-      v-if="!checkout"
-      class="p-3 d-flex justify-content-between align-items-center"
-    >
+  <div class="cart rounded-3" :class="store.darkMode ? 'text-light dark-secondary' : 'text-dark light-secondary'
+    ">
+    <h2 v-if="!checkout" class="p-3 d-flex justify-content-between align-items-center">
       <div v-if="!checkout">
         <i v-if="!checkout" class="fa-solid fa-cart-shopping"></i>
         <span v-if="!checkout">Carrello</span>
@@ -16,15 +9,11 @@
       </div>
 
       <div v-if="store.cart.length > 0">
-        <button
-          v-if="!checkout"
-          class="btn checkout py-2 px-4 fs-5 rounded-pill"
-          @click="
-            $router.push('/checkout/' + info.slug, {
-              params: { restaurant: info },
-            })
-          "
-        >
+        <button v-if="!checkout" class="btn checkout py-2 px-4 fs-5 rounded-pill" @click="
+          $router.push('/checkout/' + info.slug, {
+            params: { restaurant: info },
+          })
+          ">
           Pagamento
         </button>
       </div>
@@ -32,14 +21,9 @@
     <h1 v-if="checkout" class="p-3">
       Ricontrolla il tuo ordine presso {{ info.name }}
     </h1>
-    <h3
-      v-if="store.cart.length > 0"
-      class="p-3 py-4 d-flex justify-content-between align-items-center"
-    >
-      <span :class="{ 'fs-1': checkout }">I tuoi prodotti</span
-      ><span :class="{ 'fs-1': checkout }"
-        >Totale: € {{ totalPrice().toFixed(2) }}</span
-      >
+    <h3 v-if="store.cart.length > 0" class="p-3 py-4 d-flex justify-content-between align-items-center">
+      <span :class="{ 'fs-1': checkout }">I tuoi prodotti</span><span :class="{ 'fs-1': checkout }">Totale: € {{
+        totalPrice().toFixed(2) }}</span>
     </h3>
 
     <div v-if="store.cart.length > 0" class="container-fluid elements">
@@ -58,37 +42,21 @@
           </div>
           <div class="row justify-content-between">
             <div class="col-3">
-              <img
-                :src="store.imagePath + item.image"
-                class="w-100"
-                :alt="item.name"
-              />
+              <img :src="store.imagePath + item.image" class="w-100" :alt="item.name" />
             </div>
-            <div
-              v-if="!checkout"
-              class="col-5 text-start d-flex flex-column justify-content-around"
-            >
+            <div v-if="!checkout" class="col-5 text-start d-flex flex-column justify-content-around">
               <h5>{{ item.name }}</h5>
               <h5>€ {{ item.price }}</h5>
             </div>
-            <div
-              v-else
-              class="col-5 text-start d-flex flex-column justify-content-around"
-            >
+            <div v-else class="col-5 text-start d-flex flex-column justify-content-around">
               <h2>{{ item.name }}</h2>
               <h2>€ {{ item.price }}</h2>
             </div>
-            <div
-              v-if="!checkout"
-              class="col-4 text-end d-flex flex-column justify-content-around"
-            >
+            <div v-if="!checkout" class="col-4 text-end d-flex flex-column justify-content-around">
               <h4>x {{ quantity(item) }}</h4>
               <h5>€ {{ (item.price * quantity(item)).toFixed(2) }}</h5>
             </div>
-            <div
-              v-else
-              class="col-4 text-end d-flex flex-column justify-content-around"
-            >
+            <div v-else class="col-4 text-end d-flex flex-column justify-content-around">
               <h2>x {{ quantity(item) }}</h2>
               <h2>€ {{ (item.price * quantity(item)).toFixed(2) }}</h2>
             </div>
@@ -96,10 +64,7 @@
         </div>
       </div>
     </div>
-    <div
-      v-else
-      class="d-flex justify-content-center align-items-center pb-5 pt-4"
-    >
+    <div v-else class="d-flex justify-content-center align-items-center pb-5 pt-4">
       <h3 class="text-center fw-bold">
         Che aspetti? <br />
         Scegli i tuoi piatti preferiti!
@@ -239,7 +204,8 @@ export default {
       }
 
       &:hover {
-        background-color: lighten($color: $bg-secondary, $amount: 8);
+        background-color: $primary;
+        border-radius: 1em;
 
         .buttons {
           bottom: 0;
@@ -253,19 +219,20 @@ export default {
         right: 0;
         transition: all 0.3s ease;
         display: flex;
-        background-color: lighten($color: $bg-secondary, $amount: 8);
+        background-color: $primary;
         height: 45%;
         align-items: center;
         z-index: 100;
 
         div {
           cursor: pointer;
-          color: $primary;
+          color: $bg-primary-darkmode;
           transition: all 0.3s ease;
           margin: 0 0.5em;
 
           &:hover {
-            color: darken($color: $primary, $amount: 10);
+            // color: darken($color: $primary, $amount: 10);
+            scale: 1.1;
           }
         }
       }

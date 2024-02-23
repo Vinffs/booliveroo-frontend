@@ -7,41 +7,22 @@
           <!-- componente informazioni ristorante -->
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
-          <div id="pulsante" class="rounded-5 p-1">
-            <div
-              id="menu"
-              :class="active ? 'my-bg-primary' : 'primary'"
-              @click="active = false"
-            >
-              Menu
+          <div id="pulsante" class="rounded-5">
+            <div id="menu" :class="backgroundButton('menu')" @click="active = false">
+              <span class="fw-semibold" :class="(store.darkMode ? 'text-light' : 'text-dark')">Menu</span>
             </div>
-            <div
-              id="info"
-              :class="active ? 'primary' : 'my-bg-primary'"
-              @click="active = true"
-            >
-              Info
+            <div id="info" :class="backgroundButton('info')" @click="active = true">
+              <span class="fw-semibold" :class="(store.darkMode ? 'text-light' : 'text-dark')">Info</span>
             </div>
           </div>
           <!-- componente menu/info -->
-          <RestaurantInfo
-            v-if="restaurant !== null"
-            v-show="active"
-            :info="restaruant"
-          />
+          <RestaurantInfo v-if="restaurant !== null" v-show="active" :info="restaruant" />
           <RestaurantMenu :info="restaruant" v-show="!active" />
         </div>
         <div class="col-5">
-          <RestaurantCart
-            :info="restaruant"
-            :checkout="false"
-            class="cart"
-            :class="{ active: cartToggle }"
-          />
-          <div
-            @click="cartToggle = !cartToggle"
-            class="shadowed d-block d-lg-none rounded-circle d-flex justify-content-center align-items-center cart-button"
-          >
+          <RestaurantCart :info="restaruant" :checkout="false" class="cart" :class="{ active: cartToggle }" />
+          <div @click="cartToggle = !cartToggle"
+            class="shadowed d-block d-lg-none rounded-circle d-flex justify-content-center align-items-center cart-button">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
         </div>
@@ -89,6 +70,29 @@ export default {
           this.loading = false;
         });
     },
+    backgroundButton(name) {
+      if (name === 'menu') {
+        if (this.active && store.darkMode) {
+          return 'dark-secondary my-bg-dark';
+        } else if (!this.active && !store.darkMode) {
+          return 'primary-light primary'
+        } else if (store.darkMode) {
+          return 'primary-light primary';
+        } else {
+          return 'light-secondary my-bg-primary';
+        }
+      } else {
+        if (this.active && store.darkMode) {
+          return 'primary-light primary';
+        } else if (!this.active && !store.darkMode) {
+          return 'light-secondary my-bg-primary'
+        } else if (store.darkMode) {
+          return 'dark-secondary my-bg-dark';
+        } else {
+          return 'primary-light primary';
+        }
+      }
+    },
   },
   mounted() {
     store.cart = [];
@@ -111,11 +115,9 @@ export default {
   .hero {
     height: 30vh;
     width: 100%;
-    background: radial-gradient(
-      circle at center,
-      $primary 0%,
-      $bg-primary 100%
-    );
+    background: radial-gradient(circle at center,
+        $primary 0%,
+        $bg-primary 100%);
   }
 
   .container {
@@ -128,7 +130,7 @@ export default {
       margin: 20px 0;
       height: 50px;
       width: 100%;
-      background-color: $bg-secondary;
+      // background-color: $bg-secondary;
       display: flex;
       // justify-content: space-around;
       align-items: center;
@@ -153,18 +155,22 @@ export default {
 }
 
 .primary {
-  background-color: $primary;
   -webkit-box-shadow: 0 -0.5px 17.5px 5.5px $primary;
   -moz-box-shadow: 0 -0.5px 17.5px 5.5px $primary;
   box-shadow: 0 -0.5px 17.5px 5.5px $primary;
 }
 
 .my-bg-primary {
-  background-color: $bg-primary;
-  -webkit-box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
-  -moz-box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
-  box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
+  -webkit-box-shadow: 0 -0.5px 17.5px 5.5px $bg-secondary;
+  -moz-box-shadow: 0 -0.5px 17.5px 5.5px $bg-secondary;
+  box-shadow: 0 -0.5px 17.5px 5.5px $bg-secondary;
   // filter: blur(2px);
+}
+
+.my-bg-dark {
+  -webkit-box-shadow: 0 -0.5px 17.5px 5.5px $bg-secondary-darkmode;
+  -moz-box-shadow: 0 -0.5px 17.5px 5.5px $bg-secondary-darkmode;
+  box-shadow: 0 -0.5px 17.5px 5.5px $bg-secondary-darkmode;
 }
 
 @media screen and (min-width: 992px) {
@@ -187,6 +193,7 @@ export default {
     font-size: 1.3em;
     cursor: pointer;
     transition: all 0.3s ease;
+
     &:hover {
       background-color: lighten($primary, 10%);
     }
