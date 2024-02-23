@@ -314,7 +314,11 @@ export default {
           .then((res) => {
             console.log(res.data);
             store.checkout = res.data;
-            this.$router.push("/order-status");
+            this.$router.push({
+            name: 'order-status',
+            query: { data: JSON.stringify(res.data) }
+          });
+            
           })
           .catch((err) => {
             this.$router.push("/order-status");
