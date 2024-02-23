@@ -3,7 +3,7 @@
     <!-- <div class="hero"></div> -->
     <div v-if="!loading" class="container">
       <div v-if="restaruant" class="row">
-        <div class="col-7 main">
+        <div class="col-12 col-lg-7 main">
           <!-- componente informazioni ristorante -->
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
@@ -32,7 +32,18 @@
           <RestaurantMenu :info="restaruant" v-show="!active" />
         </div>
         <div class="col-5">
-          <RestaurantCart :info="restaruant" :checkout="false" class="cart" />
+          <RestaurantCart
+            :info="restaruant"
+            :checkout="false"
+            class="cart"
+            :class="{ active: cartToggle }"
+          />
+          <div
+            @click="cartToggle = !cartToggle"
+            class="shadowed d-block d-lg-none rounded-circle d-flex justify-content-center align-items-center cart-button"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +75,7 @@ export default {
       restaruant: null,
       active: false,
       loading: false,
+      cartToggle: false,
     };
   },
   methods: {
@@ -137,12 +149,6 @@ export default {
         border-radius: 2em 0 0 2em;
       }
     }
-
-    .cart {
-      position: sticky;
-      top: 0;
-      right: 0;
-    }
   }
 }
 
@@ -159,5 +165,47 @@ export default {
   -moz-box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
   box-shadow: 0 -0.5px 17.5px 5.5px $bg-primary;
   // filter: blur(2px);
+}
+
+@media screen and (min-width: 992px) {
+  .cart {
+    position: sticky;
+    top: 0;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cart-button {
+    position: fixed;
+    bottom: 3%;
+    right: 7%;
+    background-color: $primary;
+    color: $text-color;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: lighten($primary, 10%);
+    }
+  }
+
+  .cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    scale: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &.active {
+      scale: 1;
+      opacity: 1;
+    }
+  }
 }
 </style>
