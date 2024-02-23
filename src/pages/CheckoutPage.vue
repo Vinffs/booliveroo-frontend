@@ -3,7 +3,7 @@
     <div class="container">
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
-        <CheckoutForm />
+        <CheckoutForm :token="token" />
         <!-- <PaymentForm /> -->
         <!-- <v-braintree :client-token="token" @payment-method-received="handlePaymentMethodReceived" /> -->
       </div>
@@ -24,7 +24,7 @@ export default {
       store,
       restaurant: null,
       slug: this.$route.params.slug,
-      token: "null",
+      token: null,
     };
   },
   components: {
@@ -46,7 +46,7 @@ export default {
     },
     getToken() {
       axios.get(store.apiUrl + "orders/generate").then((res) => {
-        store.token = res.data.token;
+        this.token = res.data.token;
         console.log(this.token);
       });
     },

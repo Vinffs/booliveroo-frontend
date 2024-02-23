@@ -31,28 +31,31 @@
           maxlength="10" />
       </div>
 
-      <header>
-        <h2 class="payment-title">Metodo di pagamento</h2>
-      </header>
-      <div id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
-        <div class="cardinfo-card-number">
-          <label class="cardinfo-label" for="card-number">Numero Carta <span class="text-danger">*</span></label>
-          <div class="input-wrapper" id="card-number"></div>
-          <div id="card-image" ref="cardImage"></div>
-        </div>
-
-        <div class="cardinfo-wrapper">
-          <div class="cardinfo-exp-date">
-            <label class="cardinfo-label" for="expiration-date">Scadenza <span class="text-danger">*</span></label>
-            <div class="input-wrapper" placeholder="mm/yyyy" id="expiration-date"></div>
+      <div v-if="loading">
+        <header>
+          <h2 class="payment-title">Metodo di pagamento</h2>
+        </header>
+        <div id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
+          <div class="cardinfo-card-number">
+            <label class="cardinfo-label" for="card-number">Numero Carta <span class="text-danger">*</span></label>
+            <div class="input-wrapper" id="card-number"></div>
+            <div id="card-image" ref="cardImage"></div>
           </div>
 
-          <div class="cardinfo-cvv">
-            <label class="cardinfo-label" for="cvv">CVV <span class="text-danger">*</span></label>
-            <div class="input-wrapper" id="cvv"></div>
+          <div class="cardinfo-wrapper">
+            <div class="cardinfo-exp-date">
+              <label class="cardinfo-label" for="expiration-date">Scadenza <span class="text-danger">*</span></label>
+              <div class="input-wrapper" placeholder="mm/yyyy" id="expiration-date"></div>
+            </div>
+
+            <div class="cardinfo-cvv">
+              <label class="cardinfo-label" for="cvv">CVV <span class="text-danger">*</span></label>
+              <div class="input-wrapper" id="cvv"></div>
+            </div>
           </div>
         </div>
       </div>
+      <LoadingComponent class="my-5" v-else />
 
       <input id="button-pay" type="submit" value="Continue" :class="{ 'show-button': isShowButton }" />
     </form>
@@ -63,6 +66,7 @@
 import braintree from "braintree-web";
 import axios from "axios";
 import { store } from "../data/store";
+import LoadingComponent from "./LoadingComponent.vue";
 export default {
   name: "CheckoutForm",
 
@@ -80,19 +84,22 @@ export default {
       phone: "",
       store,
       cartId: [],
+      loading: false,
     };
+  },
+  props: {
+    token: String,
   },
   components: {
     PaymentForm: this,
+    LoadingComponent,
   },
   mounted() {
-    this.setupBraintree();
-  },
-  methods: {
-    setupBraintree() {
+    this.loading = false;
+    setTimeout(() => {
       braintree.client.create(
         {
-          authorization: "sandbox_g42y39zw_348pk9cgf3bgyw2b",
+          authorization: this.token,
         },
         (err, clientInstance) => {
           if (err) {
@@ -214,7 +221,10 @@ export default {
           );
         }
       );
-    },
+      this.loading = true;
+    }, 1000); // Adjust the delay as needed
+  },
+  methods: {
     sendData() {
       let notNum = true;
       const allNumns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
