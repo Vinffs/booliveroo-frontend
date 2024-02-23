@@ -1,34 +1,83 @@
 <template>
   <div class="">
     <h2 class="text-center pt-5 pb-4">Inserisci i tuoi dati</h2>
-    <form action="" class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent="sendData()">
+    <form
+      action=""
+      class="rounded-3 p-4 shipping-data"
+      ref="form"
+      @submit.prevent="sendData()"
+    >
       <div class="d-flex justify-content-between align-items-center">
         <h2>Dati di consegna</h2>
         <span><span class="text-danger">*</span> campi obbligatori</span>
       </div>
       <div class="d-flex align-items-center justify-content-between gx-2">
         <div class="mb-3" style="width: 49.5%">
-          <label for="name" class="form-label">Nome <span class="text-danger">*</span></label>
-          <input required placeholder="Mario" type="text" v-model="name" class="form-control" id="name" />
+          <label for="name" class="form-label"
+            >Nome <span class="text-danger">*</span></label
+          >
+          <input
+            required
+            placeholder="Mario"
+            type="text"
+            v-model="name"
+            class="form-control"
+            id="name"
+          />
         </div>
         <div class="mb-3" style="width: 49.5%">
-          <label for="surname" class="form-label">Cognome <span class="text-danger">*</span></label>
-          <input required placeholder="Rossi" v-model="surname" type="text" class="form-control" id="surname" />
+          <label for="surname" class="form-label"
+            >Cognome <span class="text-danger">*</span></label
+          >
+          <input
+            required
+            placeholder="Rossi"
+            v-model="surname"
+            type="text"
+            class="form-control"
+            id="surname"
+          />
         </div>
       </div>
       <div class="mb-3 w-100">
-        <label for="address" class="form-label">Indirizzo di consegna <span class="text-danger">*</span></label>
-        <input required placeholder="Via Roma 25, 00100 Roma" v-model="address" type="text" class="form-control"
-          id="address" />
+        <label for="address" class="form-label"
+          >Indirizzo di consegna <span class="text-danger">*</span></label
+        >
+        <input
+          required
+          placeholder="Via Roma 25, 00100 Roma"
+          v-model="address"
+          type="text"
+          class="form-control"
+          id="address"
+        />
       </div>
       <div class="mb-3 w-100">
-        <label for="email" class="form-label">Indirizzo email <span class="text-danger">*</span></label>
-        <input required placeholder="indirizzo@email.it" v-model="email" type="email" class="form-control" id="email" />
+        <label for="email" class="form-label"
+          >Indirizzo email <span class="text-danger">*</span></label
+        >
+        <input
+          required
+          placeholder="indirizzo@email.it"
+          v-model="email"
+          type="email"
+          class="form-control"
+          id="email"
+        />
       </div>
       <div class="mb-3 w-100">
-        <label for="phone" class="form-label">Numero di telefono <span class="text-danger">*</span></label>
-        <input required placeholder="111 111 1111" v-model="phone" type="tel" class="form-control" id="phone"
-          maxlength="10" />
+        <label for="phone" class="form-label"
+          >Numero di telefono <span class="text-danger">*</span></label
+        >
+        <input
+          required
+          placeholder="111 111 1111"
+          v-model="phone"
+          type="tel"
+          class="form-control"
+          id="phone"
+          maxlength="10"
+        />
       </div>
 
       <header>
@@ -36,25 +85,40 @@
       </header>
       <div id="my-sample-form" class="scale-down w-100 mt-3" ref="paymentForm">
         <div class="cardinfo-card-number">
-          <label class="cardinfo-label" for="card-number">Numero Carta <span class="text-danger">*</span></label>
+          <label class="cardinfo-label" for="card-number"
+            >Numero Carta <span class="text-danger">*</span></label
+          >
           <div class="input-wrapper" id="card-number"></div>
           <div id="card-image" ref="cardImage"></div>
         </div>
 
         <div class="cardinfo-wrapper">
           <div class="cardinfo-exp-date">
-            <label class="cardinfo-label" for="expiration-date">Scadenza <span class="text-danger">*</span></label>
-            <div class="input-wrapper" placeholder="mm/yyyy" id="expiration-date"></div>
+            <label class="cardinfo-label" for="expiration-date"
+              >Scadenza <span class="text-danger">*</span></label
+            >
+            <div
+              class="input-wrapper"
+              placeholder="mm/yyyy"
+              id="expiration-date"
+            ></div>
           </div>
 
           <div class="cardinfo-cvv">
-            <label class="cardinfo-label" for="cvv">CVV <span class="text-danger">*</span></label>
+            <label class="cardinfo-label" for="cvv"
+              >CVV <span class="text-danger">*</span></label
+            >
             <div class="input-wrapper" id="cvv"></div>
           </div>
         </div>
       </div>
 
-      <input id="button-pay" type="submit" value="Continue" :class="{ 'show-button': isShowButton }" />
+      <input
+        id="button-pay"
+        type="submit"
+        value="Continue"
+        :class="{ 'show-button': isShowButton }"
+      />
     </form>
   </div>
 </template>
@@ -249,9 +313,12 @@ export default {
           .post(store.apiUrl + "orders/make-payment", paymentData)
           .then((res) => {
             console.log(res.data);
-            this.$router.push('/order-status', { params: { success: true } });
-          }).catch((err) => {
-            this.$router.push('/order-status', { params: { success: false } });
+            store.checkout = res.data;
+            this.$router.push("/order-status");
+          })
+          .catch((err) => {
+            this.$router.push("/order-status");
+            store.checkout = res.data;
           });
       } else if (!notNum) {
         alert("Il numero di telefono contiene dei caratteri non numerici");
@@ -339,22 +406,26 @@ label {
     @extend .card-shape;
     color: $white;
     background-color: #363636;
-    background: linear-gradient(115deg,
-        #d82332,
-        #d82332 50%,
-        #f1ad3d 50%,
-        #f1ad3d);
+    background: linear-gradient(
+      115deg,
+      #d82332,
+      #d82332 50%,
+      #f1ad3d 50%,
+      #f1ad3d
+    );
   }
 
   &.maestro {
     @extend .card-shape;
     color: $white;
     background-color: #363636;
-    background: linear-gradient(115deg,
-        #009ddd,
-        #009ddd 50%,
-        #ed1c2e 50%,
-        #ed1c2e);
+    background: linear-gradient(
+      115deg,
+      #009ddd,
+      #009ddd 50%,
+      #ed1c2e 50%,
+      #ed1c2e
+    );
   }
 
   &.american-express {
@@ -504,7 +575,6 @@ Animations
 }
 
 @keyframes shake {
-
   10%,
   90% {
     transform: translate3d(-1px, 0, 0);

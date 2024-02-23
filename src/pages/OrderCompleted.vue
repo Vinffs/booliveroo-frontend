@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-tot d-flex justify-content-center align-items-center">
-    <OrderSuccess v-if="$route.params.success" />
+    <OrderSuccess v-if="store.checkout.success" />
     <OrderFailed v-else />
   </div>
 </template>
@@ -19,6 +19,9 @@ export default {
   components: {
     OrderFailed,
     OrderSuccess,
+  },
+  mounted() {
+    console.log(store.checkout.success);
   },
 };
 </script>
