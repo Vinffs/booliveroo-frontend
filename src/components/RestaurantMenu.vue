@@ -22,7 +22,7 @@
             € {{ item.price }}
           </p>
           <div
-            :class="{ disabled: !aitem.visible }"
+            :class="{ disabled: !item.visible }"
             class="btn btn-primary rounded-pill"
             @click="addToCart(item)"
           >
