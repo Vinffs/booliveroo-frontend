@@ -286,6 +286,14 @@ export default {
 @media screen and (min-width: 992px) {
   .cart {
     max-height: 90vh;
+    .elements {
+      max-height: 65vh;
+      .element {
+        .buttons {
+          width: auto !important;
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 992px) {
