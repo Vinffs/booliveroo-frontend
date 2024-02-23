@@ -1,14 +1,8 @@
 <template>
-<<<<<<< HEAD
-  <div class="">
-    <h2 class="text-center pt-5 pb-4">Inserisci i tuoi dati</h2>
-    <form action="" class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent>
-=======
   <div>
     <h2 class="text-center pt-5 pb-4" :class="store.darkMode ? 'text-light' : 'text-dark'">Inserisci i tuoi dati</h2>
     <form :class="store.darkMode ? 'dark-secondary text-light' : 'light-secondary'" action=""
       class="rounded-3 p-4 shipping-data" ref="form" @submit.prevent="sendData()">
->>>>>>> 491813b24bf7d448a0c213b9acb18ba29a064dd4
       <div class="d-flex justify-content-between align-items-center">
         <h2 :class="store.darkMode ? 'text-light' : 'text-dark'">Dati di consegna</h2>
         <span><span class="text-danger">*</span> campi obbligatori</span>
@@ -548,4 +542,5 @@ Animations
   60% {
     transform: translate3d(3px, 0, 0);
   }
-}</style>
+}
+</style>
