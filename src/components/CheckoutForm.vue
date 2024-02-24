@@ -648,8 +648,8 @@ Animations
       padding-top: 1.5em;
     }
   }
-}
-.name {
-  width: 100% !important;
+  .name {
+    width: 100% !important;
+  }
 }
 </style>

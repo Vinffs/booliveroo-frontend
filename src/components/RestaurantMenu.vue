@@ -33,7 +33,7 @@
               ></span>
             </span>
             <span v-else>
-              <span class="d-none d-sm-inline">Aggiungi al Carrello</span>
+              <span class="d-none d-sm-inline">Non disponibile</span>
               <span class="d-inline d-sm-none"
                 ><i class="fa-solid fa-ban"></i
               ></span>
