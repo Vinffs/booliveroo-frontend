@@ -155,7 +155,7 @@
       <input
         id="button-pay"
         type="submit"
-        value="Continue"
+        value="Continua"
         :class="{ 'show-button': isShowButton }"
       />
       <input type="hidden" id="nonce" name="payment_method_nonce" ref="nonce" />
@@ -192,6 +192,7 @@ export default {
   },
   props: {
     token: String,
+    restaurant: Object,
   },
   components: {
     PaymentForm: this,
@@ -349,6 +350,7 @@ export default {
           customer_name: this.name,
           customer_lastname: this.surname,
           customer_phone: this.phone,
+          restaurant: this.restaurant,
         };
 
         axios

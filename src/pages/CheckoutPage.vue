@@ -3,7 +3,7 @@
     <div class="container">
       <div>
         <RestaurantCart :info="restaurant" :checkout="true" />
-        <CheckoutForm :token="token" />
+        <CheckoutForm :restaurant="restaurant" :token="token" />
         <!-- <PaymentForm /> -->
         <!-- <v-braintree :client-token="token" @payment-method-received="handlePaymentMethodReceived" /> -->
       </div>
