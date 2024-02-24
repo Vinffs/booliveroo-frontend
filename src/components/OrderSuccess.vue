@@ -2,36 +2,37 @@
   <div class="my-wrapper">
     <h1>Ordine effettuato con successo!</h1>
     <ul class="list-unstyled">
-            <li><strong>Nome:</strong> {{responseData['order'].customer_name}} {{responseData['order'].customer_lastname}}</li>
-            <li><strong>Email:</strong> {{responseData['order'].customer_email}}</li>
-            <li><strong>Telefono:</strong> {{responseData['order'].customer_phone}}</li>
-            <li><strong>Indirizzo di spedizione:</strong> {{responseData['order'].shipping_address}}</li>
-            <li><strong>Prezzo totale:</strong> {{responseData['order'].total_price}}</li>
-            <li><strong>Data ordine:</strong> {{responseData['order'].created_at}}</li>
-          </ul>
-    </div>
+      <li>
+        <strong>Nome:</strong> {{ store.checkout.order.customer_name }}
+        {{ store.checkout.order.customer_lastname }}
+      </li>
+      <li><strong>Email:</strong> {{ store.checkout.order.customer_email }}</li>
+      <li>
+        <strong>Telefono:</strong> {{ store.checkout.order.customer_phone }}
+      </li>
+      <li>
+        <strong>Indirizzo di spedizione:</strong>
+        {{ store.checkout.order.shipping_address }}
+      </li>
+      <li>
+        <strong>Prezzo totale:</strong> {{ store.checkout.order.total_price }}
+      </li>
+      <li>
+        <strong>Data ordine:</strong> {{ store.checkout.order.created_at }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
+import { store } from "../data/store.js";
 export default {
-  
   name: "OrderCompleted",
   data() {
     return {
-      responseData: null,
+      store,
     };
   },
-  created() {
-    
-    if (this.$route.query.data) {
-      try {
-        this.responseData = JSON.parse(this.$route.query.data);
-      } catch (error) {
-        console.error('Errore nel parsing JSON:', error);
-      }
-    }
-  },
-  
 };
 </script>
 
