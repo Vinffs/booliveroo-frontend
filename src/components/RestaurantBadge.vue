@@ -1,17 +1,24 @@
 <template>
-  <div class="wrapper p-3 rounded-3 d-flex" :class="(store.darkMode ? 'dark-secondary' : 'light-secondary')">
-    <div class="badge-image">
-      <img :src="store.imagePath + info.image" :alt="info.name" />
-    </div>
-    <div class="badge-text p-4 d-flex align-items-center justify-content-center flex-column"
-      :class="(store.darkMode ? 'text-light' : 'text-dark')">
-      <h3 class="fw-bold pt-2">{{ info.name }}</h3>
-      <div class="d-flex gap-3 pt-2">
-        <p class="fs-6 dash" v-for="category in info.categories">
-          {{ category.name }}
-        </p>
+  <div
+    class="wrapper p-3 rounded-3"
+    :class="store.darkMode ? 'dark-secondary' : 'light-secondary'"
+  >
+    <div class="d-flex flex-wrap">
+      <div class="badge-image">
+        <img :src="store.imagePath + info.image" :alt="info.name" />
       </div>
-      <p class="fs-6">{{ info.address }}</p>
+      <div
+        class="badge-text p-4 d-flex align-items-center justify-content-center flex-column"
+        :class="store.darkMode ? 'text-light' : 'text-dark'"
+      >
+        <h3 class="fw-bold pt-2">{{ info.name }}</h3>
+        <p class="fs-6">{{ info.address }}</p>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap gap-3 pt-2 justify-content-center">
+      <p class="fs-6 dash" v-for="category in info.categories">
+        {{ category.name }}
+      </p>
     </div>
   </div>
 </template>
@@ -53,18 +60,28 @@ export default {
   .badge-text {
     width: 75%;
     height: 100%;
+  }
+  .dash {
+    &::after {
+      content: " • ";
+      padding-left: 10px;
+    }
 
-    .dash {
+    &:last-child {
       &::after {
-        content: " • ";
-        padding-left: 10px;
+        content: "";
       }
+    }
+  }
+}
 
-      &:last-child {
-        &::after {
-          content: "";
-        }
-      }
+@media screen and (max-width: 576px) {
+  .wrapper {
+    .badge-image {
+      width: 100%;
+    }
+    .badge-text {
+      width: 100%;
     }
   }
 }

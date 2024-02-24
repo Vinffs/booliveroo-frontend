@@ -8,21 +8,50 @@
           <RestaurantBadge :info="restaruant" />
           <!-- pulsante -->
           <div id="pulsante" class="rounded-5">
-            <div id="menu" :class="backgroundButton('menu')" @click="active = false">
-              <span class="fw-semibold" :class="(store.darkMode ? 'text-light' : 'text-dark')">Menu</span>
+            <div
+              id="menu"
+              :class="backgroundButton('menu')"
+              @click="active = false"
+            >
+              <span
+                class="fw-semibold"
+                :class="store.darkMode ? 'text-light' : 'text-dark'"
+                >Menu</span
+              >
             </div>
-            <div id="info" :class="backgroundButton('info')" @click="active = true">
-              <span class="fw-semibold" :class="(store.darkMode ? 'text-light' : 'text-dark')">Info</span>
+            <div
+              id="info"
+              :class="backgroundButton('info')"
+              @click="active = true"
+            >
+              <span
+                class="fw-semibold"
+                :class="store.darkMode ? 'text-light' : 'text-dark'"
+                >Info</span
+              >
             </div>
           </div>
           <!-- componente menu/info -->
-          <RestaurantInfo v-if="restaurant !== null" v-show="active" :info="restaruant" />
+          <RestaurantInfo
+            v-if="restaurant !== null"
+            v-show="active"
+            :info="restaruant"
+          />
           <RestaurantMenu :info="restaruant" v-show="!active" />
         </div>
         <div class="col-5">
-          <RestaurantCart :info="restaruant" :checkout="false" class="cart" :class="{ active: cartToggle }" />
-          <div @click="cartToggle = !cartToggle"
-            class="shadowed d-block d-lg-none rounded-circle d-flex justify-content-center align-items-center cart-button">
+          <RestaurantCart
+            @toggle-cart="cartToggle = !cartToggle"
+            :info="restaruant"
+            :checkout="false"
+            class="cart"
+            :class="{ active: cartToggle }"
+          />
+          <div
+            @click="cartToggle = !cartToggle"
+            class="shadowed d-block d-lg-none rounded-circle d-flex justify-content-center align-items-center cart-button"
+          >
+            <div class="num">{{ store.cart.length }}</div>
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
         </div>
@@ -71,25 +100,25 @@ export default {
         });
     },
     backgroundButton(name) {
-      if (name === 'menu') {
+      if (name === "menu") {
         if (this.active && store.darkMode) {
-          return 'dark-secondary my-bg-dark';
+          return "dark-secondary my-bg-dark";
         } else if (!this.active && !store.darkMode) {
-          return 'primary-light primary'
+          return "primary-light primary";
         } else if (store.darkMode) {
-          return 'primary-light primary';
+          return "primary-light primary";
         } else {
-          return 'light-secondary my-bg-primary';
+          return "light-secondary my-bg-primary";
         }
       } else {
         if (this.active && store.darkMode) {
-          return 'primary-light primary';
+          return "primary-light primary";
         } else if (!this.active && !store.darkMode) {
-          return 'light-secondary my-bg-primary'
+          return "light-secondary my-bg-primary";
         } else if (store.darkMode) {
-          return 'dark-secondary my-bg-dark';
+          return "dark-secondary my-bg-dark";
         } else {
-          return 'primary-light primary';
+          return "primary-light primary";
         }
       }
     },
@@ -115,9 +144,11 @@ export default {
   .hero {
     height: 30vh;
     width: 100%;
-    background: radial-gradient(circle at center,
-        $primary 0%,
-        $bg-primary 100%);
+    background: radial-gradient(
+      circle at center,
+      $primary 0%,
+      $bg-primary 100%
+    );
   }
 
   .container {
@@ -197,6 +228,23 @@ export default {
     &:hover {
       background-color: lighten($primary, 10%);
     }
+    .num {
+      position: absolute;
+      z-index: 100;
+      font-size: 0.7em;
+      top: 2px;
+      right: 2px;
+      background-color: $text-color;
+      color: $primary;
+      border-radius: 50%;
+      width: 1.5em;
+      height: 1.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translate(28%, -28%);
+      font-weight: bold;
+    }
   }
 
   .cart {
@@ -207,6 +255,7 @@ export default {
     left: 0;
     scale: 0;
     opacity: 0;
+    z-index: 101;
     transition: all 0.3s ease;
 
     &.active {
