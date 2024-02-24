@@ -7,7 +7,9 @@ $fa-font-path: "../webfonts";
 @import "@fortawesome/fontawesome-free/scss/brands.scss";
 @import "bootstrap/scss/bootstrap";
 
-@import url("https://fonts.cdnfonts.com/css/abc-ginto-nord-unlicensed-trial");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap");
 
 .shadowed {
   box-shadow: 0 0.125rem 0.25rem rgba(black, 0.125);
@@ -48,4 +50,17 @@ $fa-font-path: "../webfonts";
 
 .primary-dark {
   background-color: $primary-darkmode;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fredoka", sans-serif;
+}
+
+p,
+div {
+  font-family: "Libre Franklin", sans-serif;
 }
