@@ -17,10 +17,14 @@
         <h2 :class="store.darkMode ? 'text-light' : 'text-dark'">
           Dati di consegna
         </h2>
-        <span><span class="text-danger">*</span> campi obbligatori</span>
+        <span class="text-end"
+          ><span class="text-danger">*</span> campi obbligatori</span
+        >
       </div>
-      <div class="d-flex align-items-center justify-content-between gx-2">
-        <div class="mb-3" style="width: 49.5%">
+      <div
+        class="d-md-flex d-block align-items-center justify-content-between gx-2"
+      >
+        <div style="width: 49.5%" class="mb-3 name">
           <label
             :class="store.darkMode ? 'text-light' : 'text-dark'"
             for="name"
@@ -36,7 +40,7 @@
             id="name"
           />
         </div>
-        <div class="mb-3" style="width: 49.5%">
+        <div style="width: 49.5%" class="mb-3 name">
           <label
             :class="store.darkMode ? 'text-light' : 'text-dark'"
             for="surname"
@@ -633,5 +637,19 @@ Animations
   60% {
     transform: translate3d(3px, 0, 0);
   }
+}
+
+@media screen and (max-width: 768px) {
+  .shipping-data {
+    width: 100%;
+
+    #my-sample-form {
+      padding: 1em;
+      padding-top: 1.5em;
+    }
+  }
+}
+.name {
+  width: 100% !important;
 }
 </style>
