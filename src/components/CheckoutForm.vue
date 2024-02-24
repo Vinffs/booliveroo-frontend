@@ -351,7 +351,7 @@ export default {
         axios
           .post(store.apiUrl + "orders/make-payment", paymentData)
           .then((res) => {
-            store.status = res.data.success;
+            store.checkout = res.data;
             this.$router.push("/order-status");
           })
           .catch((err) => {
