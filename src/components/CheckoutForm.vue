@@ -157,7 +157,6 @@
         type="submit"
         value="Continue"
         :class="{ 'show-button': isShowButton }"
-        @click="sendData()"
       />
       <input type="hidden" id="nonce" name="payment_method_nonce" ref="nonce" />
     </form>
@@ -648,6 +647,7 @@ Animations
       padding-top: 1.5em;
     }
   }
+
   .name {
     width: 100% !important;
   }
