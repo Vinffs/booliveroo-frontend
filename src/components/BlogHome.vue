@@ -13,7 +13,7 @@
             <div class="card-body"
               :class="(store.darkMode ? 'dark' : 'light'), (store.darkMode ? 'text-light' : 'text-dark')">
               <h5 class="card-title fw-semibold">Spaghetti alla Carbonara</h5>
-              <p class="card-text"><span class="fw-semibold">Da:</span>Giallo Zafferano</p>
+              <p class="card-text"><span class="fw-semibold">Da: </span>Giallo Zafferano</p>
               <span class="user d-flex">
                 <img class="me-1" src="/images/blog/mirko.png" alt="user-profile" />
                 <p class="">Mirko Marasco</p>
@@ -31,7 +31,7 @@
             <div class="card-body"
               :class="(store.darkMode ? 'dark' : 'light'), (store.darkMode ? 'text-light' : 'text-dark')">
               <h5 class="card-title fw-semibold">Risotto ai mirtilli di bosco</h5>
-              <p class="card-text"><span class="fw-semibold">Da:</span>Giallo Zafferano</p>
+              <p class="card-text"><span class="fw-semibold">Da: </span>Giallo Zafferano</p>
               <span class="user d-flex">
                 <img class="me-1" src="/images/blog/oder.png" alt="user-profile" />
                 <p class="">Oder Risi</p>
