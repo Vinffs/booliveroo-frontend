@@ -1,6 +1,8 @@
 <template>
   <div class="my-wrapper">
-    <h1>Ordine effettuato con successo!</h1>
+    <h1>
+      Ordine effettuato con successo presso {{ store.checkout.restaurant.name }}
+    </h1>
     <ul class="list-unstyled">
       <li>
         <strong>Nome:</strong> {{ store.checkout.order.customer_name }}
@@ -32,6 +34,9 @@ export default {
     return {
       store,
     };
+  },
+  mounted() {
+    localStorage.removeItem(store.checkout.restaurant.slug);
   },
 };
 </script>

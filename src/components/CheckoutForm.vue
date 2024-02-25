@@ -516,10 +516,12 @@ label {
   position: relative;
   transition: all 500ms $bouncy;
   opacity: 0;
+  background-color: $primary;
+  color: $text-color;
   //-webkit-appearance: none;
 
   &:hover {
-    background: lighten(#282c37, 20%);
+    background: darken($primary, 5%);
   }
 
   &:active {
