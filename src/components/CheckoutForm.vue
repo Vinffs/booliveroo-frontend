@@ -13,6 +13,11 @@
       ref="form"
       @submit.prevent="sendData()"
     >
+      <LoadingComponent
+        v-if="loadingPayment"
+        class="loading-payment"
+        :class="store.darkMode ? 'dark-secondary' : 'light-secondary'"
+      />
       <div class="d-flex justify-content-between align-items-center">
         <h2 :class="store.darkMode ? 'text-light' : 'text-dark'">
           Dati di consegna
@@ -188,6 +193,7 @@ export default {
       cartId: [],
       loading: false,
       hostedFieldsInstance: null,
+      loadingPayment: false,
     };
   },
   props: {
@@ -339,6 +345,7 @@ export default {
         this.phone !== "" &&
         notNum
       ) {
+        this.loadingPayment = true;
         store.cart.forEach((value) => {
           this.cartId.push(value.id);
         });
@@ -352,11 +359,11 @@ export default {
           customer_phone: this.phone,
           restaurant: this.restaurant,
         };
-
         axios
           .post(store.apiUrl + "orders/make-payment", paymentData)
           .then((res) => {
             store.checkout = res.data;
+            this.loadingPayment = false;
             this.$router.push("/order-status");
           })
           .catch((err) => {
@@ -654,6 +661,20 @@ Animations
 
   .name {
     width: 100% !important;
+  }
+}
+
+form {
+  position: relative;
+
+  .loading-payment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $bg-secondary;
+    z-index: 10;
   }
 }
 </style>
