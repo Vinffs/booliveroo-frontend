@@ -57,6 +57,7 @@ export default {
       store.cart = JSON.parse(localStorage.getItem(this.slug));
     }
     this.getToken();
+    window.scrollTo(0, 0);
   },
 };
 </script>

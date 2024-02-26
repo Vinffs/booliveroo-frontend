@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     console.log(store.checkout.success);
+    window.scrollTo(0, 0);
   },
 };
 </script>
