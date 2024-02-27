@@ -68,9 +68,15 @@
         <div
           v-if="store.filteredRestaurants.length > 0"
           class="restaurant-container col-12 col-md-6"
-          v-for="item in store.filteredRestaurants"
+          v-for="(item, index) in store.filteredRestaurants"
+          :class="{ 'p-0': index > 5 }"
         >
-          <RestaurantCard class="shadowed" :restaurant="item" :position="0" />
+          <RestaurantCard
+            v-if="index < 6"
+            class="shadowed"
+            :restaurant="item"
+            :position="0"
+          />
         </div>
         <h3
           v-else

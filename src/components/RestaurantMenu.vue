@@ -9,7 +9,9 @@
       v-for="item in info.dishes"
       class="dish p-4 d-flex align-items-center justify-content-evenly"
     >
-      <div class="d-flex flex-column align-items-center gap-3 mt-3 mt-sm-0">
+      <div
+        class="d-flex col-12 col-sm-6 flex-column align-items-center gap-3 mt-3 mt-sm-0"
+      >
         <h4>{{ item.name }}</h4>
         <p>{{ item.ingredients }}</p>
         <div
@@ -41,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="w-50 image-container rounded-2">
+      <div class="w-50 col-12 col-sm-6 image-container rounded-2">
         <img
           class="dish-image"
           :src="store.imagePath + item.image"
